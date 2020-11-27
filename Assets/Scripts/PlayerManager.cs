@@ -16,7 +16,7 @@ public class PlayerManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        createBlueSquare();
+        RpcCreateBlueSquare();
     }
 
     // Update is called once per frame
@@ -25,9 +25,12 @@ public class PlayerManager : NetworkBehaviour
         
     }
 
-    public void createBlueSquare()
+    [ClientRpc]
+    public void RpcCreateBlueSquare()
     {
         Vector2 spawnPoint = new Vector2(Random.Range(0, 5), Random.Range(0, 5));
         GameObject obj = Instantiate(blueSquare, spawnPoint, Quaternion.identity);
+
+        NetworkServer.Spawn(obj, connectionToClient);
     }
 }

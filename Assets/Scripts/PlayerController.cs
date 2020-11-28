@@ -9,6 +9,10 @@ public class PlayerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if(!isLocalPlayer)
+        {
+            return;
+        }
         HandleKeyboardMovement();
     }
 
@@ -35,7 +39,8 @@ public class PlayerController : NetworkBehaviour
 
     private Rigidbody2D GetRigidbody()
     {
-        NetworkIdentity netId = NetworkClient.connection.identity;
-        return netId.GetComponent<Rigidbody2D>();
+        // NetworkIdentity netId = NetworkClient.connection.identity;
+        //      return netId.GetComponent<NetworkRigidbody2D>();
+        return GetComponent<Rigidbody2D>();
     }
 }

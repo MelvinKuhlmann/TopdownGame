@@ -22,6 +22,11 @@ public class PlayerController : NetworkBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    public override void OnStartLocalPlayer()
+    {
+        Camera.main.GetComponent<CameraController>().SetPlayer(this);
+    }
+
     private void FixedUpdate()
     {
         if(!isLocalPlayer)

@@ -138,9 +138,10 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   spriteRenderer: {fileID: 3368323502279459472}
-  movementSpeed: 10
-  jumpHeight: 0
+  movementSpeed: 5
+  jumpHeight: 5
   animator: {fileID: -6848967540834086876}
+  isGrounded: 0
 --- !u!58 &-4935363234349986909
 CircleCollider2D:
   m_ObjectHideFlags: 0

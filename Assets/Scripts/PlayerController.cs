@@ -14,9 +14,11 @@ public class PlayerController : NetworkBehaviour
     public int movementSpeed;
     public int jumpHeight;
     public Animator animator;
+    public bool isGrounded;
 
     private void Start()
     {
+        isGrounded = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -45,27 +47,69 @@ public class PlayerController : NetworkBehaviour
         {
             MoveRight();
         }
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+            Jump();
+        }
     }
 
     private void MoveLeft()
     {
         FlipSpriteX(true);
         animator.SetBool("isMoving", true);
-        GetRigidbody().AddForce(Vector2.left * movementSpeed, ForceMode2D.Force);
+
+        Vector3 target = new Vector3();
+        target.x = transform.position.x - movementSpeed;
+        target.y = transform.position.y;
+        GetRigidbody().transform.position = Vector3.Lerp(transform.position, target, 1 * Time.deltaTime);
     }
 
     private void MoveRight()
     {
         FlipSpriteX(false);
         animator.SetBool("isMoving", true);
-        GetRigidbody().AddForce(Vector2.right * movementSpeed, ForceMode2D.Force);
+
+        Vector3 target = new Vector3();
+        target.x = transform.position.x + movementSpeed;
+        target.y = transform.position.y;
+        GetRigidbody().transform.position = Vector3.Lerp(transform.position, target, 1 * Time.deltaTime);
     }
+
+    private void Jump()
+    {
+        if (isGrounded)
+        {
+            GetRigidbody().velocity += jumpHeight * Vector2.up;
+        }
+    }
+
+    #region Collision Detection
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (Tag.FLOOR.ToString().Equals(other.gameObject.tag))
+        {
+            if (!isGrounded)
+            {
+                Debug.LogFormat("player landed");
+            }
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (Tag.FLOOR.ToString().Equals(other.gameObject.tag))
+        {
+            Debug.LogFormat("player falling");
+            isGrounded = false;
+        }
+    }
+    #endregion
 
     private Rigidbody2D GetRigidbody()
     {
-        // NetworkIdentity netId = NetworkClient.connection.identity;
-        //      return netId.GetComponent<NetworkRigidbody2D>();
-        return GetComponent<Rigidbody2D>();
+        NetworkIdentity netId = NetworkClient.connection.identity;
+        return netId.GetComponent<Rigidbody2D>();
     }
 
     // Client makes sure this function is only executed on clients

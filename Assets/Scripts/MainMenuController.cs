@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class MainMenuController : MonoBehaviour
 
 	public void StartGame()
 	{
-		//TODO go to first or next level
+		SceneManager.LoadScene("MenuScene");
 	}
 
 	public void QuitGame()

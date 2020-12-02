@@ -7,17 +7,15 @@ public class PlayerController : NetworkBehaviour
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
-    // Temporary variable to check when running animation should stop; we have to change this to states later.
-    private int lowSpeed = 3;
+    float horizontal;
+    float vertical;
+    float moveLimiter = 0.7f;
+    public float movementSpeed = 5.0f;
 
-    public int movementSpeed;
-    public int jumpHeight;
     public Animator animator;
-    public bool isGrounded;
 
     private void Start()
     {
-        isGrounded = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -26,89 +24,48 @@ public class PlayerController : NetworkBehaviour
         Camera.main.GetComponent<CameraController>().SetPlayer(this);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if(!isLocalPlayer)
+        if (!isLocalPlayer)
         {
             return;
         }
 
-        if (GetRigidbody().velocity.magnitude <= lowSpeed)
+        // Gives a value between -1 and 1
+        horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
+        vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
+        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+        {
+            // limit movement speed diagonally, so you move at 70% speed
+            horizontal *= moveLimiter;
+            vertical *= moveLimiter;
+        }
+        if (horizontal == 0 && vertical == 0)
         {
             animator.SetBool("isMoving", false);
-        }
-
-        HandleKeyboardMovement();
-    }
-
-    private void HandleKeyboardMovement()
-    {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        } else
         {
-            MoveLeft();
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            MoveRight();
-        }
-        if(Input.GetKey(KeyCode.UpArrow))
-        {
-            Jump();
-        }
-    }
-
-    private void MoveLeft()
-    {
-        FlipSpriteX(true);
-        animator.SetBool("isMoving", true);
-
-        Vector3 target = new Vector3();
-        target.x = transform.position.x - movementSpeed;
-        target.y = transform.position.y;
-        GetRigidbody().transform.position = Vector3.Lerp(transform.position, target, 1 * Time.deltaTime);
-    }
-
-    private void MoveRight()
-    {
-        FlipSpriteX(false);
-        animator.SetBool("isMoving", true);
-
-        Vector3 target = new Vector3();
-        target.x = transform.position.x + movementSpeed;
-        target.y = transform.position.y;
-        GetRigidbody().transform.position = Vector3.Lerp(transform.position, target, 1 * Time.deltaTime);
-    }
-
-    private void Jump()
-    {
-        if (isGrounded)
-        {
-            GetRigidbody().velocity += jumpHeight * Vector2.up;
-        }
-    }
-
-    #region Collision Detection
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (Tag.FLOOR.ToString().Equals(other.gameObject.tag))
-        {
-            if (!isGrounded)
+            animator.SetBool("isMoving", true);
+            if (horizontal < 0)
             {
-                Debug.LogFormat("player landed");
+                FlipSpriteX(true);
+            } else
+            {
+                FlipSpriteX(false);
             }
-            isGrounded = true;
         }
-    }
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (Tag.FLOOR.ToString().Equals(other.gameObject.tag))
-        {
-            Debug.LogFormat("player falling");
-            isGrounded = false;
-        }
+        GetRigidbody().velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
     }
-    #endregion
 
     private Rigidbody2D GetRigidbody()
     {

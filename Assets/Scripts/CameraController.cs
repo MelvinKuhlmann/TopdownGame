@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-	private float interpVelocity;
+	private float interpolateVelocity; // Possible elastic effect when camera moves with player
 	private float cameraSpeed;
 	private PlayerController player;
 	private Vector3 targetPosition;
@@ -27,8 +27,8 @@ public class CameraController : MonoBehaviour
 		position.z = player.transform.position.z;
 
 		Vector3 targetDirection = (player.transform.position - position);
-		interpVelocity = targetDirection.magnitude * 5f;
-		targetPosition = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime);
+		interpolateVelocity = targetDirection.magnitude * 5f;
+		targetPosition = transform.position + (targetDirection.normalized * interpolateVelocity * Time.deltaTime);
 		transform.position = Vector3.Lerp(transform.position, targetPosition, cameraSpeed);
 	}
 

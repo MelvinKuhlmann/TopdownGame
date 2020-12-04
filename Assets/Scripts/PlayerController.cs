@@ -3,15 +3,14 @@ using UnityEngine;
 
 public class PlayerController : NetworkBehaviour
 {
-
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
-    float horizontal;
-    float vertical;
-    float moveLimiter = 0.7f;
-    public float movementSpeed = 5.0f;
+    private float horizontal;
+    private float vertical;
+    private float moveLimiter = 0.7f;
 
+    public float movementSpeed = 5.0f;
     public Animator animator;
 
     private void Start()

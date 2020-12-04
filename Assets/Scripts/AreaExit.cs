@@ -9,7 +9,7 @@ public class AreaExit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == Tag.Player.ToString())
         {
             FindObjectOfType<TopDownNetworkManager>().ServerChangeScene(sceneToLoad);
         }

@@ -62,6 +62,18 @@ public class PlayerController : NetworkBehaviour
             {
                 FlipSpriteX(false);
             }
+
+/*            if (vertical > 0)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMoving", false);
+            } else
+            {
+                animator.SetBool("isMovingDown", true);
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMoving", false);
+            }*/
         }
 
         GetRigidbody().velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);

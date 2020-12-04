@@ -13,6 +13,10 @@ public class PlayerController : NetworkBehaviour
     public float movementSpeed = 5.0f;
     public Animator animator;
 
+    private readonly float mapBoundaryOffset = 0.5f;
+    private Vector3 bottomLeftLimit;
+    private Vector3 topRightLimit;
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -33,6 +37,18 @@ public class PlayerController : NetworkBehaviour
         // Gives a value between -1 and 1
         horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
         vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+
+        //Keep player inside the bounds
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
+    }
+
+    /**
+     * Set the boundaries of the map, to make sure the player cannot go beyond the borders of the game scene
+     */
+    public void SetBoundaries(Vector3 bottomLeft, Vector3 topRight)
+    {
+        bottomLeftLimit = bottomLeft + new Vector3(mapBoundaryOffset, mapBoundaryOffset, 0f);
+        topRightLimit = topRight + new Vector3(mapBoundaryOffset * -1, mapBoundaryOffset * -1, 0f);
     }
 
     private void FixedUpdate()

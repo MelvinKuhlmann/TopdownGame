@@ -54,5 +54,7 @@ public class CameraController : MonoBehaviour
 	public void SetPlayer(PlayerController player)
 	{
 		this.player = player;
+		//set the boundaries of the map to the player
+		this.player.SetBoundaries(map.localBounds.min, map.localBounds.max);
 	}
 }

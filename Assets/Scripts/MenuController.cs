@@ -1,5 +1,6 @@
 ﻿using Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -44,5 +45,10 @@ public class MenuController : MonoBehaviour
     {
         menuPanel.SetActive(true);
         gamePanel.SetActive(false);
+    }
+
+    public void ServerChangeScene(string newSceneName)
+    {
+        networkManager.ServerChangeScene(newSceneName);
     }
 }

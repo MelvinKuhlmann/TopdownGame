@@ -52,28 +52,40 @@ public class PlayerController : NetworkBehaviour
         if (horizontal == 0 && vertical == 0)
         {
             animator.SetBool("isMoving", false);
+            animator.SetBool("isMovingDown", false);
+            animator.SetBool("isMovingUp", false);
         } else
         {
-            animator.SetBool("isMoving", true);
-            if (horizontal < 0)
+            if (horizontal != 0)
             {
-                FlipSpriteX(true);
-            } else
-            {
-                FlipSpriteX(false);
+                animator.SetBool("isMoving", true);
+                if (horizontal < 0)
+                {
+                    animator.SetBool("isMovingDown", false);
+                    animator.SetBool("isMovingUp", false);
+                    FlipSpriteX(true);
+                }
+                else
+                {
+                    animator.SetBool("isMovingDown", false);
+                    animator.SetBool("isMovingUp", false);
+                    FlipSpriteX(false);
+                }
             }
-
-/*            if (vertical > 0)
+            if (vertical != 0)
             {
-                animator.SetBool("isMovingUp", true);
-                animator.SetBool("isMovingDown", false);
                 animator.SetBool("isMoving", false);
-            } else
-            {
-                animator.SetBool("isMovingDown", true);
-                animator.SetBool("isMovingUp", false);
-                animator.SetBool("isMoving", false);
-            }*/
+                if (vertical < 0)
+                {
+                    animator.SetBool("isMovingDown", true);
+                    animator.SetBool("isMovingUp", false);
+                }
+                else
+                {
+                    animator.SetBool("isMovingDown", false);
+                    animator.SetBool("isMovingUp", true);
+                }
+            }
         }
 
         GetRigidbody().velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);

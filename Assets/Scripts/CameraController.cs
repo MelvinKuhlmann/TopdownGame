@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
 	{
 		targetPosition = transform.position;
 		cameraSpeed = 1f;
-		isFollowing = true;
+		isFollowing = false;
 
 		halfHeight = Camera.main.orthographicSize;
 		halfWidth = halfHeight * Camera.main.aspect;
@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
 		if (map)
 		{
 			bottomLeftLimit = map.localBounds.min + new Vector3(halfWidth, halfHeight, 0f);
-			topRightLimit = map.localBounds.max + new Vector3(-halfWidth, -halfHeight, 0f); ;
+			topRightLimit = map.localBounds.max + new Vector3(-halfWidth, -halfHeight, 0f);
 		}
 	}
 
@@ -54,6 +54,9 @@ public class CameraController : MonoBehaviour
 	public void SetPlayer(PlayerController player)
 	{
 		this.player = player;
+		// prevents that the camera will jump to the player
+		isFollowing = true;
+
 		//set the boundaries of the map to the player
 		this.player.SetBoundaries(map.localBounds.min, map.localBounds.max);
 	}

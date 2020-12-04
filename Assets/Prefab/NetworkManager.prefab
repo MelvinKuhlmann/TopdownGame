@@ -254,7 +254,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4513457071988867465}
-  - component: {fileID: 4513457071988867466}
   - component: {fileID: 4513457071988867467}
   - component: {fileID: 3201838379636663650}
   m_Layer: 0
@@ -280,36 +279,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4513457071988867466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4513457071988867469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
-  runInBackground: 1
-  autoStartServerBuild: 1
-  showDebugMessages: 0
-  serverTickRate: 30
-  offlineScene: Assets/Scenes/MenuScene.unity
-  onlineScene: Assets/Scenes/GameScene.unity
-  transport: {fileID: 4513457071988867467}
-  networkAddress: localhost
-  maxConnections: 4
-  disconnectInactiveConnections: 0
-  disconnectInactiveTimeout: 60
-  authenticator: {fileID: 0}
-  playerPrefab: {fileID: 8184963067274257597, guid: 17657b52d30feff43a1b6065e3f8f9ed, type: 3}
-  autoCreatePlayer: 1
-  playerSpawnMethod: 1
-  spawnPrefabs:
-  - {fileID: 2981181458997759302, guid: 547f55c54f139544aae54513b40f92db, type: 3}
 --- !u!114 &4513457071988867467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +335,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16567249025a5448a5c2aff70604a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 4513457071988867466}
+  dontDestroyOnLoad: 1
+  runInBackground: 1
+  autoStartServerBuild: 1
+  showDebugMessages: 0
+  serverTickRate: 30
+  offlineScene: Assets/Scenes/MenuScene.unity
+  onlineScene: Assets/Scenes/GameScene.unity
+  transport: {fileID: 4513457071988867467}
+  networkAddress: localhost
+  maxConnections: 4
+  disconnectInactiveConnections: 0
+  disconnectInactiveTimeout: 60
+  authenticator: {fileID: 0}
+  playerPrefab: {fileID: 8184963067274257597, guid: 17657b52d30feff43a1b6065e3f8f9ed, type: 3}
+  autoCreatePlayer: 1
+  playerSpawnMethod: 1
+  spawnPrefabs: []
   menuPanel: {fileID: 5767073545076003014}
   gamePanel: {fileID: 5767073543297733507}
 --- !u!1 &5388966026558481755

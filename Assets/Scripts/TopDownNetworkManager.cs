@@ -1,54 +1,54 @@
 ﻿using Mirror;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+public class TopDownNetworkManager : NetworkManager
 {
-    public NetworkManager networkManager;
+    [Header("UI")]
     public GameObject menuPanel;
     public GameObject gamePanel;
 
     public void Host()
     {
-        networkManager.StartHost();
+        StartHost();
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
     }
 
     public void SetIpAddress(string value)
     {
-        networkManager.networkAddress = value;
+        networkAddress = value;
     }
 
     public void Join()
     {
-        networkManager.StartClient();
+        StartClient();
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
     }
 
     public void Stop()
     {
-        if (networkManager.mode == NetworkManagerMode.Host)
+        if (mode == NetworkManagerMode.Host)
         {
-            networkManager.StopHost();
+            StopHost();
         }
-        if (networkManager.mode == NetworkManagerMode.ClientOnly)
+        if (mode == NetworkManagerMode.ClientOnly)
         {
-            networkManager.StopClient();
+            StopClient();
         }
         menuPanel.SetActive(true);
         gamePanel.SetActive(false);
     }
 
-    private void Start()
+    public override void Start()
     {
         menuPanel.SetActive(true);
         gamePanel.SetActive(false);
+        base.Start();
     }
 
-    public void ServerChangeScene(string newSceneName)
+    public override void ServerChangeScene(string newSceneName)
     {
-        networkManager.ServerChangeScene(newSceneName);
+        base.ServerChangeScene(newSceneName);
     }
 }

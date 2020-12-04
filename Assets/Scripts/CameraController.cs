@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CameraController : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class CameraController : MonoBehaviour
 	private float cameraSpeed;
 	private PlayerController player;
 	private Vector3 targetPosition;
+
+	public Tilemap map;
+	private Vector3 bottomLeftLimit;
+	private Vector3 topRightLimit;
 
 	public bool isFollowing { get; set; }
 

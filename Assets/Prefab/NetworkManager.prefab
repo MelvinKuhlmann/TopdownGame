@@ -350,7 +350,7 @@ MonoBehaviour:
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 8184963067274257597, guid: 17657b52d30feff43a1b6065e3f8f9ed, type: 3}
   autoCreatePlayer: 1
-  playerSpawnMethod: 1
+  playerSpawnMethod: 0
   spawnPrefabs: []
   menuPanel: {fileID: 5767073545076003014}
   gamePanel: {fileID: 5767073543297733507}

@@ -1,5 +1,4 @@
 ﻿using Mirror;
-using Mirror.SimpleWeb;
 using UnityEngine;
 
 public class TopDownNetworkManager : NetworkManager

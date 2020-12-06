@@ -37,8 +37,6 @@ public class AreaExit : MonoBehaviour
     {
         if (other.tag == Tag.Player.ToString())
         {
-            // FindObjectOfType<TopDownNetworkManager>().ServerChangeScene(sceneToLoad);
-
             shouldLoadAfterFade = true;
             UIFade.instance.FadeToBlack();
         }

@@ -18,6 +18,7 @@ public class PlayerController : NetworkBehaviour
     {
     }
 
+
     public override void OnStartLocalPlayer()
     {
         Camera.main.GetComponent<CameraController>().SetPlayer(this);
@@ -60,47 +61,59 @@ public class PlayerController : NetworkBehaviour
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
         }
+
+        HandleMovementAnimations();
+
+        GetRigidbody().velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
+    }
+
+    //TODO: Clean code up, it's too messy.
+    private void HandleMovementAnimations()
+    {
         if (horizontal == 0 && vertical == 0)
         {
-            animator.SetBool("isMovingLeft", false);
-            animator.SetBool("isMovingRight", false);
-            animator.SetBool("isMovingDown", false);
-            animator.SetBool("isMovingUp", false);
-        } else
-        {
+            ActivateAnimation("isIdle");
+        } else {
             if (horizontal != 0)
             {
-                animator.SetBool("isMovingDown", false);
-                animator.SetBool("isMovingUp", false);
                 if (horizontal < 0)
                 {
-                    animator.SetBool("isMovingLeft", true);
-                    animator.SetBool("isMovingRight", false);
+                    ActivateAnimation("isMovingLeft");
                 }
                 else
                 {
-                    animator.SetBool("isMovingRight", true);
-                    animator.SetBool("isMovingLeft", false);
+                    ActivateAnimation("isMovingRight");
                 }
             }
             if (vertical != 0)
             {
-                animator.SetBool("isMovingLeft", false);
-                animator.SetBool("isMovingRight", false);
                 if (vertical < 0)
                 {
-                    animator.SetBool("isMovingDown", true);
-                    animator.SetBool("isMovingUp", false);
+                    ActivateAnimation("isMovingDown");
                 }
                 else
                 {
-                    animator.SetBool("isMovingDown", false);
-                    animator.SetBool("isMovingUp", true);
+                    ActivateAnimation("isMovingUp");
                 }
             }
         }
+    }
 
-        GetRigidbody().velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
+    private void ActivateAnimation(string animationFlag, bool resetAll = true) 
+    {
+        if (resetAll)
+        {
+            ResetAnimationParameters();
+        }
+        animator.SetBool(animationFlag, true);
+    }
+
+    private void ResetAnimationParameters()
+    {
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
+        {
+            animator.SetBool(parameter.name, false);
+        }
     }
 
     private Rigidbody2D GetRigidbody()

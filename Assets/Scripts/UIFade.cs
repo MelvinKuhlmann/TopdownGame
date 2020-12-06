@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class UIFade : MonoBehaviour
 {
 
-    public static UIFade instance;
+  //  public static UIFade instance;
 
     public Image fadeScreen;
     public float fadeSpeed;
@@ -14,8 +14,8 @@ public class UIFade : MonoBehaviour
 
     private void Start()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+       /* instance = this;
+        DontDestroyOnLoad(gameObject);*/
     }
 
     void Update()

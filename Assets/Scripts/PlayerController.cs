@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PlayerController : NetworkBehaviour
 {
-    [SerializeField]
-    private SpriteRenderer spriteRenderer;
-
     private float horizontal;
     private float vertical;
     private float moveLimiter = 0.7f;
@@ -19,7 +16,6 @@ public class PlayerController : NetworkBehaviour
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public override void OnStartLocalPlayer()
@@ -112,41 +108,4 @@ public class PlayerController : NetworkBehaviour
         NetworkIdentity netId = NetworkClient.connection.identity;
         return netId.GetComponent<Rigidbody2D>();
     }
-
-    // Client makes sure this function is only executed on clients
-    // If called on the server it will throw an warning
-//    [Client]
-//    private void FlipSpriteX(bool flip)
-//    {
-//        // Only go on for the LocalPlayer
-//        if (!isLocalPlayer) return;
-//
-//        // Make the change local on this client
-//        spriteRenderer.flipX = flip;
-//
-//        // Invoke the change on the Server as you already named the function
-//        CmdProvideFlipStateToServer(spriteRenderer.flipX);
-//    }
-//
-//    [Command]
-//    void CmdProvideFlipStateToServer(bool state)
-//    {
-//        // Make the change local on the server
-//        spriteRenderer.flipX = state;
-//
-//        // Forward the change also to all clients
-//        RpcSendFlipState(state);
-//    }
-//
-//    // Invoked by the server only but executed on ALL clients
-//    [ClientRpc]
-//    void RpcSendFlipState(bool state)
-//    {
-//        // Skip this function on the LocalPlayer
-//        // because he is the one who originally invoked this
-//        if (isLocalPlayer) return;
-//
-//        // Make the change local on all clients
-//        spriteRenderer.flipX = state;
-//    }
 }

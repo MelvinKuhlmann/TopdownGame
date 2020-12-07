@@ -349,7 +349,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 3070445642257487311, guid: 0372a72379402284880c69214020c65a, type: 3}
+  playerPrefab: {fileID: 6563811054290566087, guid: 0372a72379402284880c69214020c65a, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
@@ -357,6 +357,7 @@ MonoBehaviour:
   gamePanel: {fileID: 5767073543297733507}
   fadeScreen: {fileID: 472448369739879062}
   fadeSpeed: 1
+  initialWaitToLoad: 1
 --- !u!1 &5388966026558481755
 GameObject:
   m_ObjectHideFlags: 0

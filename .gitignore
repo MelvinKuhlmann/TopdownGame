@@ -106,6 +106,8 @@ cmake-build-*/
 # File-based project format
 *.iws
 
+.idea
+
 # IntelliJ
 out/
 

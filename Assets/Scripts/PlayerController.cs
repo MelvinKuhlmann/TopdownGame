@@ -35,6 +35,11 @@ public class PlayerController : NetworkBehaviour
         horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
         vertical = Input.GetAxisRaw("Vertical"); // -1 is down
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ChangeAnimation("isSlashing");
+        }
+
         //Keep player inside the bounds
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
     }
@@ -67,39 +72,45 @@ public class PlayerController : NetworkBehaviour
         GetRigidbody().velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
     }
 
+    public void SlashEnd()
+    {
+        Debug.Log(" Comes here");
+        ChangeAnimation("isIdle");
+    }
+
     //TODO: Clean code up, it's too messy.
     private void HandleMovementAnimations()
     {
-        if (horizontal == 0 && vertical == 0)
+        if (horizontal == 0 && vertical == 0 && animator.GetBool("isSlashing") == false)
         {
-            ActivateAnimation("isIdle");
+            ChangeAnimation("isIdle");
         } else {
-            if (horizontal != 0)
+            if (horizontal != 0 && animator.GetBool("isSlashing") == false)
             {
                 if (horizontal < 0)
                 {
-                    ActivateAnimation("isMovingLeft");
+                    ChangeAnimation("isMovingLeft");
                 }
                 else
                 {
-                    ActivateAnimation("isMovingRight");
+                    ChangeAnimation("isMovingRight");
                 }
             }
-            if (vertical != 0)
+            if (vertical != 0 && animator.GetBool("isSlashing") == false)
             {
                 if (vertical < 0)
                 {
-                    ActivateAnimation("isMovingDown");
+                    ChangeAnimation("isMovingDown");
                 }
                 else
                 {
-                    ActivateAnimation("isMovingUp");
+                    ChangeAnimation("isMovingUp");
                 }
             }
         }
     }
 
-    private void ActivateAnimation(string animationFlag, bool resetAll = true) 
+    private void ChangeAnimation(string animationFlag, bool resetAll = true) 
     {
         if (resetAll)
         {

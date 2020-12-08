@@ -23,4 +23,19 @@ public class InventoryItem : ScriptableObject
     {
         
     }
+
+    public GameObject GetPrefab()
+    {
+        return prefab;
+    }
+
+    public Sprite GetSprite()
+    {
+        return sprite;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
 }

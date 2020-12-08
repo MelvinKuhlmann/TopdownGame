@@ -9,7 +9,7 @@ public class InventoryItemWrapper : MonoBehaviour
     private InventoryItem item;
 
     [SerializeField]
-    private int count;
+    private int itemCount;
 
     // Start is called before the first frame update
     void Start()
@@ -21,5 +21,15 @@ public class InventoryItemWrapper : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public InventoryItem GetItem()
+    {
+        return item;
+    }
+
+    public int GetItemCount()
+    {
+        return itemCount;
     }
 }

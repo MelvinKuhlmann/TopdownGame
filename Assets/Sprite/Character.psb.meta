@@ -3837,7 +3837,7 @@ ScriptedImporter:
     - {x: 0, y: 25}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 29, y: -33}
+    uvTransform: {x: 28, y: -34}
   - name: Head copy
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -3859,7 +3859,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -31, y: 91}
+    uvTransform: {x: -34, y: 91}
   platformSettings:
   - name: Default
     overridden: 1

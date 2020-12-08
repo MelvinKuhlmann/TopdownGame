@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryItem : ScriptableObject
+[System.Serializable]
+public class InventoryItemWrapper : MonoBehaviour
 {
     [SerializeField]
-    private GameObject prefab { get; }
+    private InventoryItem item;
 
     [SerializeField]
-    private Sprite sprite { get; }
-
-    [SerializeField]
-    private string name { get; }
+    private int count;
 
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame

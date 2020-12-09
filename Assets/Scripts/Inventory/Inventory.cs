@@ -2,81 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable Objects/Inventory System/Inventory")]
-public class Inventory : ScriptableObject
+public class Inventory : MonoBehaviour
 {
-    [SerializeField]
-    private List<InventoryItemWrapper> items = new List<InventoryItemWrapper>();
+    public static Inventory instance;
 
-    [SerializeField]
-    private InventoryUI inventoryUI;
+    public int space = 20;
 
-    private Dictionary<InventoryItem, int> itemToCountMap = new Dictionary<InventoryItem, int>();
+    public List<Object> items = new List<Object>();
 
-    public void Init()
+    private void Awake()
     {
-        for (int i = 0; i < items.Count; i++)
+        // Maybe refactor this once the inventory works and we want to network it.
+        if (instance != null)
         {
-            itemToCountMap.Add(items[i].GetItem(), items[i].GetItemCount());
-        }
-    }
-
-    public void AssignItemToPlayer(InventoryItem item)
-    {
-        Debug.Log(string.Format("Player assigned {0}", item.GetName()));
-    }
-
-    public Dictionary<InventoryItem, int> getAllItems()
-    {
-        return itemToCountMap;
-    }
-
-    public void AddItem(InventoryItem item, int count)
-    {
-        int currentItemCount;
-        if (itemToCountMap.TryGetValue(item, out currentItemCount))
-        {
-            itemToCountMap[item] = currentItemCount + count;
-        } else
-        {
-            itemToCountMap.Add(item, count);
+            Debug.LogWarning("More than one instance of Inventory found");
+            return;
         }
 
-        // Update the UI
-        inventoryUI.CreateOrUpdateSlot(this, item, count);
+        instance = this;
     }
 
-    public void RemoveItem(InventoryItem item, int count)
+    // This method returns true if the item is succesfully added, false otherwise.
+    public bool Add(Object item)
     {
-        int currentItemCount;
-        if (itemToCountMap.TryGetValue(item, out currentItemCount))
+        if (items.Count >= space)
         {
-            itemToCountMap[item] = currentItemCount - count;
-
-            // Update the UI
-            if (currentItemCount - count <= 0)
-            {
-                inventoryUI.DestroySlot(item);
-            } else
-            {
-                inventoryUI.UpdateSlot(item, currentItemCount - count);
-            }
+            Debug.Log("No room in inventory!");
+            return false;
         }
-        else
-        {
-            Debug.Log(string.Format("Can't remove item {0} from Inventory because it does not exist.", item.GetName()));
-        }
-    }
+        items.Add(item);
+        return true;
+    } 
 
-    // Start is called before the first frame update
-    void Start()
+    public void Remove(Object item)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        items.Remove(item);
     }
 }

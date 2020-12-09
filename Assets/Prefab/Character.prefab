@@ -100,7 +100,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 3533776795583556402}
   m_Bounds:
-    m_Center: {x: 0, y: 0.0021499172, z: 0}
+    m_Center: {x: 0, y: 0.0021499917, z: 0}
     m_Extent: {x: 0.04000001, y: 0.087850004, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -218,8 +218,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 3948683712716141089}
   m_Bounds:
-    m_Center: {x: -0.000000014901161, y: -0.000000029802322, z: 0}
-    m_Extent: {x: 0.06999999, y: 0.07000001, z: 0}
+    m_Center: {x: 0.00000009685755, y: -0.00000055134296, z: 0}
+    m_Extent: {x: 0.07000001, y: 0.06999999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &8622324112530884614
@@ -336,8 +336,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 430952197906346622}
   m_Bounds:
-    m_Center: {x: -0.000000007450581, y: -0.000000014901161, z: 0}
-    m_Extent: {x: 0.070000015, y: 0.07000002, z: 0}
+    m_Center: {x: 0.0000010803342, y: 0.00000037252903, z: 0}
+    m_Extent: {x: 0.07000003, y: 0.07000001, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &1997672705218928803
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2400067057388675504}
   m_Bounds:
-    m_Center: {x: -0.0000009536743, y: -0.0031851307, z: 0}
+    m_Center: {x: -0.0000009536743, y: -0.0031850561, z: 0}
     m_Extent: {x: 0.040000014, y: 0.08681499, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -607,8 +607,8 @@ MonoBehaviour:
   - {fileID: 1536702785618105104}
   - {fileID: 6186394632063981840}
   m_Bounds:
-    m_Center: {x: 0.000000007450581, y: 0.00048006326, z: 0}
-    m_Extent: {x: 0.11500004, y: 0.103900015, z: 0}
+    m_Center: {x: -0.045000553, y: 0.000000007450581, z: 0}
+    m_Extent: {x: 0.069999546, y: 0.104999974, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &5866214727032032982
@@ -760,8 +760,8 @@ MonoBehaviour:
   - {fileID: 1536702785618105104}
   - {fileID: 407207876153439053}
   m_Bounds:
-    m_Center: {x: 0, y: 0.000000052154064, z: 0}
-    m_Extent: {x: 0.12500003, y: 0.10500004, z: 0}
+    m_Center: {x: 0.0499997, y: -0.00000008195639, z: 0}
+    m_Extent: {x: 0.065000474, y: 0.105000034, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &1338651253441161453
@@ -1001,8 +1001,8 @@ MonoBehaviour:
   - {fileID: 8180689885308305275}
   - {fileID: 7844607022800929160}
   m_Bounds:
-    m_Center: {x: 0, y: 0.00015506148, z: 0}
-    m_Extent: {x: 0.27500004, y: 0.26928502, z: 0}
+    m_Center: {x: 0, y: 0.00015503168, z: 0}
+    m_Extent: {x: 0.275, y: 0.26928502, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &7290581186935792814
@@ -1123,8 +1123,8 @@ MonoBehaviour:
   - {fileID: 8180689885308305275}
   - {fileID: 407207876153439053}
   m_Bounds:
-    m_Center: {x: 0.00017568469, y: 0.000000014901161, z: 0}
-    m_Extent: {x: 0.12982525, y: 0.15500002, z: 0}
+    m_Center: {x: 0.0001758337, y: 0.00000011920929, z: 0}
+    m_Extent: {x: 0.12982537, y: 0.15500012, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &6456301779669867200
@@ -1303,8 +1303,8 @@ MonoBehaviour:
   - {fileID: 1145762791911744539}
   - {fileID: 430952197906346622}
   m_Bounds:
-    m_Center: {x: -0.000024989247, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.064965025, y: 0.28500003, z: 0}
+    m_Center: {x: -0.000023804605, y: 0.0000004172325, z: 0}
+    m_Extent: {x: 0.06496504, y: 0.28499997, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &8057006542059949831
@@ -1338,6 +1338,7 @@ GameObject:
   - component: {fileID: 2649663713500214134}
   - component: {fileID: 2649663713500214135}
   - component: {fileID: 2649663713500214125}
+  - component: {fileID: 8721107671225263526}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -1505,6 +1506,34 @@ MonoBehaviour:
   syncInterval: 0.1
   movementSpeed: 5
   animator: {fileID: 2649663713500214122}
+  playerName: 
+  playerLevel: 1
+  currentExp: 0
+  expToNextLevel: 
+  baseExp: 1000
+  maxLevel: 100
+  currentHp: 0
+  maxHp: 100
+  currentMp: 0
+  maxMp: 50
+  strength: 0
+  defense: 0
+  weaponPower: 0
+  armorPower: 0
+  equippedWeapon: 
+  equippedArmor: 
+--- !u!114 &8721107671225263526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563811054290566087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791c7bc60baa99649ada7718b8150dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6907077484944980060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,8 +1635,8 @@ MonoBehaviour:
   - {fileID: 5407560510957568484}
   - {fileID: 3948683712716141089}
   m_Bounds:
-    m_Center: {x: -0.00000045448542, y: -0.0003800243, z: 0}
-    m_Extent: {x: 0.10500048, y: 0.109620005, z: 0}
+    m_Center: {x: 0.000000022351742, y: -0.00038062036, z: 0}
+    m_Extent: {x: 0.10500016, y: 0.109620035, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &8461697308524170909

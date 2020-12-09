@@ -47,7 +47,7 @@ public class InventoryUI : MonoBehaviour
         return newInventorySlot;
     }
 
-    private void DestroySlot(InventoryItem inventoryItem)
+    public void DestroySlot(InventoryItem inventoryItem)
     {
         Destroy(currentItemsInInventory[inventoryItem].gameObject);
         currentItemsInInventory.Remove(inventoryItem);

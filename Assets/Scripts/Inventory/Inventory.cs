@@ -43,7 +43,7 @@ public class Inventory : ScriptableObject
         }
 
         // Update the UI
-        inventoryUI.CreateOrUpdateSlot(item, count);
+        inventoryUI.CreateOrUpdateSlot(this, item, count);
     }
 
     public void RemoveItem(InventoryItem item, int count)

@@ -3,9 +3,15 @@
 public class DialogActivator : MonoBehaviour
 {
 
+    [Header("Dialog")]
     public string[] lines;
     public bool isPerson = true;
     private bool canActivate;
+
+    [Header("Quest")]
+    public bool shouldActivateQuest;
+    public string questToMark;
+    public bool markComplete;
 
 
     void Update()
@@ -13,6 +19,7 @@ public class DialogActivator : MonoBehaviour
         if (canActivate && Input.GetKeyDown(KeyCode.Return) && !DialogManager.instance.dialogBox.activeInHierarchy)
         {
             DialogManager.instance.ShowDialog(lines, isPerson);
+            DialogManager.instance.ShouldActivateQuestAtEnd(questToMark, markComplete);
         }
     }
 

@@ -1,21 +1,15 @@
 ﻿using UnityEngine;
+using UnityEditor;
 
-public class Item : MonoBehaviour
+public class PickupableObject : MonoBehaviour
 {
     private BoxCollider2D boxCollider2D;
-    private InventoryItem inventoryItem;
     private Sprite sprite;
-
-    public bool isQuestItem;
+    public Item item;
 
     private void Start()
     {
         sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
-
-        // Using the new keyword is appearantly not a good practice; so we use the CreateInstance method with Setters instead.
-        inventoryItem = ScriptableObject.CreateInstance<InventoryItem>();
-        inventoryItem.SetItemIcon(sprite);
-        inventoryItem.SetItemName(gameObject.name);
 
         InitCollider2D();
     }
@@ -35,7 +29,7 @@ public class Item : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log(string.Format("Player picked up {0}", gameObject.name));
-            InventoryController.instance.Add(inventoryItem);
+            InventoryController.instance.Add(item);
         }
     }
 }

@@ -27,7 +27,7 @@ public class InventoryController : MonoBehaviour
     public OnItemChanged onItemChangedCallback;
 
     public int maxSpace = 20;
-    public List<InventoryItem> items = new List<InventoryItem>();
+    public List<Item> items = new List<Item>();
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class InventoryController : MonoBehaviour
     }
 
     // This method returns true if the item is succesfully added, false otherwise.
-    public bool Add(InventoryItem inventoryItem)
+    public bool Add(Item item)
     {
         if (items.Count >= maxSpace)
         {
@@ -54,16 +54,16 @@ public class InventoryController : MonoBehaviour
             return false;
         }
 
-        items.Add(inventoryItem);
+        items.Add(item);
 
         onItemChangedCallback.Invoke();
 
         return true;
     } 
 
-    public void Remove(InventoryItem inventoryItem)
+    public void Remove(Item item)
     {
-        items.Remove(inventoryItem);
+        items.Remove(item);
         onItemChangedCallback.Invoke();
     }
 }

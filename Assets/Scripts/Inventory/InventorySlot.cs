@@ -3,17 +3,17 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    private InventoryItem inventoryItem;
+    private Item item;
 
     public Image icon;
 
     public Button inventorySlotButton;
 
-    public void AddItem(InventoryItem item)
+    public void AddItem(Item item)
     {
-        inventoryItem = item;
+        this.item = item;
 
-        icon.sprite = item.GetItemIcon();
+        icon.sprite = item.itemIcon;
         icon.enabled = true;
 
         inventorySlotButton.interactable = true;
@@ -21,7 +21,7 @@ public class InventorySlot : MonoBehaviour
 
     public void ClearSlot()
     {
-        inventoryItem = null;
+        item = null;
 
         icon.sprite = null;
         icon.enabled = false;
@@ -31,6 +31,6 @@ public class InventorySlot : MonoBehaviour
 
     public void UseItem()
     {
-        Debug.Log(string.Format("Using item {0}", inventoryItem.GetItemName()));
+        item.Use();
     }
 }

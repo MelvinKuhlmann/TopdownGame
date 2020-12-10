@@ -1689,6 +1689,7 @@ GameObject:
   - component: {fileID: 819634631}
   - component: {fileID: 819634630}
   - component: {fileID: 819634629}
+  - component: {fileID: 819634632}
   m_Layer: 0
   m_Name: Spiked_Club
   m_TagString: Untagged
@@ -1774,6 +1775,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &819634632
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819634628}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce0eb6576f9b9cf44819701f31b6c8a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &823807566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,6 +2347,7 @@ GameObject:
   - component: {fileID: 1351790456}
   - component: {fileID: 1351790457}
   - component: {fileID: 1351790458}
+  - component: {fileID: 1351790459}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -2412,6 +2433,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1351790459
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351790455}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce0eb6576f9b9cf44819701f31b6c8a4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &1358424945 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7677391483210632229, guid: b20cbf4799c5cc54dace8f9c9c012ef8, type: 3}

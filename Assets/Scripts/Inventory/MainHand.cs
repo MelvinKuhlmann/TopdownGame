@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName ="Inventory/Equipment/Main Hand Weapon")]
+[CreateAssetMenu(fileName = "New Item", menuName ="Inventory/Equipment/Main Hand")]
 public class MainHand : Item
 {
     [Header("Requirements")]
@@ -11,7 +11,7 @@ public class MainHand : Item
 
     public override void Use()
     {
-        Debug.Log(string.Format("Equipping weapon: {0}", itemName));
+        Debug.Log(string.Format("Equipping main hand: {0}", itemName));
         GetEquipmentController().ChangeMainHand(this);
     }
 }

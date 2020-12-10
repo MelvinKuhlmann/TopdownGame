@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -20,9 +19,31 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    public int maxSpace = 20;
+    private GameObject inventory;
 
+    // Callback which is triggered when
+    // an item gets added/removed.
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+
+    public int maxSpace = 20;
     public List<InventoryItem> items = new List<InventoryItem>();
+
+    private void Start()
+    {
+        // Initialize the inventory
+        inventory = GameObject.FindGameObjectWithTag("Inventory");
+        InventoryUI inventoryUI = inventory.GetComponent<InventoryUI>();
+        inventoryUI.Initialize();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventory.SetActive(!inventory.activeInHierarchy);
+        }
+    }
 
     // This method returns true if the item is succesfully added, false otherwise.
     public bool Add(InventoryItem inventoryItem)
@@ -32,12 +53,17 @@ public class Inventory : MonoBehaviour
             Debug.Log("No room in inventory!");
             return false;
         }
+
         items.Add(inventoryItem);
+
+        onItemChangedCallback.Invoke();
+
         return true;
     } 
 
     public void Remove(InventoryItem inventoryItem)
     {
         items.Remove(inventoryItem);
+        onItemChangedCallback.Invoke();
     }
 }

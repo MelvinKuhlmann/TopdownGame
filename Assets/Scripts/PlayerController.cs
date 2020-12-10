@@ -8,12 +8,13 @@ public class PlayerController : NetworkBehaviour
     private float vertical;
     private float moveLimiter = 0.7f;
 
-    public float movementSpeed = 5.0f;
-    public Animator animator;
-
     private readonly float mapBoundaryOffset = 0.5f;
     private Vector3 bottomLeftLimit;
     private Vector3 topRightLimit;
+
+    public EquipmentController equipmentController;
+
+    public Animator animator;
 
     [Header("Player Stats")]
     public string playerName;
@@ -30,8 +31,7 @@ public class PlayerController : NetworkBehaviour
     public int defense;
     public int weaponPower;
     public int armorPower;
-    public string equippedWeapon;
-    public string equippedArmor;
+    public float movementSpeed = 5.0f;
 
     public override void OnStartLocalPlayer()
     {
@@ -97,6 +97,9 @@ public class PlayerController : NetworkBehaviour
             return;
         }
 
+        // Continuously update player stats based on current equipment.
+        UpdateStats();
+
         HackExp();
 
         // Gives a value between -1 and 1
@@ -110,6 +113,11 @@ public class PlayerController : NetworkBehaviour
 
         //Keep player inside the bounds
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
+    }
+
+    private void UpdateStats()
+    {
+        weaponPower = equipmentController.currentMainHand.weaponPower;
     }
 
     /**

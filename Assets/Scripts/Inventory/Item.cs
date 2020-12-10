@@ -14,4 +14,10 @@ public class Item : ScriptableObject
     {
         Debug.Log("Using" + itemName);
     }
+
+    public EquipmentController GetEquipmentController()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        return player.GetComponent<EquipmentController>();
+    }
 }

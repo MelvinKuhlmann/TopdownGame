@@ -1339,6 +1339,7 @@ GameObject:
   - component: {fileID: 2649663713500214135}
   - component: {fileID: 2649663713500214125}
   - component: {fileID: 8721107671225263526}
+  - component: {fileID: 7385299769255420017}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -1506,6 +1507,7 @@ MonoBehaviour:
   syncInterval: 0.1
   movementSpeed: 5
   animator: {fileID: 2649663713500214122}
+  equipmentController: {fileID: 7385299769255420017}
   playerName: 
   playerLevel: 1
   currentExp: 0
@@ -1520,8 +1522,6 @@ MonoBehaviour:
   defense: 0
   weaponPower: 0
   armorPower: 0
-  equippedWeapon: 
-  equippedArmor: 
 --- !u!114 &8721107671225263526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,6 +1534,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791c7bc60baa99649ada7718b8150dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpace: 20
+  items: []
+--- !u!114 &7385299769255420017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563811054290566087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b1601f6c79a0f42ab0521d0ac3a7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHelmet: {fileID: 0}
+  currentChestPiece: {fileID: 0}
+  currentMainHand: {fileID: 11400000, guid: 35121f0848fcbee4fb8fdb99d8da2939, type: 2}
+  currentOffHand: {fileID: 0}
+  helmet: {fileID: 3536854680688969890}
+  chestPiece: {fileID: 3603387152042478979}
+  mainHand: {fileID: 4814853027026658973}
+  offHand: {fileID: 6907077484944980060}
+  inventoryController: {fileID: 8721107671225263526}
 --- !u!1 &6907077484944980060
 GameObject:
   m_ObjectHideFlags: 0

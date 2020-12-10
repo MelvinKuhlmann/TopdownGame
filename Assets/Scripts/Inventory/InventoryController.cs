@@ -54,6 +54,7 @@ public class InventoryController : MonoBehaviour
             return false;
         }
 
+        Debug.Log(string.Format("Adding {0} to inventory", item.itemName));
         items.Add(item);
 
         onItemChangedCallback.Invoke();
@@ -63,6 +64,7 @@ public class InventoryController : MonoBehaviour
 
     public void Remove(Item item)
     {
+        Debug.Log(string.Format("Removing {0} from inventory", item.itemName));
         items.Remove(item);
         onItemChangedCallback.Invoke();
     }

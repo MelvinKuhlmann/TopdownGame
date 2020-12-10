@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267650938ef19154bbd5443dd71f35a6, type: 3}
-  m_Name: Spiked Club
+  m_Script: {fileID: 11500000, guid: dcdf8189102615f4fb619d1fa7384665, type: 3}
+  m_Name: Wooden Shield
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: -9094013401876549528, guid: 203d4f928dc5e964da09e719ad5b111c, type: 3}
-  itemName: Spiked Club
-  itemCategory: Main_Hand
-  itemTooltip: A spiked club
+  itemIcon: {fileID: 0}
+  itemName: 
+  itemCategory: 
+  itemTooltip: 
   isQuestItem: 0
-  playerLevel: 1
-  weaponPower: 3

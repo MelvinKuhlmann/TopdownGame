@@ -5,7 +5,7 @@ using UnityEngine;
 public class Armor : Item
 {
     [Header("Requirements")]
-    public int playerLevel;
+    public int playerLevel = 1;
 
     [Header("Stats")]
     public int armorPower;

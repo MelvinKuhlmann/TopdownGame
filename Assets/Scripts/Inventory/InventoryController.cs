@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class InventoryController : MonoBehaviour
 {
     #region Singleton
-    public static Inventory instance;
+    public static InventoryController instance;
 
     private void Awake()
     {
         // Maybe refactor this once the inventory works and we want to network it.
         if (instance != null)
         {
-            Debug.LogWarning("More than one instance of Inventory found");
+            Debug.LogWarning("More than one instance of InventoryController found");
             return;
         }
 

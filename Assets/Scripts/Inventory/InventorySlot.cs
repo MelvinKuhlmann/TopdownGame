@@ -7,12 +7,16 @@ public class InventorySlot : MonoBehaviour
 
     public Image icon;
 
+    public Button inventorySlotButton;
+
     public void AddItem(InventoryItem item)
     {
         inventoryItem = item;
 
         icon.sprite = item.GetItemIcon();
         icon.enabled = true;
+
+        inventorySlotButton.interactable = true;
     }
 
     public void ClearSlot()
@@ -21,6 +25,8 @@ public class InventorySlot : MonoBehaviour
 
         icon.sprite = null;
         icon.enabled = false;
+
+        inventorySlotButton.interactable = false;
     }
 
     public void UseItem()

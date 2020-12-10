@@ -35,7 +35,7 @@ public class Item : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log(string.Format("Player picked up {0}", gameObject.name));
-            Inventory.instance.Add(inventoryItem);
+            InventoryController.instance.Add(inventoryItem);
         }
     }
 }

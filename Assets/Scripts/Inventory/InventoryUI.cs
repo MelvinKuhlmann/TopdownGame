@@ -1,17 +1,15 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    private Inventory inventory;
+    private InventoryController inventory;
     private InventorySlot[] inventorySlots;
 
     public Transform itemsParent;
     
     public void Initialize()
     {
-        inventory = Inventory.instance;
-        Debug.Log("inventory = " + inventory);
+        inventory = InventoryController.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
         UpdateUI();

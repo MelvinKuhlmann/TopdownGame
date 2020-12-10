@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    #region Singleton
     public static Inventory instance;
-
-    public int space = 20;
-
-    public List<Object> items = new List<Object>();
 
     private void Awake()
     {
@@ -21,21 +18,26 @@ public class Inventory : MonoBehaviour
 
         instance = this;
     }
+    #endregion
+
+    public int maxSpace = 20;
+
+    public List<InventoryItem> items = new List<InventoryItem>();
 
     // This method returns true if the item is succesfully added, false otherwise.
-    public bool Add(Object item)
+    public bool Add(InventoryItem inventoryItem)
     {
-        if (items.Count >= space)
+        if (items.Count >= maxSpace)
         {
             Debug.Log("No room in inventory!");
             return false;
         }
-        items.Add(item);
+        items.Add(inventoryItem);
         return true;
     } 
 
-    public void Remove(Object item)
+    public void Remove(InventoryItem inventoryItem)
     {
-        items.Remove(item);
+        items.Remove(inventoryItem);
     }
 }

@@ -141,7 +141,6 @@ public class PlayerController : NetworkBehaviour
 
     public void SlashEnd()
     {
-        Debug.Log(" Comes here");
         ChangeAnimation("isIdle");
     }
 

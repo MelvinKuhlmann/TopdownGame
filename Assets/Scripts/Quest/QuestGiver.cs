@@ -6,14 +6,13 @@ public class QuestGiver : DialogActivator
     [Header("Quest")]
     public List<Quest> quests;
 
-    public QuestList questList;
-
     public bool assignedQuest { get; set; }
     
     public bool helped { get; set; }
 
     public override void Interact()
     {
+        QuestList.onQuestChangedCallback();
         AssignQuest(quests[0]);
 
         if (!assignedQuest && !helped)

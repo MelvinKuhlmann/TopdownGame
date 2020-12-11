@@ -21,5 +21,5 @@ public class QuestList : MonoBehaviour
     #endregion
 
     public delegate void OnQuestChanged();
-    public OnQuestChanged onQuestChangedCallback;
+    public static OnQuestChanged onQuestChangedCallback;
 }

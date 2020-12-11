@@ -1,31 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestGiver : MonoBehaviour
+public class QuestGiver : DialogActivator
 {
-   /* public Quest quest;
-
-    public PlayerController player;
-
-    // continue: https://www.youtube.com/watch?v=e7VEe_qW4oE 14:54*/
-
+    [Header("Quest")]
+    public List<Quest> quests;
 
     public bool assignedQuest { get; set; }
-    public bool helped { get; set; }
     
-    [SerializeField]
-    private GameObject quests;
+    public bool helped { get; set; }
 
-    [SerializeField]
-    private string questType;
-    private Quest quest { get; set; }
-
-    public void Interact()
+    public override void Interact()
     {
+        AssignQuest(quests[0]);
+
         if (!assignedQuest && !helped)
         {
-            AssignQuest();
+            // AssignQuest();
         }
         else if (assignedQuest && !helped)
         {
@@ -37,20 +28,20 @@ public class QuestGiver : MonoBehaviour
         }
     }
 
-    void AssignQuest()
+    void AssignQuest(Quest quest)
     {
-        assignedQuest = true;
-        quest = (Quest)quests.AddComponent(System.Type.GetType(questType));
-
+        quests.Add(quest);
+        Debug.Log("quest received: " + quest.questName);
     }
 
-    void CheckQuest()
+    void CheckQuest(Quest quest)
     {
         if (quest.completed)
         {
             quest.GiveReward();
             helped = true;
             assignedQuest = false;
+            DialogManager.instance.dialogLines = new string[]{ "thank you"};
         }
     }
 }

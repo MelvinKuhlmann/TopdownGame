@@ -1,31 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Goal
+[CreateAssetMenu(fileName = "New Goal", menuName = "Goals/Goal")]
+public class Goal : ScriptableObject
 {
-    public Quest quest { get; set; }
-    public string description { get; set; }
+    public string description;
     public bool completed { get; set; }
-    public int currentAmount { get; set; }
-    public int requiredAmount { get; set; }
 
     public virtual void Init()
     {
         // default init stuff
     }
 
-    public void Evaluate()
+    public virtual void Evaluate()
     {
-        if (currentAmount >= requiredAmount)
-        {
-            Complete();
-        }
+        // default evaluate stuff
     }
 
     public void Complete()
     {
-        quest.CheckGoals();
+        //quest.CheckGoals();
         completed = true;
         Debug.Log("Mark quest as completed");
     }

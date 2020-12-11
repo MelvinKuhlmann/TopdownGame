@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Quest : MonoBehaviour{
+[CreateAssetMenu(fileName = "New Quest", menuName = "Quest")]
+public class Quest : ScriptableObject {
 
-    public List<Goal> goals { get; set; } = new List<Goal>();
-    public string questName { get; set; }
-    public string description { get; set; }
-    public int experienceReward { get; set; }
-    public Item itemReward { get; set; }
     public bool completed { get; set; }
+
+    public List<Goal> goals = new List<Goal>();
+    public string questName;
+    public string description;
+    public int experienceReward;
+    public Item itemReward;
+    public int levelRequirement;
 
     public void CheckGoals()
     {

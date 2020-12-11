@@ -8,10 +8,10 @@ public class DialogActivator : MonoBehaviour
     public bool isPerson = true;
     private bool canActivate;
 
-    [Header("Quest")]
+/*    [Header("Quest")]
     public bool shouldActivateQuest;
     public string questToMark;
-    public bool markComplete;
+    public bool markComplete;*/
 
 
     void Update()
@@ -19,8 +19,14 @@ public class DialogActivator : MonoBehaviour
         if (canActivate && Input.GetKeyDown(KeyCode.Return) && !DialogManager.instance.dialogBox.activeInHierarchy)
         {
             DialogManager.instance.ShowDialog(lines, isPerson);
-            DialogManager.instance.ShouldActivateQuestAtEnd(questToMark, markComplete);
+            /*DialogManager.instance.ShouldActivateQuestAtEnd(questToMark, markComplete);*/
+            Interact();
         }
+    }
+
+    public virtual void Interact()
+    {
+        // just base method
     }
 
     private void OnTriggerEnter2D(Collider2D other)

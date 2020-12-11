@@ -1,8 +1,6 @@
-﻿using Mirror;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerController : MonoBehaviour
 {
     private float horizontal;
     private float vertical;
@@ -11,6 +9,7 @@ public class PlayerController : NetworkBehaviour
     private readonly float mapBoundaryOffset = 0.5f;
     private Vector3 bottomLeftLimit;
     private Vector3 topRightLimit;
+    private new Rigidbody2D rigidbody2D;
 
     public EquipmentController equipmentController;
 
@@ -33,13 +32,9 @@ public class PlayerController : NetworkBehaviour
     public int armorPower;
     public float movementSpeed = 5.0f;
 
-    public override void OnStartLocalPlayer()
-    {
-        Camera.main.GetComponent<CameraController>().SetPlayer(this);
-    }
-
     private void Start()
     {
+        rigidbody2D = GetComponent<Rigidbody2D>();
         expToNextLevel = new int[maxLevel];
         expToNextLevel[1] = baseExp;
         for (int i = 2; i < expToNextLevel.Length; i++)
@@ -92,11 +87,6 @@ public class PlayerController : NetworkBehaviour
 
     private void Update()
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-
         // Continuously update player stats based on current equipment.
         UpdateStats();
 
@@ -131,11 +121,6 @@ public class PlayerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-
         if (horizontal != 0 && vertical != 0) // Check for diagonal movement
         {
             // limit movement speed diagonally, so you move at 70% speed
@@ -145,7 +130,7 @@ public class PlayerController : NetworkBehaviour
 
         HandleMovementAnimations();
 
-        GetRigidbody().velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
+       rigidbody2D.velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
     }
 
     public void SlashEnd()
@@ -200,11 +185,5 @@ public class PlayerController : NetworkBehaviour
         {
             animator.SetBool(parameter.name, false);
         }
-    }
-
-    private Rigidbody2D GetRigidbody()
-    {
-        NetworkIdentity netId = NetworkClient.connection.identity;
-        return netId.GetComponent<Rigidbody2D>();
     }
 }

@@ -6,7 +6,6 @@ public class InventorySlot : MonoBehaviour
     private Item item;
 
     public Image icon;
-
     public Button inventorySlotButton;
 
     public void AddItem(Item item)

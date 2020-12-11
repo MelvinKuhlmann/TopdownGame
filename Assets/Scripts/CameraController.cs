@@ -5,7 +5,6 @@ public class CameraController : MonoBehaviour
 {
 	private float interpolateVelocity; // Possible elastic effect when camera moves with player
 	private float cameraSpeed;
-	private PlayerController player;
 	private Vector3 targetPosition;
 
 	public Tilemap map;
@@ -14,6 +13,8 @@ public class CameraController : MonoBehaviour
 
 	private float halfHeight;
 	private float halfWidth;
+
+	public PlayerController player;
 
 	public bool isFollowing { get; set; }
 
@@ -31,6 +32,8 @@ public class CameraController : MonoBehaviour
 			bottomLeftLimit = map.localBounds.min + new Vector3(halfWidth, halfHeight, 0f);
 			topRightLimit = map.localBounds.max + new Vector3(-halfWidth, -halfHeight, 0f);
 		}
+
+		SetPlayer();
 	}
 
 	private void FixedUpdate()
@@ -51,13 +54,13 @@ public class CameraController : MonoBehaviour
 		transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
 	}
 
-	public void SetPlayer(PlayerController player)
+	public void SetPlayer()
 	{
-		this.player = player;
 		// prevents that the camera will jump to the player
 		isFollowing = true;
 
+		Debug.Log(player);
 		//set the boundaries of the map to the player
-		this.player.SetBoundaries(map.localBounds.min, map.localBounds.max);
+		player.SetBoundaries(map.localBounds.min, map.localBounds.max);
 	}
 }

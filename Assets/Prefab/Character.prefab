@@ -1332,9 +1332,6 @@ GameObject:
   - component: {fileID: 502825496521399115}
   - component: {fileID: 3350263711982050551}
   - component: {fileID: 2649663713500214122}
-  - component: {fileID: 2649663713500214123}
-  - component: {fileID: 2649663713500214120}
-  - component: {fileID: 2649663713500214121}
   - component: {fileID: 2649663713500214134}
   - component: {fileID: 2649663713500214135}
   - component: {fileID: 2649663713500214125}
@@ -1404,56 +1401,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2649663713500214123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6563811054290566087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  m_AssetId: 
-  hasSpawned: 0
---- !u!114 &2649663713500214120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6563811054290566087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  animator: {fileID: 2649663713500214122}
---- !u!114 &2649663713500214121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6563811054290566087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  localPositionSensitivity: 0.01
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
 --- !u!58 &2649663713500214134
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1503,11 +1450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6686b07b1db768b4fb9a7554c1c0bb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  movementSpeed: 5
-  animator: {fileID: 2649663713500214122}
   equipmentController: {fileID: 7385299769255420017}
+  animator: {fileID: 2649663713500214122}
   playerName: 
   playerLevel: 1
   currentExp: 0
@@ -1522,6 +1466,7 @@ MonoBehaviour:
   defense: 0
   weaponPower: 0
   armorPower: 0
+  movementSpeed: 5
 --- !u!114 &8721107671225263526
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,10 +1,8 @@
-﻿using Mirror;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AreaExit : MonoBehaviour
 {
-    [Scene]
     public string sceneToLoad = string.Empty;
 
     public string areaTransitionName = string.Empty;
@@ -13,7 +11,7 @@ public class AreaExit : MonoBehaviour
     {
         if (other.tag == Tag.Player.ToString())
         {
-            FindObjectOfType<TopDownNetworkManager>().ChangeScene(sceneToLoad);
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 }

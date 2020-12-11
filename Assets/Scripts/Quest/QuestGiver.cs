@@ -6,6 +6,8 @@ public class QuestGiver : DialogActivator
     [Header("Quest")]
     public List<Quest> quests;
 
+    public QuestList questList;
+
     public bool assignedQuest { get; set; }
     
     public bool helped { get; set; }

@@ -8,7 +8,7 @@ public class Quest : ScriptableObject {
     public bool completed { get; set; }
 
     public List<Goal> goals = new List<Goal>();
-    public string questName;
+    public new string name;
     public string description;
     public int experienceReward;
     public Item itemReward;

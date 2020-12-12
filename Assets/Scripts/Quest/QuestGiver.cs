@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 public class QuestGiver : DialogActivator
 {
-    [Header("Quest")]
-    public List<Quest> quests;
+    public List<Quest> availableQuests;
 
     public bool assignedQuest { get; set; }
     
@@ -12,8 +10,7 @@ public class QuestGiver : DialogActivator
 
     public override void Interact()
     {
-        QuestList.onQuestChangedCallback();
-        AssignQuest(quests[0]);
+        AssignQuest(availableQuests[0]);
 
         if (!assignedQuest && !helped)
         {
@@ -31,8 +28,7 @@ public class QuestGiver : DialogActivator
 
     void AssignQuest(Quest quest)
     {
-        quests.Add(quest);
-        Debug.Log("quest received: " + quest.questName);
+        QuestLog.instance.Add(quest);
     }
 
     void CheckQuest(Quest quest)

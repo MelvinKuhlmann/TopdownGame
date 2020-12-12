@@ -1,19 +1,27 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    private float horizontal;
-    private float vertical;
-    private float moveLimiter = 0.7f;
+    #region Singleton
+    public static Player instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of Player found");
+            return;
+        }
+
+        instance = this;
+    }
+    #endregion
+
+    private EquipmentController equipmentController;
 
     private readonly float mapBoundaryOffset = 0.5f;
     private Vector3 bottomLeftLimit;
     private Vector3 topRightLimit;
-    private new Rigidbody2D rigidbody2D;
-
-    public EquipmentController equipmentController;
-
-    public Animator animator;
 
     [Header("Player Stats")]
     public string playerName;
@@ -34,7 +42,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        equipmentController = EquipmentController.instance;
+
         expToNextLevel = new int[maxLevel];
         expToNextLevel[1] = baseExp;
         for (int i = 2; i < expToNextLevel.Length; i++)
@@ -92,15 +101,6 @@ public class PlayerController : MonoBehaviour
 
         HackExp();
 
-        // Gives a value between -1 and 1
-        horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-        vertical = Input.GetAxisRaw("Vertical"); // -1 is down
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeAnimation("isSlashing");
-        }
-
         //Keep player inside the bounds
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
     }
@@ -117,73 +117,5 @@ public class PlayerController : MonoBehaviour
     {
         bottomLeftLimit = bottomLeft + new Vector3(mapBoundaryOffset, mapBoundaryOffset, 0f);
         topRightLimit = topRight + new Vector3(mapBoundaryOffset * -1, mapBoundaryOffset * -1, 0f);
-    }
-
-    private void FixedUpdate()
-    {
-        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
-        {
-            // limit movement speed diagonally, so you move at 70% speed
-            horizontal *= moveLimiter;
-            vertical *= moveLimiter;
-        }
-
-        HandleMovementAnimations();
-
-       rigidbody2D.velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
-    }
-
-    public void SlashEnd()
-    {
-        ChangeAnimation("isIdle");
-    }
-
-    //TODO: Clean code up, it's too messy.
-    private void HandleMovementAnimations()
-    {
-        if (horizontal == 0 && vertical == 0 && animator.GetBool("isSlashing") == false)
-        {
-            ChangeAnimation("isIdle");
-        } else {
-            if (horizontal != 0 && animator.GetBool("isSlashing") == false)
-            {
-                if (horizontal < 0)
-                {
-                    ChangeAnimation("isMovingLeft");
-                }
-                else
-                {
-                    ChangeAnimation("isMovingRight");
-                }
-            }
-            if (vertical != 0 && animator.GetBool("isSlashing") == false)
-            {
-                if (vertical < 0)
-                {
-                    ChangeAnimation("isMovingDown");
-                }
-                else
-                {
-                    ChangeAnimation("isMovingUp");
-                }
-            }
-        }
-    }
-
-    private void ChangeAnimation(string animationFlag, bool resetAll = true) 
-    {
-        if (resetAll)
-        {
-            ResetAnimationParameters();
-        }
-        animator.SetBool(animationFlag, true);
-    }
-
-    private void ResetAnimationParameters()
-    {
-        foreach (AnimatorControllerParameter parameter in animator.parameters)
-        {
-            animator.SetBool(parameter.name, false);
-        }
     }
 }

@@ -3,6 +3,20 @@ using UnityEngine.Experimental.U2D.Animation;
 
 public class EquipmentController : MonoBehaviour
 {
+    #region Singleton
+    public static EquipmentController instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            return;
+        }
+
+        instance = this;
+    }
+    #endregion
+
     public Item currentHelmet;
     public Item currentChestPiece;
     public MainHand currentMainHand;

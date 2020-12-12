@@ -1335,8 +1335,10 @@ GameObject:
   - component: {fileID: 2649663713500214134}
   - component: {fileID: 2649663713500214135}
   - component: {fileID: 2649663713500214125}
-  - component: {fileID: 8721107671225263526}
+  - component: {fileID: 8042391954771092529}
+  - component: {fileID: 2707338809811056567}
   - component: {fileID: 7385299769255420017}
+  - component: {fileID: 8721107671225263526}
   - component: {fileID: 8189876208212527346}
   m_Layer: 8
   m_Name: Character
@@ -1451,8 +1453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6686b07b1db768b4fb9a7554c1c0bb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentController: {fileID: 7385299769255420017}
-  animator: {fileID: 2649663713500214122}
   playerName: 
   playerLevel: 1
   currentExp: 0
@@ -1468,7 +1468,7 @@ MonoBehaviour:
   weaponPower: 0
   armorPower: 0
   movementSpeed: 5
---- !u!114 &8721107671225263526
+--- !u!114 &8042391954771092529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1477,11 +1477,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 6563811054290566087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 791c7bc60baa99649ada7718b8150dab, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dc7a1cb099daad41b919a7f5177525c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpace: 20
-  items: []
+--- !u!114 &2707338809811056567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563811054290566087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ece38afaec36f4da86510153cccdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2649663713500214122}
 --- !u!114 &7385299769255420017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,7 +1513,20 @@ MonoBehaviour:
   chestPiece: {fileID: 3603387152042478979}
   mainHand: {fileID: 4814853027026658973}
   offHand: {fileID: 6907077484944980060}
-  inventoryController: {fileID: 8721107671225263526}
+--- !u!114 &8721107671225263526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563811054290566087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791c7bc60baa99649ada7718b8150dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  maxSpace: 20
 --- !u!114 &8189876208212527346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1515,7 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc32e250c4cf7304c9668e389f13541e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quests: []
+  currentQuests: []
   maxAmountOfQuests: 30
 --- !u!1 &6907077484944980060
 GameObject:

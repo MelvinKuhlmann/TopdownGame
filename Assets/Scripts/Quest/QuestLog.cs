@@ -9,7 +9,6 @@ public class QuestLog : MonoBehaviour
 
     private void Awake()
     {
-        // Maybe refactor this once the inventory works and we want to network it.
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of QuestList found");

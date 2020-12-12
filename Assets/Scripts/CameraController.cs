@@ -14,12 +14,13 @@ public class CameraController : MonoBehaviour
 	private float halfHeight;
 	private float halfWidth;
 
-	public PlayerController player;
+	private Player player;
 
 	public bool isFollowing { get; set; }
 
 	private void Start()
 	{
+		player = Player.instance;
 		targetPosition = transform.position;
 		cameraSpeed = 1f;
 		isFollowing = false;

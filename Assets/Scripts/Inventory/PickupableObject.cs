@@ -28,7 +28,7 @@ public class PickupableObject : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log(string.Format("Player picked up {0}", gameObject.name));
-            InventoryController.instance.Add(item);
+            Inventory.instance.Add(item);
         }
     }
 }

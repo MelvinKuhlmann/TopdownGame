@@ -28,7 +28,7 @@ public class QuestLog : MonoBehaviour
     public delegate void OnQuestChanged();
     public OnQuestChanged onQuestChangedCallback;
 
-    // This method returns true if the item is succesfully added, false otherwise.
+    // This method returns true if a quest is succesfully added, false otherwise.
     public bool Add(Quest quest)
     {
         if (currentQuests.Count >= maxAmountOfQuests)

@@ -2,22 +2,28 @@
 
 public class InventoryUI : MonoBehaviour
 {
-    private InventoryController inventory;
+    private Inventory inventory;
     private InventorySlot[] inventorySlots;
 
-    public Transform itemsParent;
-    
-    public void Initialize()
+    public void Start()
     {
-        inventory = InventoryController.instance;
+        inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
         UpdateUI();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            gameObject.SetActive(!gameObject.activeInHierarchy);
+        }
+    }
+
     void UpdateUI()
     {
-        inventorySlots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        inventorySlots = transform.GetComponentsInChildren<InventorySlot>();
 
         for (int i = 0; i < inventory.items.Count; i++)
         {

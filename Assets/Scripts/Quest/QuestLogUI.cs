@@ -13,6 +13,14 @@ public class QuestLogUI : MonoBehaviour
         UpdateUI();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            gameObject.SetActive(!gameObject.activeInHierarchy);
+        }
+    }
+
     void UpdateUI()
     {
         questLogEntries = transform.GetComponentsInChildren<QuestLogEntry>();

@@ -50,6 +50,16 @@ public class QuestLog : MonoBehaviour
         return true;
     }
 
+    public bool QuestCompleted(Quest quest)
+    {
+        if (currentQuests.Find(q => q.name.Equals(quest.name)) != null)
+        {
+            return quest.completed;
+        }
+        Debug.Log("Quest is not in log");
+        return false;
+    }
+
     public void Remove(Quest quest)
     {
         Debug.Log(string.Format("Removing {0} from quest log", quest.name));

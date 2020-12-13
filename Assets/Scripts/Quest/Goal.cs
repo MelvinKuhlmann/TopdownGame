@@ -18,10 +18,8 @@ public class Goal : ScriptableObject
 
     public void Complete()
     {
-        //quest.CheckGoals();
         completed = true;
-        Debug.Log("Mark quest as completed");
+        Debug.Log("Mark goal as completed");
+        QuestEvents.GoalCompleted(this);
     }
-
-
 }

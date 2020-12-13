@@ -22,7 +22,6 @@ public class Slime : MonoBehaviour, IEnemy
 
     public void TakeDamage(int amount)
     {
-        Debug.Log("Damage taken: " + amount);
         currentHealth -= amount;
         if (currentHealth <= 0) { 
             Die();

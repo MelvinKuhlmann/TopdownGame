@@ -16,12 +16,19 @@ public class Quest : ScriptableObject {
 
     public void Init()
     {
+        completed = false;
         goals.ForEach(g => g.Init());
+        QuestEvents.OnGoalComplete += GoalCompleted;
     }
 
-    public void CheckGoals()
+    void GoalCompleted(Goal goal)
     {
         completed = goals.All(g => g.completed);
+
+        if (completed)
+        {
+            Debug.Log("Quest completed: " + name);
+        }
     }
 
     public void GiveReward()
@@ -32,12 +39,4 @@ public class Quest : ScriptableObject {
         }
         Debug.Log("Call playercontroller to give EXP");
     }
-
-
-   /* public bool isActive;
-
-    public string title;
-    public string description;
-    public int experienceReward;
-    public int goldReward;*/
 }

@@ -10,15 +10,27 @@ public class KillGoal : Goal
     public override void Init()
     {
         base.Init();
+        Debug.Log("Init");
         CombatEvents.OnEnemyDeath += EnemyDied;
     }
 
     void EnemyDied(IEnemy enemy)
     {
+        Debug.Log("Enemy died: " + enemy.ID);
         if (enemy.ID == this.enemyID)
         {
+            Debug.Log("Enemy died: " + enemy.ID + ", add 1 to currentKills");
             currentKills++;
             Evaluate();
+        }
+    }
+
+    public override void Evaluate()
+    {
+        if (currentKills >= requiredKills)
+        {
+            completed = true;
+            Debug.Log("Goal completed");
         }
     }
 }

@@ -14,6 +14,11 @@ public class Quest : ScriptableObject {
     public Item itemReward;
     public int levelRequirement;
 
+    public void Init()
+    {
+        goals.ForEach(g => g.Init());
+    }
+
     public void CheckGoals()
     {
         completed = goals.All(g => g.completed);

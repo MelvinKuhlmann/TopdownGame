@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Player player;
     private PlayerAnimationController playerAnimationController;
 
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
 
     private float horizontal;
     private float vertical;

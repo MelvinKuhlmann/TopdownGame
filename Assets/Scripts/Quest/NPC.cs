@@ -8,6 +8,8 @@ public class NPC : Interactable
     [Header("Quest")]
     public List<Quest> availableQuests;
     public string[] questLines;
+    public string[] questNotCompletedLines;
+    public string[] questRewardLines;
 
     public bool assignedQuest { get; set; }
     
@@ -15,12 +17,18 @@ public class NPC : Interactable
 
     public override void Interact()
     {
-        NPCEvents.OnNPCInteracted(this);
         if (!assignedQuest && !helped)
         {
-            if (availableQuests != null && availableQuests.Count >= 1) 
-            { 
+            if (availableQuests != null && availableQuests.Count >= 1)
+            {
+                if (!DialogManager.instance.dialogBox.activeInHierarchy)
+                {
+                    DialogManager.instance.ShowDialog(questLines, isPerson);
+                }
                 AssignQuest(availableQuests[0]);
+            } else
+            {
+                base.Interact();
             }
         }
         else if (assignedQuest && !helped)
@@ -28,10 +36,7 @@ public class NPC : Interactable
             // check
             CheckQuest(availableQuests[0]);
         }
-        else
-        {
-          
-        }
+        NPCEvents.OnNPCInteracted(this);
     }
 
     void AssignQuest(Quest quest)
@@ -44,15 +49,21 @@ public class NPC : Interactable
     {
         if (quest.completed)
         {
-            Debug.Log("quest reward");
+            if (!DialogManager.instance.dialogBox.activeInHierarchy)
+            {
+                DialogManager.instance.ShowDialog(questRewardLines, isPerson);
+            }
             quest.GiveReward();
             helped = true;
             assignedQuest = false;
-            DialogManager.instance.dialogLines = new string[]{ "thank you"};
             QuestLog.instance.Remove(quest);
         } else
         {
             Debug.Log("quest not completed yet: " + availableQuests[0].name);
+            if (!DialogManager.instance.dialogBox.activeInHierarchy)
+            {
+                DialogManager.instance.ShowDialog(questNotCompletedLines, isPerson);
+            }
         }
     }
 }

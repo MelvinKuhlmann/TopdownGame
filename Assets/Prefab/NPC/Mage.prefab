@@ -573,7 +573,21 @@ MonoBehaviour:
   availableQuests:
   - {fileID: 11400000, guid: 6d8dce4cf08441f48acda888a385f6e3, type: 2}
   - {fileID: 11400000, guid: e457595ffb15fe7408d7e50b1be02b62, type: 2}
-  questLines: []
+  questLines:
+  - n-Old Wizard
+  - Did  you knew...
+  - n-Player
+  - What?
+  - n-Old Wizard
+  - That Melvin can't beat a single goblin?
+  questNotCompletedLines:
+  - n-Old Wizard
+  - You fool
+  - Go beat Melvin and kill 5 goblins for me!
+  questRewardLines:
+  - n-Old Wizard
+  - You've proven your worth
+  - Please accept this as a gift
 --- !u!1 &3103478480827707442
 GameObject:
   m_ObjectHideFlags: 0

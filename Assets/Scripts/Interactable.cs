@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DialogActivator : MonoBehaviour
+public class Interactable : MonoBehaviour
 {
 
     [Header("Dialog")]
@@ -8,18 +8,14 @@ public class DialogActivator : MonoBehaviour
     public bool isPerson = true;
     private bool canActivate;
 
-/*    [Header("Quest")]
-    public bool shouldActivateQuest;
-    public string questToMark;
-    public bool markComplete;*/
-
-
     void Update()
     {
         if (canActivate && Input.GetKeyDown(KeyCode.Return) && !DialogManager.instance.dialogBox.activeInHierarchy)
         {
             DialogManager.instance.ShowDialog(lines, isPerson);
-            /*DialogManager.instance.ShouldActivateQuestAtEnd(questToMark, markComplete);*/
+        }
+        if (DialogManager.instance.ShownLastDialog())
+        {
             Interact();
         }
     }

@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestGiver : DialogActivator
+public class NPC : Interactable
 {
+    public int ID;
+
+    [Header("Quest")]
     public List<Quest> availableQuests;
+    public string[] questLines;
 
     public bool assignedQuest { get; set; }
     
@@ -11,9 +15,13 @@ public class QuestGiver : DialogActivator
 
     public override void Interact()
     {
+        NPCEvents.OnNPCInteracted(this);
         if (!assignedQuest && !helped)
         {
-            AssignQuest(availableQuests[0]);
+            if (availableQuests != null && availableQuests.Count >= 1) 
+            { 
+                AssignQuest(availableQuests[0]);
+            }
         }
         else if (assignedQuest && !helped)
         {

@@ -36,7 +36,9 @@ public class Quest : ScriptableObject {
         if (itemReward != null)
         {
             Debug.Log("Call inventory system to give reward");
+            Inventory.instance.Add(itemReward);
         }
         Debug.Log("Call playercontroller to give EXP");
+        Player.instance.AddExp(experienceReward);
     }
 }

@@ -9,6 +9,7 @@ public class Goal : ScriptableObject
     public virtual void Init()
     {
         // default init stuff
+        completed = false;
     }
 
     public virtual void Evaluate()

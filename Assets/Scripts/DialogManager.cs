@@ -44,6 +44,15 @@ public class DialogManager : MonoBehaviour
         }
     }
 
+    public bool ShownLastDialog()
+    {
+        if (!justStarted && currentLine == (dialogLines.Length -1))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void ShowDialog(string[] newLines, bool isPerson)
     {
         dialogLines = newLines;

@@ -5533,9 +5533,13 @@ PrefabInstance:
       value: Mage
       objectReference: {fileID: 0}
     - target: {fileID: 7269190648553973254, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
+      propertyPath: availableQuests.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269190648553973254, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
       propertyPath: availableQuests.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 6d8dce4cf08441f48acda888a385f6e3, type: 2}
+      objectReference: {fileID: 11400000, guid: e457595ffb15fe7408d7e50b1be02b62, type: 2}
     - target: {fileID: 7269190648553973254, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
       propertyPath: availableQuests.Array.data[1]
       value: 

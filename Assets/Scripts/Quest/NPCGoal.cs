@@ -17,8 +17,8 @@ public class NPCGoal : Goal
         Debug.Log("Npc interacted: " + npc.ID + " wanted: " + npcId);
         if (npc.ID == this.npcId)
         {
-            Debug.Log("requirements met");
-            base.Complete();
+            Debug.Log("Requirements met");
+            Complete();
         }
     }
 }

@@ -31,7 +31,7 @@ public class KillGoal : Goal
         if (currentKills >= requiredKills)
         {
             Debug.Log("requirements met");
-            base.Complete();
+            Complete();
         }
     }
 }

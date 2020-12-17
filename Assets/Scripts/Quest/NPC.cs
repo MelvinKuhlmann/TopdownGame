@@ -15,6 +15,19 @@ public class NPC : Interactable
     
     public bool helped { get; set; }
 
+    private void Start()
+    {
+        DialogEvents.OnDialogClose += DialogClosed;
+    }
+
+    void DialogClosed()
+    {
+        if (availableQuests.Count >= 1)
+        {
+            AssignQuest(availableQuests[0]);
+        }
+    }
+
     public override void Interact()
     {
         if (!assignedQuest && !helped)
@@ -25,7 +38,6 @@ public class NPC : Interactable
                 {
                     DialogManager.instance.ShowDialog(questLines, isPerson);
                 }
-                AssignQuest(availableQuests[0]);
             } else
             {
                 base.Interact();

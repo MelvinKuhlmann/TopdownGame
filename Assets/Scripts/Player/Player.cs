@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -36,8 +37,9 @@ public class Player : MonoBehaviour
     public int maxMp = 50;
     public int strength;
     public int defense;
-    public int weaponPower;
-    public int armorPower;
+    public int baseWeaponPower;
+    public int totalWeaponPower;
+    public int armorPower = 1;
     public float movementSpeed = 5.0f;
 
     private void Start()
@@ -50,6 +52,15 @@ public class Player : MonoBehaviour
         {
             expToNextLevel[i] = Mathf.FloorToInt(expToNextLevel[i - 1] * 1.05f);
         }
+
+        SetBaseStats();
+
+        UpdateStats();
+    }
+
+    private void SetBaseStats()
+    {
+        baseWeaponPower = 1;
     }
 
     public void AddExp(int expToAdd)
@@ -96,18 +107,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        // Continuously update player stats based on current equipment.
-        UpdateStats();
-
         HackExp();
 
         //Keep player inside the bounds
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, bottomLeftLimit.x, topRightLimit.x), Mathf.Clamp(transform.position.y, bottomLeftLimit.y, topRightLimit.y), transform.position.z);
     }
 
-    private void UpdateStats()
+    // TODO: Fix this, because its a bit weird the equipment controller first goes to the player, then back.
+    public void UpdateStats()
     {
-        weaponPower = equipmentController.currentMainHand.weaponPower;
+        totalWeaponPower = baseWeaponPower + equipmentController.currentMainHand.weaponPower;
     }
 
     /**

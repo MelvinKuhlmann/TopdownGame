@@ -55,6 +55,7 @@ public class EquipmentController : MonoBehaviour
         inventory.Remove(newMainHand);
         inventory.Add(currentMainHand);
         currentMainHand = (MainHand) newMainHand;
+        Player.instance.UpdateStats();
     }
 
     public void ChangeOffHand(Item newOffHand)

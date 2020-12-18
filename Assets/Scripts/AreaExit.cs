@@ -37,6 +37,7 @@ public class AreaExit : MonoBehaviour
         {
             shouldLoadAfterFade = true;
             SceneTransition.instance.FadeToBlack();
+            PlayerController.instance.areaTransitionName = areaTransitionName;
         }
     }
 }

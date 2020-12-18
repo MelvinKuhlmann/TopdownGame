@@ -7,13 +7,14 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
-            Debug.LogWarning("More than one instance of PlayerController found");
-            return;
+            instance = this;
+        } else
+        {
+            Destroy(gameObject);
         }
-
-        instance = this;
+        DontDestroyOnLoad(this);
     }
     #endregion
 
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
     private float moveLimiter = 0.7f;
+
+    public string areaTransitionName;
 
     private void Start()
     {

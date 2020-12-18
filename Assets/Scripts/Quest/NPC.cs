@@ -22,6 +22,7 @@ public class NPC : Interactable
 
     void DialogClosed()
     {
+        Debug.Log(ID);
         if (availableQuests.Count >= 1)
         {
             AssignQuest(availableQuests[0]);

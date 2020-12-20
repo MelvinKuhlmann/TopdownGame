@@ -32,7 +32,6 @@ public class DialogManager : MonoBehaviour
                     if (currentLine >= dialogLines.Length)
                     {
                         dialogBox.SetActive(false);
-                        DialogEvents.OnDialogClosed();
                     } else {
                         CheckIfName();
                         dialogText.text = dialogLines[currentLine];

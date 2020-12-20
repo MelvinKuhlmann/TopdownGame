@@ -15,46 +15,44 @@ public class NPC : Interactable
     
     public bool helped { get; set; }
 
-    private void Start()
-    {
-        DialogEvents.OnDialogClose += DialogClosed;
-    }
-
-    void DialogClosed()
-    {
-        Debug.Log(ID);
-        if (availableQuests.Count >= 1)
-        {
-            AssignQuest(availableQuests[0]);
-        }
-    }
-
     public override void Interact()
     {
-        if (!assignedQuest && !helped)
-        {
+       // if (!assignedQuest && !helped)
+      //  {
             if (availableQuests != null && availableQuests.Count >= 1)
             {
                 if (!DialogManager.instance.dialogBox.activeInHierarchy)
                 {
                     DialogManager.instance.ShowDialog(questLines, isPerson);
                 }
+                if (availableQuests.Count >= 1)
+                {
+                    AssignQuest(availableQuests[0]);
+                }
             } else
             {
                 base.Interact();
             }
-        }
-        else if (assignedQuest && !helped)
-        {
+       // }
+      //  else if (assignedQuest && !helped)
+      //  {
             // check
-            CheckQuest(availableQuests[0]);
-        }
+       //     CheckQuest(availableQuests[0]);
+      //  }
         NPCEvents.OnNPCInteracted(this);
     }
 
     void AssignQuest(Quest quest)
     {
-        QuestLog.instance.Add(quest);
+        List<Quest> questsToAccept = new List<Quest>();
+
+        availableQuests.ForEach(currentQuest => {
+            if (!QuestLog.instance.AlreadyAccepted(currentQuest)) {
+                questsToAccept.Add(currentQuest);
+            }
+        });
+
+        AcceptQuestManager.instance.SetQuests(questsToAccept);
         assignedQuest = true;
     }
 

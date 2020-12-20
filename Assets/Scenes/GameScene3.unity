@@ -780,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6156707502723224199, guid: f0c241ab8d6d2114eab140ca859f7981, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6156707502723224199, guid: f0c241ab8d6d2114eab140ca859f7981, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5549,7 +5549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7269190648553973254, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
       propertyPath: availableQuests.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7269190648553973254, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
       propertyPath: availableQuests.Array.data[0]
@@ -5558,7 +5558,7 @@ PrefabInstance:
     - target: {fileID: 7269190648553973254, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
       propertyPath: availableQuests.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: e457595ffb15fe7408d7e50b1be02b62, type: 2}
+      objectReference: {fileID: 11400000, guid: 6d8dce4cf08441f48acda888a385f6e3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
 --- !u!1001 &6619830651438189504
@@ -5627,7 +5627,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7595141184870269319, guid: f09d8f83afc623c4caca738a8bd59a0d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7595141184870269319, guid: f09d8f83afc623c4caca738a8bd59a0d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -36,9 +36,8 @@ public class QuestLog : MonoBehaviour
             return false;
         }
 
-        if (currentQuests.Find(currentQuest => currentQuest.name.Equals(quest.name)) != null)
+        if (AlreadyAccepted(quest))
         {
-            Debug.Log("Quest already exists in quest log!");
             return false;
         }
 
@@ -48,6 +47,16 @@ public class QuestLog : MonoBehaviour
         onQuestChangedCallback.Invoke();
 
         return true;
+    }
+
+    public bool AlreadyAccepted(Quest quest)
+    {
+        if (currentQuests.Find(currentQuest => currentQuest.name.Equals(quest.name)) != null)
+        {
+            Debug.Log("Quest already exists in quest log!");
+            return true;
+        }
+        return false;
     }
 
     public bool QuestCompleted(Quest quest)

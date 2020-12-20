@@ -39,12 +39,12 @@ public class AcceptQuestManager : MonoBehaviour
         questDescription.text = quest.description;
         levelRequirement.text = quest.levelRequirement.ToString();
         expReward.text = quest.experienceReward.ToString();
-        shardsReward.text = "13";
+        shardsReward.text = quest.shardsReward.ToString();
+        //TODO add items to the Canvas
     }
 
     void Accept()
     {
-        Debug.Log("quest accepted");
         QuestLog.instance.Add(quests[currentQuestItem]);
         if (currentQuestItem < (quests.Count - 1))
         {
@@ -59,7 +59,6 @@ public class AcceptQuestManager : MonoBehaviour
 
     void Decline()
     {
-        Debug.Log("quest rejected");
         if (currentQuestItem < (quests.Count - 1))
         {
             currentQuestItem++;

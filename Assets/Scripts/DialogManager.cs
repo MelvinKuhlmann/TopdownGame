@@ -13,34 +13,28 @@ public class DialogManager : MonoBehaviour
     public int currentLine = 0;
 
     public static DialogManager instance;
-    private bool justStarted;
 
     void Start()
     {
         instance = this;
     }
 
-    void Update()
+    public bool IsActive()
     {
-        if (dialogBox.activeInHierarchy)
+        return dialogBox.activeInHierarchy;
+    }
+
+    public void Nextline()
+    {
+        currentLine++;
+        if (currentLine >= dialogLines.Length)
         {
-            if (Input.GetKeyUp(KeyCode.Return))
-            {
-                if (!justStarted)
-                {
-                    currentLine++;
-                    if (currentLine >= dialogLines.Length)
-                    {
-                        dialogBox.SetActive(false);
-                    } else {
-                        CheckIfName();
-                        dialogText.text = dialogLines[currentLine];
-                    }
-                } else
-                {
-                    justStarted = false;
-                }
-            }
+            dialogBox.SetActive(false);
+        }
+        else
+        {
+            CheckIfName();
+            dialogText.text = dialogLines[currentLine];
         }
     }
 
@@ -51,7 +45,6 @@ public class DialogManager : MonoBehaviour
         CheckIfName();
         dialogText.text = dialogLines[currentLine];
         dialogBox.SetActive(true);
-        justStarted = true;
         nameBox.SetActive(isPerson);
     }
 

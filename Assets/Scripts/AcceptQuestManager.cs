@@ -18,7 +18,10 @@ public class AcceptQuestManager : MonoBehaviour
 
     void Start()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     public void SetQuests(List<Quest> questList)

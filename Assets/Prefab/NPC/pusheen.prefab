@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.028631747, y: -0.50821555}
+  m_Offset: {x: -0.025657356, y: -0.6271882}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8035821, y: 1.8114045}
+  m_Size: {x: 2.1902428, y: 2.0493498}
   m_EdgeRadius: 0
 --- !u!61 &6619830651549656712
 BoxCollider2D:
@@ -156,4 +156,3 @@ MonoBehaviour:
   isPerson: 1
   ID: 0
   availableQuests: []
-  questLines: []

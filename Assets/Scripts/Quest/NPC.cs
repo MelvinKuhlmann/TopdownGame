@@ -14,6 +14,8 @@ public class NPC : Interactable
 
     private void Update()
     {
+        Debug.Log("canactive: " + canActivate + " isalreadyactive: " + NpcInteractionController.instance.IsActive());
+
         if (canActivate && !NpcInteractionController.instance.IsActive())
         {
             NpcInteractionController.instance.SetNPC(this);

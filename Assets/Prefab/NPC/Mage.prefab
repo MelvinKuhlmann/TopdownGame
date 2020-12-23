@@ -131,8 +131,8 @@ MonoBehaviour:
   - {fileID: 3768898352991923699}
   - {fileID: 4678819185786206669}
   m_Bounds:
-    m_Center: {x: 0, y: -0.0010101199, z: 0}
-    m_Extent: {x: 0.275, y: 0.42899013, z: 0}
+    m_Center: {x: -0.000000059604645, y: -0.0010100603, z: 0}
+    m_Extent: {x: 0.275, y: 0.42899, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &1249469913837612275
@@ -250,8 +250,8 @@ MonoBehaviour:
   - {fileID: 6970453311216797186}
   - {fileID: 3822457330318166526}
   m_Bounds:
-    m_Center: {x: -0.00069500506, y: 0.00023977458, z: 0}
-    m_Extent: {x: 0.06930501, y: 0.22832006, z: 0}
+    m_Center: {x: -0.00069506466, y: 0.00023986399, z: 0}
+    m_Extent: {x: 0.06930501, y: 0.22832003, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &1845901617211389449
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 7450682418809137298}
   m_Bounds:
-    m_Center: {x: 0, y: -0.0031849667, z: 0}
+    m_Center: {x: -0.000000014901161, y: -0.0031852052, z: 0}
     m_Extent: {x: 0.040000007, y: 0.08681503, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -448,7 +448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3011404005400268712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.449415, y: -0.23319568, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5261770844260750203}
@@ -510,7 +510,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030000001, y: 0.34233654}
+  m_Offset: {x: 0.000000014901161, y: 0.5506792}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -521,7 +521,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.64, y: 1.525327}
+  m_Size: {x: 0.6308296, y: 1.0676813}
   m_EdgeRadius: 0
 --- !u!61 &3789202544375581453
 BoxCollider2D:
@@ -573,21 +573,6 @@ MonoBehaviour:
   availableQuests:
   - {fileID: 11400000, guid: 6d8dce4cf08441f48acda888a385f6e3, type: 2}
   - {fileID: 11400000, guid: e457595ffb15fe7408d7e50b1be02b62, type: 2}
-  questLines:
-  - n-Old Wizard
-  - Did  you knew...
-  - n-Player
-  - What?
-  - n-Old Wizard
-  - That Melvin can't beat a single goblin?
-  questNotCompletedLines:
-  - n-Old Wizard
-  - You fool
-  - Go beat Melvin and kill 5 goblins for me!
-  questRewardLines:
-  - n-Old Wizard
-  - You've proven your worth
-  - Please accept this as a gift
 --- !u!1 &3103478480827707442
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,8 +676,8 @@ MonoBehaviour:
   - {fileID: 3768898352991923699}
   - {fileID: 4003974698792590045}
   m_Bounds:
-    m_Center: {x: 0.0021000057, y: -0.00000008940697, z: 0}
-    m_Extent: {x: 0.24290004, y: 0.19500007, z: 0}
+    m_Center: {x: 0.0020999312, y: -0.00000017881393, z: 0}
+    m_Extent: {x: 0.24290007, y: 0.19500007, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &5627291493617180699
@@ -874,7 +859,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 8221800004165270452}
   m_Bounds:
-    m_Center: {x: 0, y: 0.0021502078, z: 0}
+    m_Center: {x: -0.000000026077032, y: 0.0021498501, z: 0}
     m_Extent: {x: 0.04, y: 0.087850034, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -992,7 +977,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6970453311216797186}
   m_Bounds:
-    m_Center: {x: -0.00000024586916, y: -0.00000023841858, z: 0}
+    m_Center: {x: -0.000000067055225, y: -0.00000014901161, z: 0}
     m_Extent: {x: 0.070000015, y: 0.07000002, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1299,8 +1284,8 @@ MonoBehaviour:
   - {fileID: 2876816002857496793}
   - {fileID: 7799996179731103954}
   m_Bounds:
-    m_Center: {x: 0.000000007450581, y: 0.0009401068, z: 0}
-    m_Extent: {x: 0.07000002, y: 0.10405997, z: 0}
+    m_Center: {x: -0.000000014901161, y: 0.00094011426, z: 0}
+    m_Extent: {x: 0.07000001, y: 0.10405998, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &922094096125545709
@@ -1417,7 +1402,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4003974698792590045}
   m_Bounds:
-    m_Center: {x: -0.000000022351742, y: -0.00000023841858, z: 0}
+    m_Center: {x: -0.000000029802322, y: -0.000000022351742, z: 0}
     m_Extent: {x: 0.070000015, y: 0.105000034, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1656,7 +1641,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1347534504665501354}
   m_Bounds:
-    m_Center: {x: 0, y: 0, z: 0}
+    m_Center: {x: -0.00000008940697, y: -0.000000059604645, z: 0}
     m_Extent: {x: 0.06999999, y: 0.06999999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

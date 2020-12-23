@@ -24,6 +24,7 @@ public class NpcInteractionController : MonoBehaviour
 
     public void SetNPC(NPC npc)
     {
+        Debug.Log("Added: " + npc.ID);
         this.npc = npc;
         if (npc.availableQuests != null && npc.availableQuests.Count > 0)
         {
@@ -37,13 +38,14 @@ public class NpcInteractionController : MonoBehaviour
 
     public void RemoveNPC()
     {
+        Debug.Log("Removed: " + npc.ID);
         npc = null;
         npcInteractionPanel.SetActive(false);
     }
 
     public void Talk()
     {
-        if(!DialogManager.instance.IsActive())
+        if (!DialogManager.instance.IsActive())
         {
             npc.Talk();
         } else

@@ -12,16 +12,18 @@ public class NPC : Interactable
     
     public bool helped { get; set; }
 
+    private bool uiActivated = false;
+
     private void Update()
     {
-        Debug.Log("canactive: " + canActivate + " isalreadyactive: " + NpcInteractionController.instance.IsActive());
-
-        if (canActivate && !NpcInteractionController.instance.IsActive())
+        if (canActivate && !NpcInteractionController.instance.IsActive() && !uiActivated)
         {
             NpcInteractionController.instance.SetNPC(this);
-        } else if (!canActivate && NpcInteractionController.instance.IsActive())
+            uiActivated = true;
+        } else if (!canActivate && NpcInteractionController.instance.IsActive() && uiActivated)
         {
             NpcInteractionController.instance.RemoveNPC();
+            uiActivated = false;
         }
     }
 

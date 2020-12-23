@@ -824,7 +824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7269190648553973254, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
       propertyPath: availableQuests.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7269190648553973254, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
       propertyPath: availableQuests.Array.data[0]

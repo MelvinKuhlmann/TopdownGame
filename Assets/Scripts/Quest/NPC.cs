@@ -4,32 +4,14 @@ using UnityEngine;
 public class NPC : Interactable
 {
     public int ID;
-
     [Header("Quest")]
     public List<Quest> availableQuests;
-
     public bool assignedQuest { get; set; }
-    
     public bool helped { get; set; }
 
-    private bool uiActivated = false;
-
-    private void Update()
+    public override void Talk()
     {
-        if (canActivate && !NpcInteractionController.instance.IsActive() && !uiActivated)
-        {
-            NpcInteractionController.instance.SetNPC(this);
-            uiActivated = true;
-        } else if (!canActivate && NpcInteractionController.instance.IsActive() && uiActivated)
-        {
-            NpcInteractionController.instance.RemoveNPC();
-            uiActivated = false;
-        }
-    }
-
-    public void Talk()
-    {
-        base.Interact();
+        base.Talk();
         NPCEvents.OnNPCInteracted(this);
     }
 

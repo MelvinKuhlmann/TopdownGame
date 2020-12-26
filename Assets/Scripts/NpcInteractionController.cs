@@ -7,7 +7,7 @@ public class NpcInteractionController : MonoBehaviour
     public GameObject talkButton;
     public GameObject questButton;
 
-    private NPC npc;
+    private Interactable interactable;
 
     void Start()
     {
@@ -22,11 +22,10 @@ public class NpcInteractionController : MonoBehaviour
         return npcInteractionPanel.activeInHierarchy;
     }
 
-    public void SetNPC(NPC npc)
+    public void SetInteractable(Interactable interactable)
     {
-        Debug.Log("Added: " + npc.ID);
-        this.npc = npc;
-        if (npc.availableQuests != null && npc.availableQuests.Count > 0)
+        this.interactable = interactable;
+        if (interactable is NPC && ((NPC)interactable).availableQuests != null && ((NPC)interactable).availableQuests.Count > 0)
         {
             questButton.SetActive(true);
         } else
@@ -36,10 +35,9 @@ public class NpcInteractionController : MonoBehaviour
         npcInteractionPanel.SetActive(true);
     }
 
-    public void RemoveNPC()
+    public void RemoveInteractable()
     {
-        Debug.Log("Removed: " + npc.ID);
-        npc = null;
+        interactable = null;
         npcInteractionPanel.SetActive(false);
     }
 
@@ -47,7 +45,7 @@ public class NpcInteractionController : MonoBehaviour
     {
         if (!DialogManager.instance.IsActive())
         {
-            npc.Talk();
+            interactable.Talk();
         } else
         {
             DialogManager.instance.Nextline();
@@ -56,6 +54,6 @@ public class NpcInteractionController : MonoBehaviour
 
     public void Quest()
     {
-        npc.Quests();
+        ((NPC)interactable).Quests();
     }
 }

@@ -7,15 +7,23 @@ public class Interactable : MonoBehaviour
     public bool isPerson = true;
     protected bool canActivate;
 
-    void Update()
+    private bool uiActivated = false;
+
+    private void Update()
     {
-        if (canActivate && Input.GetKeyDown(KeyCode.Return) && !DialogManager.instance.dialogBox.activeInHierarchy)
+        if (canActivate && !NpcInteractionController.instance.IsActive() && !uiActivated)
         {
-            Interact();
+            NpcInteractionController.instance.SetInteractable(this);
+            uiActivated = true;
+        }
+        else if (!canActivate && NpcInteractionController.instance.IsActive() && uiActivated)
+        {
+            NpcInteractionController.instance.RemoveInteractable();
+            uiActivated = false;
         }
     }
 
-    public virtual void Interact()
+    public virtual void Talk()
     {
         DialogManager.instance.ShowDialog(lines, isPerson);
     }

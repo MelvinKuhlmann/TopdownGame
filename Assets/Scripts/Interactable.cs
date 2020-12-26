@@ -21,6 +21,11 @@ public class Interactable : MonoBehaviour
             NpcInteractionController.instance.RemoveInteractable();
             uiActivated = false;
         }
+        UpdateHook();
+    }
+    public virtual void UpdateHook()
+    {
+
     }
 
     public virtual void Talk()

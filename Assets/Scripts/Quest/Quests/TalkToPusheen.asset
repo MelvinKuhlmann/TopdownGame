@@ -16,6 +16,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af3916e1880fb484d93506b97f105cc7, type: 2}
   name: Learn cat language
   description: Learn how to communicate with cats
+  completedDescription: It worked! You can now talk to cats. Accept my gift and 
+    use it well.
   experienceReward: 100
   shardsReward: 10
   itemReward: {fileID: 0}

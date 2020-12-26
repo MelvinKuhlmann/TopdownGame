@@ -10,6 +10,7 @@ public class Quest : ScriptableObject {
     public List<Goal> goals = new List<Goal>();
     public new string name;
     public string description;
+    public string completedDescription;
     public int experienceReward;
     public int shardsReward;
     public Item itemReward;

@@ -17,29 +17,39 @@ public class NPC : Interactable
 
     public void Quests()
     {
-        List<Quest> questsToAccept = new List<Quest>();
+        if (assignedQuest)
+        {
+            QuestRewards();
+        }
+        if (!AcceptRewardManager.instance.IsActive())
+        {
+
+            List<Quest> questsToAccept = new List<Quest>();
+
+            availableQuests.ForEach(currentQuest =>
+            {
+                if (!QuestLog.instance.AlreadyAccepted(currentQuest))
+                {
+                    questsToAccept.Add(currentQuest);
+                }
+            });
+
+            AcceptQuestManager.instance.SetQuests(questsToAccept);
+            assignedQuest = true;
+        }
+    }
+
+    public void QuestRewards()
+    {
+        List<Quest> completedQuests = new List<Quest>();
 
         availableQuests.ForEach(currentQuest => {
-            if (!QuestLog.instance.AlreadyAccepted(currentQuest)) {
-                questsToAccept.Add(currentQuest);
-            } else
+            if (QuestLog.instance.QuestCompleted(currentQuest))
             {
-                CheckQuest(currentQuest);
+                completedQuests.Add(currentQuest);
             }
         });
 
-        AcceptQuestManager.instance.SetQuests(questsToAccept);
-        assignedQuest = true;
-    }
-
-    void CheckQuest(Quest quest)
-    {
-        if (quest.completed)
-        {
-            quest.GiveReward();
-            helped = true;
-            assignedQuest = false;
-            QuestLog.instance.Remove(quest);
-        }
+        AcceptRewardManager.instance.SetQuests(completedQuests);
     }
 }

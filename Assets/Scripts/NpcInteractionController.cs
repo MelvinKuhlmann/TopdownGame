@@ -3,7 +3,7 @@
 public class NpcInteractionController : MonoBehaviour
 {
     public static NpcInteractionController instance;
-    public GameObject npcInteractionPanel;
+    public GameObject panel;
     public GameObject talkButton;
     public GameObject questButton;
 
@@ -19,7 +19,7 @@ public class NpcInteractionController : MonoBehaviour
 
     public bool IsActive()
     {
-        return npcInteractionPanel.activeInHierarchy;
+        return panel.activeInHierarchy;
     }
 
     public void SetInteractable(Interactable interactable)
@@ -32,13 +32,13 @@ public class NpcInteractionController : MonoBehaviour
         {
             questButton.SetActive(false);
         }
-        npcInteractionPanel.SetActive(true);
+        panel.SetActive(true);
     }
 
     public void RemoveInteractable()
     {
         interactable = null;
-        npcInteractionPanel.SetActive(false);
+        panel.SetActive(false);
     }
 
     public void Talk()

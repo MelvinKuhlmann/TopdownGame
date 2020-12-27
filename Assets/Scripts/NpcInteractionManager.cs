@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class NpcInteractionController : MonoBehaviour
+public class NpcInteractionManager : MonoBehaviour
 {
-    public static NpcInteractionController instance;
+    public static NpcInteractionManager instance;
     public GameObject panel;
     public GameObject talkButton;
     public GameObject questButton;

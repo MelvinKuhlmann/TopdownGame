@@ -11,14 +11,14 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        if (canActivate && !NpcInteractionController.instance.IsActive() && !uiActivated)
+        if (canActivate && !NpcInteractionManager.instance.IsActive() && !uiActivated)
         {
-            NpcInteractionController.instance.SetInteractable(this);
+            NpcInteractionManager.instance.SetInteractable(this);
             uiActivated = true;
         }
-        else if (!canActivate && NpcInteractionController.instance.IsActive() && uiActivated)
+        else if (!canActivate && NpcInteractionManager.instance.IsActive() && uiActivated)
         {
-            NpcInteractionController.instance.RemoveInteractable();
+            NpcInteractionManager.instance.RemoveInteractable();
             uiActivated = false;
         }
         UpdateHook();

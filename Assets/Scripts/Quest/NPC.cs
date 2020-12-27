@@ -60,7 +60,7 @@ public class NPC : Interactable
         {
             QuestRewards();
         }
-        if (!AcceptRewardManager.instance.IsActive())
+        if (!AcceptRewardUI.instance.IsActive())
         {
 
             List<Quest> questsToAccept = new List<Quest>();
@@ -73,7 +73,7 @@ public class NPC : Interactable
                 }
             });
 
-            AcceptQuestManager.instance.SetQuests(questsToAccept);
+            AcceptQuestUI.instance.SetQuests(questsToAccept);
             assignedQuest = true;
         }
     }
@@ -89,6 +89,6 @@ public class NPC : Interactable
             }
         });
 
-        AcceptRewardManager.instance.SetQuests(completedQuests);
+        AcceptRewardUI.instance.SetQuests(completedQuests);
     }
 }

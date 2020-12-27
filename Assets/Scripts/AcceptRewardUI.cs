@@ -2,16 +2,14 @@
 using TMPro;
 using UnityEngine;
 
-public class AcceptQuestManager : MonoBehaviour
+public class AcceptRewardUI : MonoBehaviour
 {
-    public static AcceptQuestManager instance;
+    public static AcceptRewardUI instance;
     public GameObject panel;
     public TMP_Text questName;
-    public TMP_Text questDescription;
-    public TMP_Text levelRequirement;
+    public TMP_Text questCompletionDescription;
     public TMP_Text expReward;
     public TMP_Text shardsReward;
-    public TMP_Text noOfQuests;
     public List<Quest> quests;
 
     private int currentQuestItem = 0;
@@ -22,6 +20,11 @@ public class AcceptQuestManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    public bool IsActive()
+    {
+        return panel.activeInHierarchy;
     }
 
     public void SetQuests(List<Quest> questList)
@@ -37,31 +40,20 @@ public class AcceptQuestManager : MonoBehaviour
 
     private void SetValues(Quest quest)
     {
-        noOfQuests.text = (currentQuestItem + 1) + "/" + quests.Count;
         questName.text = quest.name;
-        questDescription.text = quest.description;
-        levelRequirement.text = quest.levelRequirement.ToString();
+        questCompletionDescription.text = quest.completedDescription;
         expReward.text = quest.experienceReward.ToString();
         shardsReward.text = quest.shardsReward.ToString();
         //TODO add items to the Canvas
     }
 
-    void Accept()
+    void AcceptReward()
     {
-        QuestLog.instance.Add(quests[currentQuestItem]);
-        if (currentQuestItem < (quests.Count - 1))
+        if (quests[currentQuestItem].completed)
         {
-            currentQuestItem++;
-            SetValues(quests[currentQuestItem]);
+            quests[currentQuestItem].GiveReward();
+            QuestLog.instance.Remove(quests[currentQuestItem]);
         }
-        else
-        {
-            panel.SetActive(false);
-        }
-    }
-
-    void Decline()
-    {
         if (currentQuestItem < (quests.Count - 1))
         {
             currentQuestItem++;

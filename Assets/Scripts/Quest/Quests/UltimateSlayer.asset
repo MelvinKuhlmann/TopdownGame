@@ -16,6 +16,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 688b496548452924d888b9750e28a964, type: 2}
   name: Ultimate Slayer!
   description: Become an ultimate slayer!
-  experienceReward: 100
+  completedDescription: You've proven your worth. Please accept this to beat the
+    crap out of Melvin!
+  experienceReward: 150
+  shardsReward: 50
   itemReward: {fileID: 11400000, guid: 6f9efd3763fc50448ad200e607510435, type: 2}
-  levelRequirement: 0
+  levelRequirement: 4

@@ -7,25 +7,30 @@ public class Interactable : MonoBehaviour
     public bool isPerson = true;
     protected bool canActivate;
 
-    void Update()
+    private bool uiActivated = false;
+
+    private void Update()
     {
-        if (canActivate && Input.GetKeyDown(KeyCode.Return) && !DialogManager.instance.dialogBox.activeInHierarchy)
+        if (canActivate && !NpcInteractionManager.instance.IsActive() && !uiActivated)
         {
-            Interact();
+            NpcInteractionManager.instance.SetInteractable(this);
+            uiActivated = true;
         }
+        else if (!canActivate && NpcInteractionManager.instance.IsActive() && uiActivated)
+        {
+            NpcInteractionManager.instance.RemoveInteractable();
+            uiActivated = false;
+        }
+        UpdateHook();
+    }
+    public virtual void UpdateHook()
+    {
+
     }
 
-    public virtual void Interact()
+    public virtual void Talk()
     {
         DialogManager.instance.ShowDialog(lines, isPerson);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == Tag.Player.ToString())
-        {
-            canActivate = true;
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -37,6 +42,14 @@ public class Interactable : MonoBehaviour
             {
                 DialogManager.instance.dialogBox.SetActive(false);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == Tag.Player.ToString())
+        {
+            canActivate = true;
         }
     }
 }

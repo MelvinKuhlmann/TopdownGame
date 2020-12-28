@@ -1,82 +1,94 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class NPC : Interactable
 {
+    [Header("NPC")]
     public int ID;
-
+    public string npcName = string.Empty;
     [Header("Quest")]
     public List<Quest> availableQuests;
-    public string[] questLines;
-    public string[] questNotCompletedLines;
-    public string[] questRewardLines;
-
     public bool assignedQuest { get; set; }
-    
     public bool helped { get; set; }
 
-    private void Start()
+    private NpcCanvas canvas;
+    private void Awake()
     {
-        DialogEvents.OnDialogClose += DialogClosed;
+        if (npcName.Equals(""))
+        {
+            Debug.LogWarning("npcName is not filled, fallback to 'NPC'");
+            npcName = "NPC";
+        }
+        canvas = GetComponentInChildren<NpcCanvas>();
+        canvas.SetNpcName(npcName);
+        canvas.SetQuestIconVisible(availableQuests.Count > 0);
+        canvas.SetQuestIconToNewQuest();
     }
 
-    void DialogClosed()
+    public override void UpdateHook()
     {
-        Debug.Log(ID);
-        if (availableQuests.Count >= 1)
+        if (!GetComponent<Renderer>().isVisible)
         {
-            AssignQuest(availableQuests[0]);
+            //NPC is not shown by camera
+            return;
+        }
+        if (ShowQuestCompleteIcon())
+        {
+            canvas.SetQuestIconToQuestComplete();
+        }
+        else
+        {
+            canvas.SetQuestIconToNewQuest();
         }
     }
 
-    public override void Interact()
+    private bool ShowQuestCompleteIcon()
     {
-        if (!assignedQuest && !helped)
-        {
-            if (availableQuests != null && availableQuests.Count >= 1)
-            {
-                if (!DialogManager.instance.dialogBox.activeInHierarchy)
-                {
-                    DialogManager.instance.ShowDialog(questLines, isPerson);
-                }
-            } else
-            {
-                base.Interact();
-            }
-        }
-        else if (assignedQuest && !helped)
-        {
-            // check
-            CheckQuest(availableQuests[0]);
-        }
+        return availableQuests.Any(currentQuest => QuestLog.instance.QuestCompleted(currentQuest));
+    }
+
+    public override void Talk()
+    {
+        base.Talk();
         NPCEvents.OnNPCInteracted(this);
     }
 
-    void AssignQuest(Quest quest)
+    public void Quests()
     {
-        QuestLog.instance.Add(quest);
-        assignedQuest = true;
+        if (assignedQuest)
+        {
+            QuestRewards();
+        }
+        if (!AcceptRewardUI.instance.IsActive())
+        {
+
+            List<Quest> questsToAccept = new List<Quest>();
+
+            availableQuests.ForEach(currentQuest =>
+            {
+                if (!QuestLog.instance.AlreadyAccepted(currentQuest))
+                {
+                    questsToAccept.Add(currentQuest);
+                }
+            });
+
+            AcceptQuestUI.instance.SetQuests(questsToAccept);
+            assignedQuest = true;
+        }
     }
 
-    void CheckQuest(Quest quest)
+    public void QuestRewards()
     {
-        if (quest.completed)
-        {
-            if (!DialogManager.instance.dialogBox.activeInHierarchy)
+        List<Quest> completedQuests = new List<Quest>();
+
+        availableQuests.ForEach(currentQuest => {
+            if (QuestLog.instance.QuestCompleted(currentQuest))
             {
-                DialogManager.instance.ShowDialog(questRewardLines, isPerson);
+                completedQuests.Add(currentQuest);
             }
-            quest.GiveReward();
-            helped = true;
-            assignedQuest = false;
-            QuestLog.instance.Remove(quest);
-        } else
-        {
-            Debug.Log("quest not completed yet: " + availableQuests[0].name);
-            if (!DialogManager.instance.dialogBox.activeInHierarchy)
-            {
-                DialogManager.instance.ShowDialog(questNotCompletedLines, isPerson);
-            }
-        }
+        });
+
+        AcceptRewardUI.instance.SetQuests(completedQuests);
     }
 }

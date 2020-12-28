@@ -10,7 +10,9 @@ public class Quest : ScriptableObject {
     public List<Goal> goals = new List<Goal>();
     public new string name;
     public string description;
+    public string completedDescription;
     public int experienceReward;
+    public int shardsReward;
     public Item itemReward;
     public int levelRequirement;
 
@@ -40,5 +42,6 @@ public class Quest : ScriptableObject {
         }
         Debug.Log("Call playercontroller to give EXP");
         Player.instance.AddExp(experienceReward);
+        //TODO add shards to player
     }
 }

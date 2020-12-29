@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName ="Inventory/Item")]
 public class Item : ScriptableObject
@@ -12,7 +11,7 @@ public class Item : ScriptableObject
 
     public virtual void Use()
     {
-        Debug.Log("Using" + itemName);
+        Debug.Log(string.Format("Using item: {0}", itemName));
     }
 
     public EquipmentController GetEquipmentController()

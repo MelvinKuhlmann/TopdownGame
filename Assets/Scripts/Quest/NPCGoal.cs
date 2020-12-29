@@ -14,10 +14,9 @@ public class NPCGoal : Goal
 
     void NPCInteracted(NPC npc)
     {
-        Debug.Log("Npc interacted: " + npc.ID + " wanted: " + npcId);
+        Debug.Log(string.Format("Npc {0} interacted. Required for quest: {1}", npc.ID, npcId));
         if (npc.ID == this.npcId)
         {
-            Debug.Log("Requirements met");
             Complete();
         }
     }

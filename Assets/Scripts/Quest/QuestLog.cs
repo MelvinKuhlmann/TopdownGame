@@ -65,7 +65,6 @@ public class QuestLog : MonoBehaviour
         {
             return quest.completed;
         }
-        Debug.Log("Quest is not in log");
         return false;
     }
 

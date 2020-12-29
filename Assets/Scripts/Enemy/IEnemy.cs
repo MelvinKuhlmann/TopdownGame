@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IEnemy 
+﻿public interface IEnemy 
 {
     int ID { get; set; }
     int experience { get; set; }

@@ -7,6 +7,7 @@ public class NPC : Interactable
     [Header("NPC")]
     public int ID;
     public string npcName = string.Empty;
+
     [Header("Quest")]
     public List<Quest> availableQuests;
     public bool assignedQuest { get; set; }
@@ -17,7 +18,6 @@ public class NPC : Interactable
     {
         if (npcName.Equals(""))
         {
-            Debug.LogWarning("npcName is not filled, fallback to 'NPC'");
             npcName = "NPC";
         }
         canvas = GetComponentInChildren<NpcCanvas>();

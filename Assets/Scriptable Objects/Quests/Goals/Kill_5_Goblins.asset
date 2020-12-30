@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41430db458de3dc4f8eea85e369297cd, type: 3}
   m_Name: Kill_5_Goblins
   m_EditorClassIdentifier: 
+  id: 1
   description: Kill 5 Goblins
   enemyID: 1
   requiredKills: 5

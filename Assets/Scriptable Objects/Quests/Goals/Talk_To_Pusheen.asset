@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f0a240e4f95a540873edb6d8a0a650, type: 3}
   m_Name: Talk_To_Pusheen
   m_EditorClassIdentifier: 
+  id: 2
   description: Talk to pusheen
   npcId: 0

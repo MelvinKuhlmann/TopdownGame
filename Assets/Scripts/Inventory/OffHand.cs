@@ -12,7 +12,7 @@ public class OffHand : Item
 
     public override void Use()
     {
-        Debug.Log(string.Format("Equipping off hand: {0}", itemName));
+        Debug.Log(string.Format("Equipping off hand: {0}", name));
         GetEquipmentController().ChangeOffHand(this);
     }
 }

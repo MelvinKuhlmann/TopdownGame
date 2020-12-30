@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267650938ef19154bbd5443dd71f35a6, type: 3}
   m_Name: Spiked Club
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: -9094013401876549528, guid: 203d4f928dc5e964da09e719ad5b111c, type: 3}
-  itemName: Spiked Club
-  itemCategory: Main_Hand
-  itemTooltip: A club with spikes
+  id: 2
+  icon: {fileID: -9094013401876549528, guid: 203d4f928dc5e964da09e719ad5b111c, type: 3}
+  name: Spiked Club
+  category: Main_Hand
+  tooltip: A club with spikes
   isQuestItem: 0
   playerLevel: 3
   weaponPower: 5

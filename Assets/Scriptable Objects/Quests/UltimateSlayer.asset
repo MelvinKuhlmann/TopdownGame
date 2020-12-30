@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5369bd8cee7624ba9e575c1c252f48, type: 3}
   m_Name: UltimateSlayer
   m_EditorClassIdentifier: 
+  id: 1
   goals:
   - {fileID: 11400000, guid: 688b496548452924d888b9750e28a964, type: 2}
   name: Ultimate Slayer!
@@ -20,5 +21,5 @@ MonoBehaviour:
     crap out of Melvin!
   experienceReward: 150
   shardsReward: 50
-  itemReward: {fileID: 11400000, guid: 6f9efd3763fc50448ad200e607510435, type: 2}
+  itemReward: {fileID: 0}
   levelRequirement: 4

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5369bd8cee7624ba9e575c1c252f48, type: 3}
   m_Name: TalkToPusheen
   m_EditorClassIdentifier: 
+  id: 2
   goals:
   - {fileID: 11400000, guid: af3916e1880fb484d93506b97f105cc7, type: 2}
   name: Learn cat language

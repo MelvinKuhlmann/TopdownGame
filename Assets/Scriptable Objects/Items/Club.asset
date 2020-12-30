@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267650938ef19154bbd5443dd71f35a6, type: 3}
   m_Name: Club
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 5452280081318428199, guid: 203d4f928dc5e964da09e719ad5b111c, type: 3}
-  itemName: Club
-  itemCategory: Main_Hand
-  itemTooltip: A club made of wood.
+  id: 1
+  icon: {fileID: 5452280081318428199, guid: 203d4f928dc5e964da09e719ad5b111c, type: 3}
+  name: Club
+  category: Main_Hand
+  tooltip: A club made of wood
   isQuestItem: 0
   playerLevel: 1
   weaponPower: 2

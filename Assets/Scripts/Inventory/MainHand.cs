@@ -11,7 +11,7 @@ public class MainHand : Item
 
     public override void Use()
     {
-        Debug.Log(string.Format("Equipping main hand: {0}", itemName));
+        Debug.Log(string.Format("Equipping main hand: {0}", name));
         GetEquipmentController().ChangeMainHand(this);
     }
 }

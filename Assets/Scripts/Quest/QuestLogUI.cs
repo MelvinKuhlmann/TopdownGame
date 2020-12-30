@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class QuestLogUI : MonoBehaviour
+public class QuestLogUI : CloseUI
 {
     private QuestLog questLog;
     public QuestLogEntry[] questLogEntries;
@@ -17,7 +17,17 @@ public class QuestLogUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            gameObject.SetActive(!gameObject.activeInHierarchy);
+            canvasGroup = GetComponent<CanvasGroup>();
+            if (canvasGroup.alpha == 1)
+            {
+                Hide();
+                Debug.Log("PrintOnEnable: Questlog was turned invisible");
+            }
+            else
+            {
+                Show();
+                Debug.Log("PrintOnEnable: Questlog was turned visible");
+            }
         }
     }
 

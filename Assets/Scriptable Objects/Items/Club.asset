@@ -15,7 +15,7 @@ MonoBehaviour:
   itemIcon: {fileID: 5452280081318428199, guid: 203d4f928dc5e964da09e719ad5b111c, type: 3}
   itemName: Club
   itemCategory: Main_Hand
-  itemTooltip: A normal club
+  itemTooltip: A club made of wood.
   isQuestItem: 0
   playerLevel: 1
-  weaponPower: 1
+  weaponPower: 2

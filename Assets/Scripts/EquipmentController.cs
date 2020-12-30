@@ -36,14 +36,14 @@ public class EquipmentController : MonoBehaviour
 
     public void ChangeHelmet(Item newHelmet)
     {
-        mainHand.GetComponent<SpriteResolver>().SetCategoryAndLabel("Head", newHelmet.itemName.Replace(" ", "_"));
+        mainHand.GetComponent<SpriteResolver>().SetCategoryAndLabel("Head", newHelmet.name.Replace(" ", "_"));
         inventory.Remove(newHelmet);
         inventory.Add(currentHelmet);
         currentHelmet = newHelmet;
     }
     public void ChangeChestPiece(Item newChestPiece)
     {
-        mainHand.GetComponent<SpriteResolver>().SetCategoryAndLabel("Body", newChestPiece.itemName.Replace(" ", "_"));
+        mainHand.GetComponent<SpriteResolver>().SetCategoryAndLabel("Body", newChestPiece.name.Replace(" ", "_"));
         inventory.Remove(newChestPiece);
         inventory.Add(currentChestPiece);
         currentChestPiece = newChestPiece;
@@ -51,7 +51,7 @@ public class EquipmentController : MonoBehaviour
 
     public void ChangeMainHand(Item newMainHand)
     {
-        mainHand.GetComponent<SpriteResolver>().SetCategoryAndLabel("Main_Hand", newMainHand.itemName.Replace(" ", "_"));
+        mainHand.GetComponent<SpriteResolver>().SetCategoryAndLabel("Main_Hand", newMainHand.name.Replace(" ", "_"));
         inventory.Remove(newMainHand);
         inventory.Add(currentMainHand);
         currentMainHand = (MainHand) newMainHand;
@@ -60,7 +60,7 @@ public class EquipmentController : MonoBehaviour
 
     public void ChangeOffHand(Item newOffHand)
     {
-        mainHand.GetComponent<SpriteResolver>().SetCategoryAndLabel("Off_Hand", newOffHand.itemName.Replace(" ", "_"));
+        mainHand.GetComponent<SpriteResolver>().SetCategoryAndLabel("Off_Hand", newOffHand.name.Replace(" ", "_"));
         inventory.Remove(newOffHand);
         inventory.Add(currentOffHand);
         currentOffHand = newOffHand;

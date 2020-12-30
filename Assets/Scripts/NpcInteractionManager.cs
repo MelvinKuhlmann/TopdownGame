@@ -21,7 +21,7 @@ public class NpcInteractionManager : MonoBehaviour
     {
         return panel.activeInHierarchy;
     }
-
+ 
     public void SetInteractable(Interactable interactable)
     {
         this.interactable = interactable;

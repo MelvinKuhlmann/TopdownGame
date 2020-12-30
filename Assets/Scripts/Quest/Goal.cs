@@ -20,7 +20,6 @@ public class Goal : ScriptableObject
     public void Complete()
     {
         completed = true;
-        Debug.Log("Mark goal as completed");
         QuestEvents.GoalCompleted(this);
     }
 }

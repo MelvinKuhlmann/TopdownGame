@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Slime : MonoBehaviour, IEnemy
 {
@@ -17,7 +15,6 @@ public class Slime : MonoBehaviour, IEnemy
 
     public void PerformAttack()
     {
-        //TODO
     }
 
     public void TakeDamage(int amount)

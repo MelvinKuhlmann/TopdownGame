@@ -16,10 +16,9 @@ public class KillGoal : Goal
 
     void EnemyDied(IEnemy enemy)
     {
-        Debug.Log("Enemy died: " + enemy.ID);
         if (enemy.ID == this.enemyID)
         {
-            Debug.Log("Enemy died: " + enemy.ID + ", add 1 to currentKills");
+            Debug.Log(string.Format("Enemy {0} thats belongs to a quest died. ", enemy.ID));
             currentKills++;
             Evaluate();
         }
@@ -27,10 +26,9 @@ public class KillGoal : Goal
 
     public override void Evaluate()
     {
-        Debug.Log("Current Kills: " + currentKills + ", required kills: " + requiredKills);
+        Debug.Log(string.Format("Current Kills: {0}; Required kills: {1}", currentKills, requiredKills));
         if (currentKills >= requiredKills)
         {
-            Debug.Log("requirements met");
             Complete();
         }
     }

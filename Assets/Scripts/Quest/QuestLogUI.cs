@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class QuestLogUI : CloseUI
+public class QuestLogUI : TogglebleUI
 {
     private QuestLog questLog;
     public QuestLogEntry[] questLogEntries;
@@ -21,12 +21,10 @@ public class QuestLogUI : CloseUI
             if (canvasGroup.alpha == 1)
             {
                 Hide();
-                Debug.Log("PrintOnEnable: Questlog was turned invisible");
             }
             else
             {
                 Show();
-                Debug.Log("PrintOnEnable: Questlog was turned visible");
             }
         }
     }

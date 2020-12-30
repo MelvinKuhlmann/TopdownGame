@@ -9,7 +9,9 @@ public class QuestLogUI : TogglebleUI
     {
         questLog = QuestLog.instance;
         questLog.onQuestChangedCallback += UpdateUI;
+        canvasGroup = GetComponent<CanvasGroup>();
 
+        Hide();
         UpdateUI();
     }
 
@@ -17,7 +19,6 @@ public class QuestLogUI : TogglebleUI
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            canvasGroup = GetComponent<CanvasGroup>();
             if (canvasGroup.alpha == 1)
             {
                 Hide();

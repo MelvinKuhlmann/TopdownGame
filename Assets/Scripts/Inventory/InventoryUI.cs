@@ -9,7 +9,9 @@ public class InventoryUI : TogglebleUI
     {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
+        canvasGroup = GetComponent<CanvasGroup>();
 
+        Hide();
         UpdateUI();
     }
 
@@ -17,7 +19,6 @@ public class InventoryUI : TogglebleUI
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            canvasGroup = GetComponent<CanvasGroup>();
             if (canvasGroup.alpha == 1)
             {
                 Hide();

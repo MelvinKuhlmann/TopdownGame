@@ -5318,6 +5318,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 4856894443701345461, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.904
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999546759528670679, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d3eb550b8ee9e4a9cf0c05011116c4, type: 3}
 --- !u!1001 &7595141185130230879

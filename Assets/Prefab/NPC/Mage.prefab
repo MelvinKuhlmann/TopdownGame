@@ -569,7 +569,7 @@ MonoBehaviour:
   - n-Player
   - What?..
   - n-Old Wizard
-  - That Sven has the biggest Speknek on this planet!?
+  - That <color="orange">Sven</color> has the biggest Speknek on this planet!?
   isPerson: 1
   ID: 1
   npcName: Old Wizard

@@ -6,19 +6,17 @@ public class ItemButton : MonoBehaviour
 {
     public Image itemImage;
     public TMP_Text amountText;
-    public int buttonValue;
+    public Item item;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        Button btn = GetComponent<Button>();
+        btn.onClick.AddListener(Press);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Press()
     {
-        
+        ShopItemEvents.ItemClicked(item);
     }
+
 }

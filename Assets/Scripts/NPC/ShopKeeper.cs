@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class ShopKeeper : NPC
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Shop()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ShopUI.instance.OpenShop();
     }
 }

@@ -17,6 +17,9 @@ public class ShopUI : MonoBehaviour
     private ItemButton[] buyItemButtons;
     private ItemButton[] sellItemButtons;
 
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+
     #region Singleton
     public static ShopUI instance;
 
@@ -29,6 +32,8 @@ public class ShopUI : MonoBehaviour
         }
 
         instance = this;
+
+        ShopItemEvents.OnItemClick += ItemClicked;
     }
     #endregion
 
@@ -52,6 +57,7 @@ public class ShopUI : MonoBehaviour
         sellMenu.SetActive(false);
         ClearItems(buyMenuItems.transform);
 
+
         for (int i = 0; i < itemsInShop.Count; i++)
         {
             GameObject item = Instantiate(shopItem, new Vector3(0, 0, 0), Quaternion.identity);
@@ -60,7 +66,14 @@ public class ShopUI : MonoBehaviour
             ItemButton itemButton = item.GetComponent<ItemButton>();
             itemButton.itemImage.sprite = itemsInShop[i].icon;
             itemButton.amountText.text = "";
+            Debug.Log(string.Format("item added {0}", itemsInShop[i].id));
+            itemButton.item = itemsInShop[i];
         }
+    }
+
+    void ItemClicked(Item item)
+    {
+        Debug.Log(string.Format("blaaa: {0}", item.id));
     }
 
     public void OpenSellMenu()
@@ -77,6 +90,7 @@ public class ShopUI : MonoBehaviour
             ItemButton itemButton = item.GetComponent<ItemButton>();
             itemButton.itemImage.sprite = itemsInShop[i].icon; // TODO get from inventory instead of NPC
             itemButton.amountText.text = "13";
+           
         }
     }
 

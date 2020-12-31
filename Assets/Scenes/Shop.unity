@@ -3842,5 +3842,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopKeeper
       objectReference: {fileID: 0}
+    - target: {fileID: 8372424117668610197, guid: 126f533f6fa6c694a8e5a3112c86fb0e, type: 3}
+      propertyPath: itemsInShop.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372424117668610197, guid: 126f533f6fa6c694a8e5a3112c86fb0e, type: 3}
+      propertyPath: itemsInShop.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 35121f0848fcbee4fb8fdb99d8da2939, type: 2}
+    - target: {fileID: 8372424117668610197, guid: 126f533f6fa6c694a8e5a3112c86fb0e, type: 3}
+      propertyPath: itemsInShop.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5594b60ebca586419c360c627f807ba, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 126f533f6fa6c694a8e5a3112c86fb0e, type: 3}

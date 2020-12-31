@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InventoryUI : TogglebleUI
+public class InventoryUI : ToggleableUI
 {
     private Inventory inventory;
     private InventorySlot[] inventorySlots;

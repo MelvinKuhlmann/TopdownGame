@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TogglebleUI : MonoBehaviour
+public class ToggleableUI : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
 

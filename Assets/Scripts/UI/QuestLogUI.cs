@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class QuestLogUI : TogglebleUI
+public class QuestLogUI : ToggleableUI
 {
     private QuestLog questLog;
     public QuestLogEntry[] questLogEntries;

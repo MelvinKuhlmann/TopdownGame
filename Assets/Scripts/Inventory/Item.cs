@@ -3,15 +3,16 @@
 [CreateAssetMenu(fileName = "New Item", menuName ="Inventory/Item")]
 public class Item : ScriptableObject
 {
-    public Sprite itemIcon;
-    public string itemName;
-    public string itemCategory;
-    public string itemTooltip;
+    public int id;
+    public Sprite icon;
+    public new string name;
+    public string category;
+    public string tooltip;
     public bool isQuestItem;
 
     public virtual void Use()
     {
-        Debug.Log(string.Format("Using item: {0}", itemName));
+        Debug.Log(string.Format("Using item: {0}", name));
     }
 
     public EquipmentController GetEquipmentController()

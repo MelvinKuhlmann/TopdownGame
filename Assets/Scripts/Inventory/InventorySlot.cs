@@ -12,7 +12,7 @@ public class InventorySlot : MonoBehaviour
     {
         this.item = item;
 
-        icon.sprite = item.itemIcon;
+        icon.sprite = item.icon;
         icon.enabled = true;
 
         inventorySlotButton.interactable = true;

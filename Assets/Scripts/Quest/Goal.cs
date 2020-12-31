@@ -3,6 +3,7 @@
 [CreateAssetMenu(fileName = "New Goal", menuName = "Goals/Goal")]
 public class Goal : ScriptableObject
 {
+    public string id;
     public string description;
     public bool completed { get; set; }
 

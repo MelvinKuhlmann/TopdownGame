@@ -11,6 +11,6 @@ public class Armor : Item
 
     public override void Use()
     {
-        Debug.Log(string.Format("Using armor: {0}", itemName));
+        Debug.Log(string.Format("Using armor: {0}", name));
     }
 }

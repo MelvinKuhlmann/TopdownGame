@@ -5,6 +5,7 @@ using System.Linq;
 [CreateAssetMenu(fileName = "New Quest", menuName = "Quest")]
 public class Quest : ScriptableObject {
 
+    public int id;
     public bool completed { get; set; }
 
     public List<Goal> goals = new List<Goal>();

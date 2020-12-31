@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5369bd8cee7624ba9e575c1c252f48, type: 3}
+  m_Name: UltimateSlayer
+  m_EditorClassIdentifier: 
+  id: 1
+  goals:
+  - {fileID: 11400000, guid: 688b496548452924d888b9750e28a964, type: 2}
+  name: Ultimate Slayer!
+  description: Become an ultimate slayer!
+  completedDescription: You've proven your worth. Please accept this to beat the
+    crap out of Melvin!
+  experienceReward: 150
+  shardsReward: 50
+  itemReward: {fileID: 0}
+  levelRequirement: 4

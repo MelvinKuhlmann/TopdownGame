@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ShopUI : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class ShopUI : MonoBehaviour
     public GameObject buyMenu;
     public GameObject sellMenu;
     public TMP_Text shardText;
+
+    private List<Item> itemsInShop;
 
     #region Singleton
     public static ShopUI instance;
@@ -23,16 +26,9 @@ public class ShopUI : MonoBehaviour
     }
     #endregion
 
-    private void Update()
+    public void OpenShop(List<Item> itemsToSale)
     {
-        if (Input.GetKeyDown(KeyCode.K) && !shopMenu.activeInHierarchy)
-        {
-            OpenShop();
-        }
-    }
-
-    public void OpenShop()
-    {
+        itemsInShop = itemsToSale;
         shopMenu.SetActive(true);
         OpenBuyMenu();
 

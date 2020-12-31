@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
-public class NpcInteractionManager : MonoBehaviour
+public class NpcInteractionButtonsUI : MonoBehaviour
 {
-    public static NpcInteractionManager instance;
+    public static NpcInteractionButtonsUI instance;
     public GameObject panel;
     public GameObject talkButton;
     public GameObject questButton;
+    public GameObject shopButton;
 
     private Interactable interactable;
 
@@ -25,6 +26,7 @@ public class NpcInteractionManager : MonoBehaviour
     public void SetInteractable(Interactable interactable)
     {
         this.interactable = interactable;
+        //NPC quest button
         if (interactable is NPC && ((NPC)interactable).availableQuests != null && ((NPC)interactable).availableQuests.Count > 0)
         {
             questButton.SetActive(true);
@@ -32,6 +34,16 @@ public class NpcInteractionManager : MonoBehaviour
         {
             questButton.SetActive(false);
         }
+
+        //ShopKeeper shop button
+        if (interactable is ShopKeeper)
+        {
+            shopButton.SetActive(true);
+        } else
+        {
+            shopButton.SetActive(false);
+        }
+
         panel.SetActive(true);
     }
 
@@ -55,5 +67,10 @@ public class NpcInteractionManager : MonoBehaviour
     public void Quest()
     {
         ((NPC)interactable).Quests();
+    }
+
+    public void Shop()
+    {
+        ((ShopKeeper)interactable).Shop();
     }
 }

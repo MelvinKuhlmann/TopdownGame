@@ -15,8 +15,9 @@ MonoBehaviour:
   id: 3
   icon: {fileID: 21300000, guid: 5051c731dc2db3d49adcbaf67b8fa484, type: 3}
   name: Diamond
-  category: Quest_Item
+  category: 1
   description: Shiny stone
   isQuestItem: 1
+  isStackable: 0
   buyValue: 0
   sellValue: 0

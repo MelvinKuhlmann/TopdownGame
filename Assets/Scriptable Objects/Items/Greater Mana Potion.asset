@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5a062bef07ac6408baa92b4d619217, type: 3}
+  m_Name: Greater Mana Potion
+  m_EditorClassIdentifier: 
+  id: 5
+  icon: {fileID: 1185527514606905908, guid: 27aa2b0ab37984c438932fc943b6f548, type: 3}
+  name: Greater Mana Potion
+  category: 0
+  description: Restores instantly any lost mana
+  isQuestItem: 0
+  isStackable: 1
+  buyValue: 50
+  sellValue: 1
+  playerLevel: 1
+  restorePoints: 50
+  type: 1
+  coolDownPeriod: 3

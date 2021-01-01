@@ -11,7 +11,7 @@ public class ShopUI : MonoBehaviour
     public GameObject sellMenu;
     public GameObject sellMenuItems;
 
-    [Header("Valuta")]
+    [Header("Money")]
     public TMP_Text shardText;
 
     [Header("Item Prefab")]
@@ -29,7 +29,7 @@ public class ShopUI : MonoBehaviour
 
     private List<Item> itemsInShop;
     private Item selectedItem;
-    private int playerShards = 1200; //TODO get shards from player
+    private int playerShards = 1200; //TODO get shards from player, for now we put it in a variable..
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -56,8 +56,7 @@ public class ShopUI : MonoBehaviour
         itemsInShop = itemsToSale;
         shopMenu.SetActive(true);
         OpenBuyMenu();
-
-        shardText.text = string.Format("{0}s", playerShards);  //TODO get shards from player
+        UpdatePlayerTotalShards();
     }
 
     public void  CloseShop()
@@ -69,6 +68,7 @@ public class ShopUI : MonoBehaviour
     {
         buyMenu.SetActive(true);
         sellMenu.SetActive(false);
+        selectedItem = null;
         ClearItems(buyMenuItems.transform);
 
         SelectBuyItem(itemsInShop[0]);
@@ -89,19 +89,28 @@ public class ShopUI : MonoBehaviour
     {
         buyMenu.SetActive(false);
         sellMenu.SetActive(true);
+        selectedItem = null;
+
+        ShowSellItems();
+    }
+
+    private void ShowSellItems()
+    {
         ClearItems(sellMenuItems.transform);
-
-        SelectSellItem(itemsInShop[0]);// TODO get from inventory instead of NPC
-
-        for (int i = 0; i < itemsInShop.Count; i++) // TODO get from inventory instead of NPC
+        if (Inventory.instance.items.Count >= 1)
         {
-            GameObject item = Instantiate(shopItem, new Vector3(0, 0, 0), Quaternion.identity);
-            item.transform.SetParent(sellMenuItems.transform, false);
+            SelectSellItem(Inventory.instance.items[0]);// TODO get from inventory instead of NPC
 
-            ItemButton itemButton = item.GetComponent<ItemButton>();
-            itemButton.itemImage.sprite = itemsInShop[i].icon; // TODO get from inventory instead of NPC
-            itemButton.amountText.text = "13";
-            itemButton.item = itemsInShop[i];
+            for (int i = 0; i < Inventory.instance.items.Count; i++) // TODO get from inventory instead of NPC
+            {
+                GameObject item = Instantiate(shopItem, new Vector3(0, 0, 0), Quaternion.identity);
+                item.transform.SetParent(sellMenuItems.transform, false);
+
+                ItemButton itemButton = item.GetComponent<ItemButton>();
+                itemButton.itemImage.sprite = Inventory.instance.items[i].icon; // TODO get from inventory instead of NPC
+                itemButton.amountText.text = "13";
+                itemButton.item = Inventory.instance.items[i];
+            }
         }
     }
 
@@ -109,7 +118,7 @@ public class ShopUI : MonoBehaviour
     {
         foreach (Transform child in parent)
         {
-            GameObject.Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
     }
 
@@ -146,18 +155,33 @@ public class ShopUI : MonoBehaviour
 
     public void BuyItem()
     {
-        //TODO check if player has enough money..
-        if (playerShards >= selectedItem.buyValue)
+        if (selectedItem != null)
         {
-            //TODO substract shards from player
-            playerShards -= selectedItem.buyValue;
-            Inventory.instance.Add(selectedItem);
+            //TODO check if player has enough money..
+            if (playerShards >= selectedItem.buyValue)
+            {
+                //TODO substract shards from player
+                playerShards -= selectedItem.buyValue;
+                Inventory.instance.Add(selectedItem);
+                UpdatePlayerTotalShards();
+            }
         }
-
     }
 
     public void SellItem()
     {
+        if (selectedItem != null)
+        {
+            playerShards += selectedItem.sellValue;
+            Inventory.instance.Remove(selectedItem);
+            //TODO determine which items should be selected after selling one, by default it goes now to the first item
+            ShowSellItems();
+            UpdatePlayerTotalShards();
+        }
+    }
 
+    void UpdatePlayerTotalShards()
+    {
+        shardText.text = string.Format("{0}s", playerShards);  //TODO get shards from player
     }
 }

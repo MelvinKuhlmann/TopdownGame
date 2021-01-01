@@ -124,8 +124,6 @@ public class ShopUI : MonoBehaviour
 
     void ItemSelected(Item item)
     {
-        Debug.Log(string.Format("blaaa: {0}", item.id));
-
         if (buyMenu.activeInHierarchy)
         {
             SelectBuyItem(item);

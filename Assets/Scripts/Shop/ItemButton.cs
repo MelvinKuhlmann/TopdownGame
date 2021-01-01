@@ -18,5 +18,4 @@ public class ItemButton : MonoBehaviour
     {
         ShopItemEvents.ItemClicked(item);
     }
-
 }

@@ -570,6 +570,11 @@ MonoBehaviour:
   ID: 999
   npcName: Shop Keeper
   availableQuests: []
+  itemsInShop:
+  - {fileID: 11400000, guid: 35121f0848fcbee4fb8fdb99d8da2939, type: 2}
+  - {fileID: 11400000, guid: c5594b60ebca586419c360c627f807ba, type: 2}
+  - {fileID: 11400000, guid: a3417df5ae83f744895747ff8614832b, type: 2}
+  - {fileID: 11400000, guid: f3ba14142bc13fd4bae3a0e8c36cbad5, type: 2}
 --- !u!212 &2206444032893702993
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1689,7 +1694,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1347534504665501354}
   m_Bounds:
-    m_Center: {x: -0.00000023841858, y: -0.000000059604645, z: 0}
+    m_Center: {x: 0, y: -0.000000059604645, z: 0}
     m_Extent: {x: 0.06999999, y: 0.06999999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

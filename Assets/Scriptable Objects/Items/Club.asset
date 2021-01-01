@@ -15,9 +15,10 @@ MonoBehaviour:
   id: 1
   icon: {fileID: 5452280081318428199, guid: 203d4f928dc5e964da09e719ad5b111c, type: 3}
   name: Club
-  category: Main_Hand
+  category: 2
   description: Shabby club
   isQuestItem: 0
+  isStackable: 0
   buyValue: 20
   sellValue: 10
   playerLevel: 1

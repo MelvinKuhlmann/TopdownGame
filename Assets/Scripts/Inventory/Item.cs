@@ -6,9 +6,10 @@ public class Item : ScriptableObject
     public int id;
     public Sprite icon;
     public new string name;
-    public string category;
+    public InventoryCategory category;
     public string description;
     public bool isQuestItem;
+    public bool isStackable;
     public int buyValue;
     public int sellValue;
 

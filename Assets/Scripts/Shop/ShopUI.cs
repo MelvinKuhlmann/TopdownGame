@@ -4,18 +4,32 @@ using System.Collections.Generic;
 
 public class ShopUI : MonoBehaviour
 {
+    [Header("Windows")]
     public GameObject shopMenu;
     public GameObject buyMenu;
     public GameObject buyMenuItems;
     public GameObject sellMenu;
     public GameObject sellMenuItems;
+
+    [Header("Valuta")]
     public TMP_Text shardText;
+
+    [Header("Item Prefab")]
     public GameObject shopItem;
 
-    private List<Item> itemsInShop;
+    [Header("Selected Buy Item")]
+    public TMP_Text buyItemName;
+    public TMP_Text buyItemDescription;
+    public TMP_Text buyItemValue;
 
-    private ItemButton[] buyItemButtons;
-    private ItemButton[] sellItemButtons;
+    [Header("Selected Sell Item")]
+    public TMP_Text sellItemName;
+    public TMP_Text sellItemDescription;
+    public TMP_Text sellItemValue;
+
+    private List<Item> itemsInShop;
+    private Item selectedItem;
+    private int playerShards = 1200; //TODO get shards from player
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -33,7 +47,7 @@ public class ShopUI : MonoBehaviour
 
         instance = this;
 
-        ShopItemEvents.OnItemClick += ItemClicked;
+        ShopItemEvents.OnItemClick += ItemSelected;
     }
     #endregion
 
@@ -43,7 +57,7 @@ public class ShopUI : MonoBehaviour
         shopMenu.SetActive(true);
         OpenBuyMenu();
 
-        shardText.text = "12322" + "S";  //TODO get shards from player
+        shardText.text = string.Format("{0}s", playerShards);  //TODO get shards from player
     }
 
     public void  CloseShop()
@@ -57,6 +71,7 @@ public class ShopUI : MonoBehaviour
         sellMenu.SetActive(false);
         ClearItems(buyMenuItems.transform);
 
+        SelectBuyItem(itemsInShop[0]);
 
         for (int i = 0; i < itemsInShop.Count; i++)
         {
@@ -66,14 +81,8 @@ public class ShopUI : MonoBehaviour
             ItemButton itemButton = item.GetComponent<ItemButton>();
             itemButton.itemImage.sprite = itemsInShop[i].icon;
             itemButton.amountText.text = "";
-            Debug.Log(string.Format("item added {0}", itemsInShop[i].id));
             itemButton.item = itemsInShop[i];
         }
-    }
-
-    void ItemClicked(Item item)
-    {
-        Debug.Log(string.Format("blaaa: {0}", item.id));
     }
 
     public void OpenSellMenu()
@@ -81,6 +90,8 @@ public class ShopUI : MonoBehaviour
         buyMenu.SetActive(false);
         sellMenu.SetActive(true);
         ClearItems(sellMenuItems.transform);
+
+        SelectSellItem(itemsInShop[0]);// TODO get from inventory instead of NPC
 
         for (int i = 0; i < itemsInShop.Count; i++) // TODO get from inventory instead of NPC
         {
@@ -90,7 +101,7 @@ public class ShopUI : MonoBehaviour
             ItemButton itemButton = item.GetComponent<ItemButton>();
             itemButton.itemImage.sprite = itemsInShop[i].icon; // TODO get from inventory instead of NPC
             itemButton.amountText.text = "13";
-           
+            itemButton.item = itemsInShop[i];
         }
     }
 
@@ -100,5 +111,53 @@ public class ShopUI : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+    }
+
+    void ItemSelected(Item item)
+    {
+        Debug.Log(string.Format("blaaa: {0}", item.id));
+
+        if (buyMenu.activeInHierarchy)
+        {
+            SelectBuyItem(item);
+        }
+
+        if (sellMenu.activeInHierarchy)
+        {
+            SelectSellItem(item);
+        }
+    }
+
+    void SelectBuyItem(Item item)
+    {
+        selectedItem = item;
+        buyItemName.text = item.name;
+        buyItemDescription.text = item.description;
+        buyItemValue.text = string.Format("Value: {0}s",item.buyValue);
+    }
+
+    void SelectSellItem(Item item)
+    {
+        selectedItem = item;
+        sellItemName.text = item.name;
+        sellItemDescription.text = item.description;
+        sellItemValue.text = string.Format("Value: {0}s", item.sellValue);
+    }
+
+    public void BuyItem()
+    {
+        //TODO check if player has enough money..
+        if (playerShards >= selectedItem.buyValue)
+        {
+            //TODO substract shards from player
+            playerShards -= selectedItem.buyValue;
+            Inventory.instance.Add(selectedItem);
+        }
+
+    }
+
+    public void SellItem()
+    {
+
     }
 }

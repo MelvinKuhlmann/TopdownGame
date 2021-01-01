@@ -4,18 +4,32 @@ using System.Collections.Generic;
 
 public class ShopUI : MonoBehaviour
 {
+    [Header("Windows")]
     public GameObject shopMenu;
     public GameObject buyMenu;
     public GameObject buyMenuItems;
     public GameObject sellMenu;
     public GameObject sellMenuItems;
+
+    [Header("Money")]
     public TMP_Text shardText;
+
+    [Header("Item Prefab")]
     public GameObject shopItem;
 
-    private List<Item> itemsInShop;
+    [Header("Selected Buy Item")]
+    public TMP_Text buyItemName;
+    public TMP_Text buyItemDescription;
+    public TMP_Text buyItemValue;
 
-    private ItemButton[] buyItemButtons;
-    private ItemButton[] sellItemButtons;
+    [Header("Selected Sell Item")]
+    public TMP_Text sellItemName;
+    public TMP_Text sellItemDescription;
+    public TMP_Text sellItemValue;
+
+    private List<Item> itemsInShop;
+    private Item selectedItem;
+    private int playerShards = 1200; //TODO get shards from player, for now we put it in a variable..
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -33,7 +47,7 @@ public class ShopUI : MonoBehaviour
 
         instance = this;
 
-        ShopItemEvents.OnItemClick += ItemClicked;
+        ShopItemEvents.OnItemClick += ItemSelected;
     }
     #endregion
 
@@ -42,8 +56,7 @@ public class ShopUI : MonoBehaviour
         itemsInShop = itemsToSale;
         shopMenu.SetActive(true);
         OpenBuyMenu();
-
-        shardText.text = "12322" + "S";  //TODO get shards from player
+        UpdatePlayerTotalShards();
     }
 
     public void  CloseShop()
@@ -55,8 +68,10 @@ public class ShopUI : MonoBehaviour
     {
         buyMenu.SetActive(true);
         sellMenu.SetActive(false);
+        selectedItem = null;
         ClearItems(buyMenuItems.transform);
 
+        SelectBuyItem(itemsInShop[0]);
 
         for (int i = 0; i < itemsInShop.Count; i++)
         {
@@ -66,31 +81,36 @@ public class ShopUI : MonoBehaviour
             ItemButton itemButton = item.GetComponent<ItemButton>();
             itemButton.itemImage.sprite = itemsInShop[i].icon;
             itemButton.amountText.text = "";
-            Debug.Log(string.Format("item added {0}", itemsInShop[i].id));
             itemButton.item = itemsInShop[i];
         }
-    }
-
-    void ItemClicked(Item item)
-    {
-        Debug.Log(string.Format("blaaa: {0}", item.id));
     }
 
     public void OpenSellMenu()
     {
         buyMenu.SetActive(false);
         sellMenu.SetActive(true);
+        selectedItem = null;
+
+        ShowSellItems();
+    }
+
+    private void ShowSellItems()
+    {
         ClearItems(sellMenuItems.transform);
-
-        for (int i = 0; i < itemsInShop.Count; i++) // TODO get from inventory instead of NPC
+        if (Inventory.instance.items.Count >= 1)
         {
-            GameObject item = Instantiate(shopItem, new Vector3(0, 0, 0), Quaternion.identity);
-            item.transform.SetParent(sellMenuItems.transform, false);
+            SelectSellItem(Inventory.instance.items[0]);// TODO get from inventory instead of NPC
 
-            ItemButton itemButton = item.GetComponent<ItemButton>();
-            itemButton.itemImage.sprite = itemsInShop[i].icon; // TODO get from inventory instead of NPC
-            itemButton.amountText.text = "13";
-           
+            for (int i = 0; i < Inventory.instance.items.Count; i++) // TODO get from inventory instead of NPC
+            {
+                GameObject item = Instantiate(shopItem, new Vector3(0, 0, 0), Quaternion.identity);
+                item.transform.SetParent(sellMenuItems.transform, false);
+
+                ItemButton itemButton = item.GetComponent<ItemButton>();
+                itemButton.itemImage.sprite = Inventory.instance.items[i].icon; // TODO get from inventory instead of NPC
+                itemButton.amountText.text = "13";
+                itemButton.item = Inventory.instance.items[i];
+            }
         }
     }
 
@@ -98,7 +118,70 @@ public class ShopUI : MonoBehaviour
     {
         foreach (Transform child in parent)
         {
-            GameObject.Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
+    }
+
+    void ItemSelected(Item item)
+    {
+        Debug.Log(string.Format("blaaa: {0}", item.id));
+
+        if (buyMenu.activeInHierarchy)
+        {
+            SelectBuyItem(item);
+        }
+
+        if (sellMenu.activeInHierarchy)
+        {
+            SelectSellItem(item);
+        }
+    }
+
+    void SelectBuyItem(Item item)
+    {
+        selectedItem = item;
+        buyItemName.text = item.name;
+        buyItemDescription.text = item.description;
+        buyItemValue.text = string.Format("Value: {0}s",item.buyValue);
+    }
+
+    void SelectSellItem(Item item)
+    {
+        selectedItem = item;
+        sellItemName.text = item.name;
+        sellItemDescription.text = item.description;
+        sellItemValue.text = string.Format("Value: {0}s", item.sellValue);
+    }
+
+    public void BuyItem()
+    {
+        if (selectedItem != null)
+        {
+            //TODO check if player has enough money..
+            if (playerShards >= selectedItem.buyValue)
+            {
+                //TODO substract shards from player
+                playerShards -= selectedItem.buyValue;
+                Inventory.instance.Add(selectedItem);
+                UpdatePlayerTotalShards();
+            }
+        }
+    }
+
+    public void SellItem()
+    {
+        if (selectedItem != null)
+        {
+            playerShards += selectedItem.sellValue;
+            Inventory.instance.Remove(selectedItem);
+            //TODO determine which items should be selected after selling one, by default it goes now to the first item
+            ShowSellItems();
+            UpdatePlayerTotalShards();
+        }
+    }
+
+    void UpdatePlayerTotalShards()
+    {
+        shardText.text = string.Format("{0}s", playerShards);  //TODO get shards from player
     }
 }

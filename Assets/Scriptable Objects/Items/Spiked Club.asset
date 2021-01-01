@@ -16,7 +16,9 @@ MonoBehaviour:
   icon: {fileID: -9094013401876549528, guid: 203d4f928dc5e964da09e719ad5b111c, type: 3}
   name: Spiked Club
   category: Main_Hand
-  tooltip: A club with spikes
+  description: A club with spikes
   isQuestItem: 0
+  buyValue: 25
+  sellValue: 12
   playerLevel: 3
   weaponPower: 5

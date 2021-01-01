@@ -7,8 +7,10 @@ public class Item : ScriptableObject
     public Sprite icon;
     public new string name;
     public string category;
-    public string tooltip;
+    public string description;
     public bool isQuestItem;
+    public int buyValue;
+    public int sellValue;
 
     public virtual void Use()
     {

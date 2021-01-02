@@ -29,7 +29,6 @@ public class ShopUI : MonoBehaviour
 
     private List<Item> itemsInShop;
     private Item selectedItem;
-    private int playerShards = 1200; //TODO get shards from player, for now we put it in a variable..
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -155,11 +154,9 @@ public class ShopUI : MonoBehaviour
     {
         if (selectedItem != null)
         {
-            //TODO check if player has enough money..
-            if (playerShards >= selectedItem.buyValue)
+            if (Player.instance.shards >= selectedItem.buyValue)
             {
-                //TODO substract shards from player
-                playerShards -= selectedItem.buyValue;
+                Player.instance.shards -= selectedItem.buyValue;
                 Inventory.instance.Add(selectedItem);
                 UpdatePlayerTotalShards();
             }
@@ -170,7 +167,7 @@ public class ShopUI : MonoBehaviour
     {
         if (selectedItem != null)
         {
-            playerShards += selectedItem.sellValue;
+            Player.instance.shards += selectedItem.sellValue;
             Inventory.instance.Remove(selectedItem);
             //TODO determine which items should be selected after selling one, by default it goes now to the first item
             ShowSellItems();
@@ -180,6 +177,6 @@ public class ShopUI : MonoBehaviour
 
     void UpdatePlayerTotalShards()
     {
-        shardText.text = string.Format("{0}s", playerShards);  //TODO get shards from player
+        shardText.text = string.Format("{0}s", Player.instance.shards);  //TODO get shards from player
     }
 }

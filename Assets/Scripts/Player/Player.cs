@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
     public int armorPower = 1;
     public float movementSpeed = 5.0f;
 
+    [Header("Currency")]
+    public int shards = 0;
+
     private void Start()
     {
         equipmentController = EquipmentController.instance;

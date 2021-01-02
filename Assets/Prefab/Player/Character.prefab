@@ -1465,9 +1465,11 @@ MonoBehaviour:
   maxMp: 50
   strength: 0
   defense: 0
-  weaponPower: 0
+  baseWeaponPower: 0
+  totalWeaponPower: 0
   armorPower: 0
   movementSpeed: 5
+  shards: 500
 --- !u!114 &8042391954771092529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,6 +1482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc7a1cb099daad41b919a7f5177525c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaTransitionName: 
 --- !u!114 &2707338809811056567
 MonoBehaviour:
   m_ObjectHideFlags: 0

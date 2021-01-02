@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NPC
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -258,6 +258,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8346049907008822168}
     m_Modifications:
+    - target: {fileID: 4961782350930511891, guid: 489c6fd7c3be82246bde8f130e1ea671, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4596399966826304622, guid: e794d1f8d62f0174bbcd6badf4048e06, type: 3}
     - target: {fileID: 5153384812484066256, guid: 489c6fd7c3be82246bde8f130e1ea671, type: 3}
       propertyPath: m_Name
       value: QuestIcon

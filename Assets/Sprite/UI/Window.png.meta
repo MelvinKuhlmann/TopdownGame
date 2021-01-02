@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: -8845919951442575272
     second: Window
+  - first:
+      213: 5570680295572370271
+    second: ItemSlot
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -156,6 +159,27 @@ TextureImporter:
       bones: []
       spriteID: 85089befbaafc3580800000000000000
       internalID: -8845919951442575272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ItemSlot
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 81
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 9, y: 9, z: 9, w: 9}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f53fbdec6380f4d40800000000000000
+      internalID: 5570680295572370271
       vertices: []
       indices: 
       edges: []

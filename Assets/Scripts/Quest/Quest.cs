@@ -14,7 +14,7 @@ public class Quest : ScriptableObject {
     public string completedDescription;
     public int experienceReward;
     public int shardsReward;
-    public Item itemReward;
+    public List<Item> itemRewards = new List<Item>();
     public int levelRequirement;
 
     public void Init()
@@ -36,13 +36,8 @@ public class Quest : ScriptableObject {
 
     public void GiveReward()
     {
-        if (itemReward != null)
-        {
-            Debug.Log("Call inventory system to give reward");
-            Inventory.instance.Add(itemReward);
-        }
-        Debug.Log("Call playercontroller to give EXP");
+        itemRewards.ForEach(r => Inventory.instance.Add(r));
         Player.instance.AddExp(experienceReward);
-        //TODO add shards to player
+        Player.instance.shards += shardsReward;
     }
 }

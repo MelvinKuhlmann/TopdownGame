@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class AcceptRewardUI : MonoBehaviour
 {
+    [Header("UI elements")]
     public static AcceptRewardUI instance;
     public GameObject panel;
     public TMP_Text questName;
     public TMP_Text questCompletionDescription;
     public TMP_Text expReward;
     public TMP_Text shardsReward;
+    public GameObject itemContainer;
     public List<Quest> quests;
+
+    [Header("Item Prefab")]
+    public GameObject itemPrefab;
 
     private int currentQuestItem = 0;
 
@@ -44,7 +49,23 @@ public class AcceptRewardUI : MonoBehaviour
         questCompletionDescription.text = quest.completedDescription;
         expReward.text = quest.experienceReward.ToString();
         shardsReward.text = quest.shardsReward.ToString();
-        //TODO add items to the Canvas
+
+        //Clear before filling
+        foreach (Transform child in itemContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < quest.itemRewards.Count; i++)
+        {
+            GameObject item = Instantiate(itemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            item.transform.SetParent(itemContainer.transform, false);
+
+            ItemButton itemButton = item.GetComponent<ItemButton>();
+            itemButton.itemImage.sprite = quest.itemRewards[i].icon;
+            itemButton.amountText.text = "";
+            itemButton.item = quest.itemRewards[i];
+        }
     }
 
     void AcceptReward()

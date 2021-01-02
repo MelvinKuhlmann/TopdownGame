@@ -35,11 +35,19 @@ public class NPC : Interactable
         }
         if (ShowQuestCompleteIcon())
         {
+            //Show quest complete icon when at least one quest of this questgiver is ready to turn in
+            canvas.SetQuestIconVisible(true);
             canvas.SetQuestIconToQuestComplete();
         }
-        else
+        else if (availableQuests.Any(currentQuest => !QuestLog.instance.AlreadyAccepted(currentQuest)))
         {
+            //Show quest available icon only when at least one quest can be accepted
+            canvas.SetQuestIconVisible(true);
             canvas.SetQuestIconToNewQuest();
+        } else
+        {
+            //Hide the icon if nothing can be turned in, and no quests can be accepted
+            canvas.SetQuestIconVisible(false);
         }
     }
 

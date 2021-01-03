@@ -30,7 +30,7 @@ public class Quest : ScriptableObject {
 
         if (completed)
         {
-            Debug.Log(string.Format("Quest completed: {0} ", name));
+            QuestEvents.QuestCompleted(this);
         }
     }
 

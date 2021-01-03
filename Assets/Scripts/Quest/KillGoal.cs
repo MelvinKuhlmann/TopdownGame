@@ -18,8 +18,8 @@ public class KillGoal : Goal
     {
         if (enemy.ID == this.enemyID)
         {
-            Debug.Log(string.Format("Enemy {0} thats belongs to a quest died. ", enemy.ID));
             currentKills++;
+            QuestEvents.EnemyKilled(this, enemy);
             Evaluate();
         }
     }
@@ -31,5 +31,10 @@ public class KillGoal : Goal
         {
             Complete();
         }
+    }
+
+    public int CurrentKills()
+    {
+        return currentKills;
     }
 }

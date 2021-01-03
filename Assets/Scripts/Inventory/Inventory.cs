@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
     public int maxSpace = 20;
+    public int shards = 0;
 
     // Callback which is triggered when
     // an item gets added/removed.

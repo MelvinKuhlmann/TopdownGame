@@ -21,5 +21,7 @@ MonoBehaviour:
     crap out of Melvin!
   experienceReward: 150
   shardsReward: 50
-  itemReward: {fileID: 0}
+  itemRewards:
+  - {fileID: 11400000, guid: a3417df5ae83f744895747ff8614832b, type: 2}
+  - {fileID: 11400000, guid: 35121f0848fcbee4fb8fdb99d8da2939, type: 2}
   levelRequirement: 4

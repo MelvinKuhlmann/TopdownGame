@@ -38,6 +38,6 @@ public class Quest : ScriptableObject {
     {
         itemRewards.ForEach(r => Inventory.instance.Add(r));
         Player.instance.AddExp(experienceReward);
-        Player.instance.shards += shardsReward;
+        Inventory.instance.shards += shardsReward;
     }
 }

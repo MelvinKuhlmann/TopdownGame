@@ -98,15 +98,15 @@ public class ShopUI : MonoBehaviour
         ClearItems(sellMenuItems.transform);
         if (Inventory.instance.items.Count >= 1)
         {
-            SelectSellItem(Inventory.instance.items[0]);// TODO get from inventory instead of NPC
+            SelectSellItem(Inventory.instance.items[0]);
 
-            for (int i = 0; i < Inventory.instance.items.Count; i++) // TODO get from inventory instead of NPC
+            for (int i = 0; i < Inventory.instance.items.Count; i++) 
             {
                 GameObject item = Instantiate(shopItem, new Vector3(0, 0, 0), Quaternion.identity);
                 item.transform.SetParent(sellMenuItems.transform, false);
 
                 ItemButton itemButton = item.GetComponent<ItemButton>();
-                itemButton.itemImage.sprite = Inventory.instance.items[i].icon; // TODO get from inventory instead of NPC
+                itemButton.itemImage.sprite = Inventory.instance.items[i].icon; 
                 itemButton.amountText.text = "13";
                 itemButton.item = Inventory.instance.items[i];
             }
@@ -154,9 +154,9 @@ public class ShopUI : MonoBehaviour
     {
         if (selectedItem != null)
         {
-            if (Player.instance.shards >= selectedItem.buyValue)
+            if (Inventory.instance.shards >= selectedItem.buyValue)
             {
-                Player.instance.shards -= selectedItem.buyValue;
+                Inventory.instance.shards -= selectedItem.buyValue;
                 Inventory.instance.Add(selectedItem);
                 UpdatePlayerTotalShards();
             }
@@ -167,7 +167,7 @@ public class ShopUI : MonoBehaviour
     {
         if (selectedItem != null)
         {
-            Player.instance.shards += selectedItem.sellValue;
+            Inventory.instance.shards += selectedItem.sellValue;
             Inventory.instance.Remove(selectedItem);
             //TODO determine which items should be selected after selling one, by default it goes now to the first item
             ShowSellItems();
@@ -177,6 +177,6 @@ public class ShopUI : MonoBehaviour
 
     void UpdatePlayerTotalShards()
     {
-        shardText.text = string.Format("{0}s", Player.instance.shards);  //TODO get shards from player
+        shardText.text = string.Format("{0}s", Inventory.instance.shards);
     }
 }

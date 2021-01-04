@@ -53,7 +53,6 @@ public class QuestLog : MonoBehaviour
     {
         if (currentQuests.Find(currentQuest => currentQuest.name.Equals(quest.name)) != null)
         {
-            Debug.Log("Quest already exists in quest log!");
             return true;
         }
         return false;
@@ -70,7 +69,6 @@ public class QuestLog : MonoBehaviour
 
     public void Remove(Quest quest)
     {
-        Debug.Log(string.Format("Removing {0} from quest log", quest.name));
         currentQuests.Remove(quest);
         onQuestChangedCallback.Invoke();
     }

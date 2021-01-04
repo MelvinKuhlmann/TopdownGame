@@ -11,6 +11,9 @@ public class QuestEvents : MonoBehaviour
     public delegate void QuestEventHandler(Quest quest);
     public static event QuestEventHandler OnQuestComplete;
 
+    public delegate void QuestLogEventHandler(Quest quest);
+    public static event QuestLogEventHandler OnQuestClicked;
+
     public static void GoalCompleted(Goal goal)
     {
         if (OnGoalComplete != null)
@@ -32,6 +35,14 @@ public class QuestEvents : MonoBehaviour
         if (OnQuestComplete != null)
         {
             OnQuestComplete(quest);
+        }
+    }
+
+    public static void QuestClicked(Quest quest)
+    {
+        if (OnQuestClicked != null)
+        {
+            OnQuestClicked(quest);
         }
     }
 }

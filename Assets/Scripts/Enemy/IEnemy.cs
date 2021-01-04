@@ -1,4 +1,5 @@
-﻿public interface IEnemy 
+﻿
+public interface IEnemy 
 {
     int ID { get; set; }
     int experience { get; set; }

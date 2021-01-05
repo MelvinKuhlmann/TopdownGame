@@ -14,9 +14,9 @@ public class KillGoal : Goal
         CombatEvents.OnEnemyDeath += EnemyDied;
     }
 
-    void EnemyDied(IEnemy enemy)
+    void EnemyDied(Enemy enemy)
     {
-        if (enemy.ID == this.enemyID)
+        if (enemy.id == enemyID)
         {
             currentKills++;
             QuestEvents.EnemyKilled(this, enemy);

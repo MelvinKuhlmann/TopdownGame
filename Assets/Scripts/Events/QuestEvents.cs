@@ -5,7 +5,7 @@ public class QuestEvents : MonoBehaviour
     public delegate void GoalEventHandler(Goal goal);
     public static event GoalEventHandler OnGoalComplete;
 
-    public delegate void KillGoalEventHandler(KillGoal goal, IEnemy enemy);
+    public delegate void KillGoalEventHandler(KillGoal goal, Enemy enemy);
     public static event KillGoalEventHandler OnEnemyKilled;
 
     public delegate void QuestEventHandler(Quest quest);
@@ -22,12 +22,9 @@ public class QuestEvents : MonoBehaviour
         }
     }
 
-    public static void EnemyKilled(KillGoal goal, IEnemy enemy)
+    public static void EnemyKilled(KillGoal goal, Enemy enemy)
     {
-        if (OnEnemyKilled != null)
-        {
-            OnEnemyKilled(goal, enemy);
-        }
+        OnEnemyKilled?.Invoke(goal, enemy);
     }
 
     public static void QuestCompleted(Quest quest)

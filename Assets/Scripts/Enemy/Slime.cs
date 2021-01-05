@@ -1,36 +1,19 @@
 ﻿using UnityEngine;
 
-public class Slime : MonoBehaviour, IEnemy
+public class Slime : Enemy
 {
-    public int currentHealth;
-    public int maxHealth;
-    public int ID { get; set;}
-    public int experience { get; set; }
+    public override int id => 2;
+    public override string name => "Slime";
 
-    public void Die()
-    {
-        Debug.Log("Enemy die");
-        CombatEvents.EnemyDied(this);
-    }
+    public override int maxHealth => 20;
 
-    public void PerformAttack()
-    {
-    }
+    public override int experience => 20;
 
-    public void TakeDamage(int amount)
-    {
-        currentHealth -= amount;
-        if (currentHealth <= 0) { 
-            Die();
-        }
-    }
+    public override int level => 2;
 
-    void Start()
+    protected override void PerformAttack()
     {
-        ID = 1;
-        experience = 100;
-        maxHealth = 10;
-        currentHealth = maxHealth;
+        throw new System.NotImplementedException();
     }
 
     void Update()

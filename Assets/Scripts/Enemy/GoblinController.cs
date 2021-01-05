@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
 
-public class GoblinController : MonoBehaviour, IEnemy
+public class GoblinController : Enemy
 {
-    public int currentHealth;
-    public int maxHealth;
-    public int ID { get; set; }
-    public int experience { get; set; }
-
-    public float movespeed;
     private Rigidbody2D myRigidbody2D;
-
-    private bool moving;
-    public float timeBetweenMove;
     private float timeBetweenMoveCounter;
-    public float timeToMove;
     private float timeToMoveCounter;
     private Vector3 moveDirection;
+    private bool moving;
+
+    public float timeBetweenMove;
+    public float timeToMove;
+
+    public override int id => 1;
+
+    public override string name => "Goblin";
+
+    public override int maxHealth => 10;
+
+    public override int experience => 10;
+
+    public override int level => 1;
 
     void Start()
     {
@@ -23,7 +27,6 @@ public class GoblinController : MonoBehaviour, IEnemy
 
         timeBetweenMoveCounter = Random.Range (timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);
         timeToMoveCounter = Random.Range (timeToMove * 0.75f, timeToMove * 1.25f);
-        
     }
 
     void Update()
@@ -38,7 +41,6 @@ public class GoblinController : MonoBehaviour, IEnemy
                 moving = false;
                 timeBetweenMoveCounter = Random.Range(timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);
             }
-
         }
         else
         {
@@ -49,26 +51,13 @@ public class GoblinController : MonoBehaviour, IEnemy
             {
                 moving = true;
                 timeToMoveCounter = Random.Range(timeToMove * 0.75f, timeToMove * 1.25f);
-                moveDirection = new Vector3(Random.Range (-1f, 1f) * movespeed, Random.Range(-1f,1f) * movespeed, 0f); 
+                moveDirection = new Vector3(Random.Range (-1f, 1f) * moveSpeed, Random.Range(-1f,1f) * moveSpeed, 0f); 
             }
         }
     }
 
-    public void Die()
+    protected override void PerformAttack()
     {
-        CombatEvents.EnemyDied(this);
-    }
-
-    public void PerformAttack()
-    {
-    }
-
-    public void TakeDamage(int amount)
-    {
-        currentHealth -= amount;
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        throw new System.NotImplementedException();
     }
 }

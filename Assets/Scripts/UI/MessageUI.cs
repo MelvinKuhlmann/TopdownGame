@@ -30,7 +30,7 @@ public class MessageUI : MonoBehaviour
         animator.SetTrigger("Show");
     }
 
-    void EnemyKilled(KillGoal goal, IEnemy enemy)
+    void EnemyKilled(KillGoal goal, Enemy enemy)
     {
         text.text = string.Format("{0} ({1}/{2})", goal.description, goal.CurrentKills(), goal.requiredKills);
         animator.SetTrigger("Show");

@@ -42,6 +42,7 @@ public class QuestLog : MonoBehaviour
         }
 
         Debug.Log(string.Format("Adding {0} to quest log", quest.name));
+        quest.Init();
         currentQuests.Add(quest);
 
         onQuestChangedCallback.Invoke();
@@ -51,7 +52,7 @@ public class QuestLog : MonoBehaviour
 
     public bool AlreadyAccepted(Quest quest)
     {
-        if (currentQuests.Find(currentQuest => currentQuest.name.Equals(quest.name)) != null)
+        if (currentQuests.Find(currentQuest => currentQuest.id.Equals(quest.id)) != null)
         {
             return true;
         }
@@ -60,7 +61,7 @@ public class QuestLog : MonoBehaviour
 
     public bool QuestCompleted(Quest quest)
     {
-        if (currentQuests.Find(q => q.name.Equals(quest.name)) != null)
+        if (currentQuests.Find(q => q.id.Equals(quest.id)) != null)
         {
             return quest.completed;
         }

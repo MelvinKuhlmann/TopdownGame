@@ -53,6 +53,11 @@ public class QuestLogUI : MonoBehaviour
         }
     }
 
+    public void CloseUI()
+    {
+        panel.SetActive(false);
+    }
+
     void UpdateUI()
     {
         ClearList(questList.transform);
@@ -94,6 +99,13 @@ public class QuestLogUI : MonoBehaviour
 
             QuestObjectiveEntry objective = entry.GetComponent<QuestObjectiveEntry>();
             objective.objectiveTitle.text = quest.goals[i].description;
+            if (quest.goals[i].completed)
+            {
+                objective.image.sprite = objective.iconDone;
+            } else
+            {
+                objective.image.sprite = objective.iconToDo;
+            }
         }
     }
 

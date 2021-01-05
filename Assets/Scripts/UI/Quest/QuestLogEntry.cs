@@ -21,7 +21,6 @@ public class QuestLogEntry : MonoBehaviour
     public void AddQuest(Quest quest)
     {
         this.quest = quest;
-        quest.Init();
         questName.enabled = true;
         questName.text = quest.name;
     }

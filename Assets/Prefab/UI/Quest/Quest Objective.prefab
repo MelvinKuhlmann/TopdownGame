@@ -85,7 +85,6 @@ GameObject:
   m_Component:
   - component: {fileID: 373774019339997928}
   - component: {fileID: 8636789959267479882}
-  - component: {fileID: 3157619341013096719}
   - component: {fileID: 5964459853677254196}
   m_Layer: 5
   m_Name: Quest Objective
@@ -123,36 +122,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6594858755708971991}
   m_CullTransparentMesh: 0
---- !u!114 &3157619341013096719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6594858755708971991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &5964459853677254196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f898c86cb6537634b81a57195cf502ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconToDo: {fileID: 1352698437692193608, guid: 282f4ad6ef69242458558902b8686d03, type: 3}
+  iconDone: {fileID: -1084506796412200865, guid: 282f4ad6ef69242458558902b8686d03, type: 3}
   image: {fileID: 2107721488530178602}
   objectiveTitle: {fileID: 3893325990571509284}
 --- !u!1 &7801947636099600058
@@ -259,8 +230,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

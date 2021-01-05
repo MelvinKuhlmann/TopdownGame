@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class NPCEvents : MonoBehaviour
 {
     public delegate void NPCEventHandler(NPC npc);

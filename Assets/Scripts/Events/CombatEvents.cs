@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class CombatEvents : MonoBehaviour
 {
     public delegate void EnemyEventHandler(IEnemy enemy);

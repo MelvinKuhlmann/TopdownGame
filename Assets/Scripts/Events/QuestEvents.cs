@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class QuestEvents : MonoBehaviour
 {
     public delegate void GoalEventHandler(Goal goal);

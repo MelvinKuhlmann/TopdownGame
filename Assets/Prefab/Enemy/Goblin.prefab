@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5226787970364142188}
   - component: {fileID: 5226787970364142179}
   - component: {fileID: 5226787970364142178}
-  - component: {fileID: 7597841405914573222}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -152,11 +151,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenMove: 2
   timeToMove: 3
---- !u!222 &7597841405914573222
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5226787970364142177}
-  m_CullTransparentMesh: 0

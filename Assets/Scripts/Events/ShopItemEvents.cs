@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 public class ShopItemEvents : MonoBehaviour
 {
     public delegate void OnItemClicked(Item item);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 public class Slime : MonoBehaviour, IEnemy
 {
     public int currentHealth;

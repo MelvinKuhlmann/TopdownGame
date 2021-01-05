@@ -17,9 +17,6 @@ public class GoblinController : MonoBehaviour, IEnemy
     private float timeToMoveCounter;
     private Vector3 moveDirection;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
@@ -29,7 +26,6 @@ public class GoblinController : MonoBehaviour, IEnemy
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (moving)
@@ -60,7 +56,6 @@ public class GoblinController : MonoBehaviour, IEnemy
 
     public void Die()
     {
-        Debug.Log("Enemy die");
         CombatEvents.EnemyDied(this);
     }
 
@@ -76,6 +71,4 @@ public class GoblinController : MonoBehaviour, IEnemy
             Die();
         }
     }
-
-
 }

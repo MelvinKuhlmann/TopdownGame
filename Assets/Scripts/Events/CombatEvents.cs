@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 public class CombatEvents : MonoBehaviour
 {
     public delegate void EnemyEventHandler(IEnemy enemy);
@@ -6,9 +7,6 @@ public class CombatEvents : MonoBehaviour
 
     public static void EnemyDied(IEnemy enemy)
     {
-        if (OnEnemyDeath != null)
-        {
-            OnEnemyDeath(enemy);
-        }
+        OnEnemyDeath?.Invoke(enemy);
     }
 }

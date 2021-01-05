@@ -11,6 +11,13 @@ public class Slime : Enemy
 
     public override int level => 2;
 
+    public override int moveSpeed => 1;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
+
     protected override void PerformAttack()
     {
         throw new System.NotImplementedException();

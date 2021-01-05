@@ -5,7 +5,7 @@ public class GoblinController : Enemy
     private Rigidbody2D myRigidbody2D;
     private float timeBetweenMoveCounter;
     private float timeToMoveCounter;
-    private Vector3 moveDirection;
+    private Vector2 moveDirection;
     private bool moving;
 
     public float timeBetweenMove;
@@ -21,12 +21,15 @@ public class GoblinController : Enemy
 
     public override int level => 1;
 
-    void Start()
+    public override int moveSpeed => 2;
+
+    private void Start()
     {
+        currentHealth = maxHealth; // TODO: Generalize this
         myRigidbody2D = GetComponent<Rigidbody2D>();
 
-        timeBetweenMoveCounter = Random.Range (timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);
-        timeToMoveCounter = Random.Range (timeToMove * 0.75f, timeToMove * 1.25f);
+        timeBetweenMoveCounter = Random.Range(timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);
+        timeToMoveCounter = Random.Range(timeToMove * 0.75f, timeToMove * 1.25f);
     }
 
     void Update()
@@ -36,7 +39,7 @@ public class GoblinController : Enemy
             timeToMoveCounter -= Time.deltaTime;
             myRigidbody2D.velocity = moveDirection;
 
-            if(timeToMoveCounter < 0f)
+            if(timeToMoveCounter < 0F)
             {
                 moving = false;
                 timeBetweenMoveCounter = Random.Range(timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);
@@ -47,11 +50,11 @@ public class GoblinController : Enemy
             timeBetweenMoveCounter -= Time.deltaTime;
             myRigidbody2D.velocity = Vector2.zero;
 
-            if(timeBetweenMoveCounter< 0f)
+            if(timeBetweenMoveCounter < 0F)
             {
                 moving = true;
                 timeToMoveCounter = Random.Range(timeToMove * 0.75f, timeToMove * 1.25f);
-                moveDirection = new Vector3(Random.Range (-1f, 1f) * moveSpeed, Random.Range(-1f,1f) * moveSpeed, 0f); 
+                moveDirection = new Vector2(Random.Range (-1f, 1f) * moveSpeed, Random.Range(-1f,1f) * moveSpeed); 
             }
         }
     }

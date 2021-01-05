@@ -7,10 +7,13 @@ public class Goal : ScriptableObject
     public string description;
     public bool completed { get; set; }
 
+    private bool broadcastCompletion = false;
+
     public virtual void Init()
     {
         // default init stuff
         completed = false;
+        broadcastCompletion = false;
     }
 
     public virtual void Evaluate()
@@ -21,6 +24,10 @@ public class Goal : ScriptableObject
     public void Complete()
     {
         completed = true;
-        QuestEvents.GoalCompleted(this);
+        if (!broadcastCompletion)
+        {
+            QuestEvents.GoalCompleted(this);
+            broadcastCompletion = true;
+        }
     }
 }

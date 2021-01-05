@@ -17,9 +17,12 @@ public class Quest : ScriptableObject {
     public List<Item> itemRewards = new List<Item>();
     public int levelRequirement;
 
+    private bool broadcastCompletion = false;
+
     public void Init()
     {
         completed = false;
+        broadcastCompletion = false;
         goals.ForEach(g => g.Init());
         QuestEvents.OnGoalComplete += GoalCompleted;
     }
@@ -28,8 +31,9 @@ public class Quest : ScriptableObject {
     {
         completed = goals.All(g => g.completed);
 
-        if (completed)
+        if (completed && !broadcastCompletion)
         {
+            broadcastCompletion = true;
             QuestEvents.QuestCompleted(this);
         }
     }

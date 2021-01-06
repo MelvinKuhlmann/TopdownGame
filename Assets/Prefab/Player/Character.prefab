@@ -852,7 +852,7 @@ GameObject:
   - component: {fileID: 5998311417379847193}
   m_Layer: 8
   m_Name: Main_Hand_1
-  m_TagString: Untagged
+  m_TagString: Main_Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

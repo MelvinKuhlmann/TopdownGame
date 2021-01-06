@@ -29,6 +29,11 @@ public abstract class Enemy : MonoBehaviour
         healthbar.maxValue = maxHealth;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+    }
+
     protected void Die()
     {
         CombatEvents.EnemyDied(this);

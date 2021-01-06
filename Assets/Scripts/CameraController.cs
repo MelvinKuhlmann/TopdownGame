@@ -60,7 +60,6 @@ public class CameraController : MonoBehaviour
 		// prevents that the camera will jump to the player
 		isFollowing = true;
 
-		Debug.Log(player);
 		//set the boundaries of the map to the player
 		player.SetBoundaries(map.localBounds.min, map.localBounds.max);
 	}

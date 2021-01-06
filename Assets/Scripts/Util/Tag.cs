@@ -2,5 +2,6 @@
 {
 	FLOOR,
 	GRASS,
-	Player
+	Player,
+	Main_Hand
 }

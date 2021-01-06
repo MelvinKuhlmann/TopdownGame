@@ -154,6 +154,7 @@ MonoBehaviour:
   levelInfo: {fileID: 5655113085588579663}
   nameInfo: {fileID: 8379806528007183730}
   healthbar: {fileID: 4791695911847331625}
+  animator: {fileID: 502885298676750747}
   timeBetweenMove: 2
   timeToMove: 3
 --- !u!95 &502885298676750747

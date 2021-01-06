@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour
 {
+    private bool hittable;
     public abstract int id { get; }
 
     public abstract int maxHealth { get; }
@@ -21,8 +22,11 @@ public abstract class Enemy : MonoBehaviour
     public TMP_Text nameInfo;
     public Slider healthbar;
 
+    public Animator animator;
+
     public void Start()
     {
+        hittable = true;
         currentHealth = maxHealth;
         levelInfo.text = level.ToString();
         nameInfo.text = name;
@@ -31,27 +35,66 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
+        if (Tag.Main_Hand.ToString().Equals(collision.collider.tag))
+        {
+            TakeDamage(Player.instance.totalWeaponPower);
+        }
     }
 
     protected void Die()
     {
-        CombatEvents.EnemyDied(this);
+        ChangeAnimation("isDying");
     }
 
     protected void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        healthbar.value = currentHealth;
-
-        if (currentHealth <= 0)
+        if (hittable)
         {
-            Die();
+            ChangeAnimation("isHit");
+            currentHealth -= amount;
+            healthbar.value = currentHealth;
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+
+            hittable = false;
         }
+
     }
 
     /// <summary>
     /// Implement this method for adding attack logic
     /// </summary>
     protected abstract void PerformAttack();
+
+    public void EnableHittable()
+    {
+        ChangeAnimation("isMoving");
+        hittable = true;
+    }
+
+    public void Dead()
+    {
+        CombatEvents.EnemyDied(this);
+        Destroy(gameObject);
+    }
+
+    private void ChangeAnimation(string animationFlag, bool resetAll = true)
+    {
+        if (resetAll)
+        {
+            ResetAnimationParameters();
+        }
+        animator.SetBool(animationFlag, true);
+    }
+
+    private void ResetAnimationParameters()
+    {
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
+        {
+            animator.SetBool(parameter.name, false);
+        }
+    }
 }

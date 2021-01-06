@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     public int defense;
     public int baseWeaponPower;
     public int totalWeaponPower;
+    public int baseWeaponRange;
     public int armorPower = 1;
     public float movementSpeed = 5.0f;
 
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
     private void SetBaseStats()
     {
         baseWeaponPower = 1;
+        baseWeaponRange = 3;
     }
 
     public void AddExp(int expToAdd)

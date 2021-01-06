@@ -36,9 +36,11 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        int playerTotalWeaponPower = Player.instance.totalWeaponPower;
+
         if (Tag.Main_Hand.ToString().Equals(collision.collider.tag))
         {
-            TakeDamage(Player.instance.totalWeaponPower);
+            TakeDamage(Random.Range(playerTotalWeaponPower, playerTotalWeaponPower + Player.instance.baseWeaponRange));
         }
     }
 
@@ -53,6 +55,7 @@ public abstract class Enemy : MonoBehaviour
         {
             ChangeAnimation("isHit");
             ShowDamageNumber(amount);
+
             currentHealth -= amount;
             healthbar.value = currentHealth;
 

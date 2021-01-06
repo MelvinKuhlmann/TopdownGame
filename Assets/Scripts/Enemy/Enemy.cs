@@ -21,6 +21,7 @@ public abstract class Enemy : MonoBehaviour
     public TMP_Text levelInfo;
     public TMP_Text nameInfo;
     public Slider healthbar;
+    public TMP_Text damageNumber;
 
     public Animator animator;
 
@@ -51,6 +52,7 @@ public abstract class Enemy : MonoBehaviour
         if (hittable)
         {
             ChangeAnimation("isHit");
+            ShowDamageNumber(amount);
             currentHealth -= amount;
             healthbar.value = currentHealth;
 
@@ -96,5 +98,11 @@ public abstract class Enemy : MonoBehaviour
         {
             animator.SetBool(parameter.name, false);
         }
+    }
+
+    public void ShowDamageNumber(int amount)
+    {
+        damageNumber.text = amount.ToString();
+        damageNumber.GetComponent<Animator>().Play("Base Layer.DamageFloat");
     }
 }

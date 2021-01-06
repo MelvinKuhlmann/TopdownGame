@@ -31,10 +31,9 @@ public class PickupableObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(Tag.Player.ToString()))
+        if (other.CompareTag(Tag.Player.ToString()) && Inventory.instance.Add(item))
         {
             Destroy(gameObject);
-            Inventory.instance.Add(item);
         }
     }
 }

@@ -16,10 +16,7 @@ public class QuestEvents : MonoBehaviour
 
     public static void GoalCompleted(Goal goal)
     {
-        if (OnGoalComplete != null)
-        {
-            OnGoalComplete(goal);
-        }
+        OnGoalComplete?.Invoke(goal);
     }
 
     public static void EnemyKilled(KillGoal goal, Enemy enemy)
@@ -29,17 +26,11 @@ public class QuestEvents : MonoBehaviour
 
     public static void QuestCompleted(Quest quest)
     {
-        if (OnQuestComplete != null)
-        {
-            OnQuestComplete(quest);
-        }
+        OnQuestComplete?.Invoke(quest);
     }
 
     public static void QuestClicked(Quest quest)
     {
-        if (OnQuestClicked != null)
-        {
-            OnQuestClicked(quest);
-        }
+        OnQuestClicked?.Invoke(quest);
     }
 }

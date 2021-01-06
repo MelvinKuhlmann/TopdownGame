@@ -34,7 +34,7 @@ public abstract class Enemy : MonoBehaviour
         healthbar.maxValue = maxHealth;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         int playerTotalWeaponPower = Player.instance.totalWeaponPower;
 

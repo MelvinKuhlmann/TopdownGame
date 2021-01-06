@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -18,12 +19,14 @@ public abstract class Enemy : MonoBehaviour
 
     public TMP_Text levelInfo;
     public TMP_Text nameInfo;
+    public Slider healthbar;
 
     public void Start()
     {
         currentHealth = maxHealth;
-        levelInfo.text = string.Format("Lv. {0}", level);
+        levelInfo.text = level.ToString();
         nameInfo.text = name;
+        healthbar.maxValue = maxHealth;
     }
 
     protected void Die()
@@ -34,6 +37,8 @@ public abstract class Enemy : MonoBehaviour
     protected void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        healthbar.value = currentHealth;
+
         if (currentHealth <= 0)
         {
             Die();

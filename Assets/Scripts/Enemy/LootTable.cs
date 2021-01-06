@@ -40,7 +40,7 @@ public class LootTable : MonoBehaviour
         gameObject.AddComponent<SpriteRenderer>().sprite = item.icon;
         gameObject.AddComponent<PickupableObject>().item = item;
         gameObject.name = item.name;
-        gameObject.transform.position = new Vector3(transform.position.x + Random.Range(0, 0.01F), transform.position.y + Random.Range(0, 0.01F), transform.position.z);
+        gameObject.transform.position = new Vector3(transform.position.x + Random.Range(0, 1F), transform.position.y + Random.Range(0, 1F), transform.position.z);
 
         //Instantiate(gameObject, new Vector2(), Quaternion.identity);
     }

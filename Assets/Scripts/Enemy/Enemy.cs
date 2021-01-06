@@ -18,9 +18,9 @@ public abstract class Enemy : MonoBehaviour
 
     public int currentHealth { get; set; }
 
+    public Slider healthbar;
     public TMP_Text levelInfo;
     public TMP_Text nameInfo;
-    public Slider healthbar;
     public TMP_Text damageNumber;
 
     public Animator animator;

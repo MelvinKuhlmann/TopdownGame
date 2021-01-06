@@ -199,6 +199,8 @@ MonoBehaviour:
   uniqueLoot:
   - {fileID: 11400000, guid: c5594b60ebca586419c360c627f807ba, type: 2}
   silver: 10
+  uniqueDropChance: 0.5
+  rareDropChance: 15
 --- !u!1001 &6426219588682185632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +238,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5418299041762838590, guid: b63200a0878c4314bb2444a3d9e6a24d, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418299041762838590, guid: b63200a0878c4314bb2444a3d9e6a24d, type: 3}
+      propertyPath: m_fontColor.g
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8278091887238856760, guid: b63200a0878c4314bb2444a3d9e6a24d, type: 3}

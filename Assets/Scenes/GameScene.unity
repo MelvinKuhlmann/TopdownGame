@@ -5120,8 +5120,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1305814018829841310, guid: 6e0e486920d415e4c88b88fbee424553, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.11461401
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305814018829841310, guid: 6e0e486920d415e4c88b88fbee424553, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305814018829841310, guid: 6e0e486920d415e4c88b88fbee424553, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305814018829841310, guid: 6e0e486920d415e4c88b88fbee424553, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305814018829841310, guid: 6e0e486920d415e4c88b88fbee424553, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16820409
+      value: 4863
       objectReference: {fileID: 0}
     - target: {fileID: 4681919466347533484, guid: 6e0e486920d415e4c88b88fbee424553, type: 3}
       propertyPath: m_Pivot.x

@@ -13,9 +13,9 @@ public class Slime : Enemy
 
     public override int moveSpeed => 1;
 
-    private void Start()
+    private new void Start()
     {
-        currentHealth = maxHealth;
+        base.Start();
     }
 
     protected override void PerformAttack()

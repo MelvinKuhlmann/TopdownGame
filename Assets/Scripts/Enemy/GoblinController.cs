@@ -23,9 +23,10 @@ public class GoblinController : Enemy
 
     public override int moveSpeed => 2;
 
-    private void Start()
+    private new void Start()
     {
-        currentHealth = maxHealth; // TODO: Generalize this
+        base.Start();
+
         myRigidbody2D = GetComponent<Rigidbody2D>();
 
         timeBetweenMoveCounter = Random.Range(timeBetweenMove * 0.75f, timeBetweenMove * 1.25f);

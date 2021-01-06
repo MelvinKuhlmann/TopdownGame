@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -14,6 +15,16 @@ public abstract class Enemy : MonoBehaviour
     public new abstract string name { get; }
 
     public int currentHealth { get; set; }
+
+    public TMP_Text levelInfo;
+    public TMP_Text nameInfo;
+
+    public void Start()
+    {
+        currentHealth = maxHealth;
+        levelInfo.text = string.Format("Lv. {0}", level);
+        nameInfo.text = name;
+    }
 
     protected void Die()
     {

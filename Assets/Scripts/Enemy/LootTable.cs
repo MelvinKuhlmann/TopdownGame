@@ -23,11 +23,10 @@ public class LootTable : MonoBehaviour
         {
             Debug.Log(string.Format("Rolled: {0}. Dropping rare loot.", randomNumber));
             Drop(rareLoot[Random.Range(0, rareLoot.Length)]);
-        } else
-        {
-            Debug.Log(string.Format("Rolled: {0}. Dropping basic loot.", randomNumber));
-            Drop(basicLoot[Random.Range(0, basicLoot.Length)]);
         }
+
+        Debug.Log(string.Format("Rolled: {0}. Dropping basic loot.", randomNumber));
+        Drop(basicLoot[Random.Range(0, basicLoot.Length)]);
     }
 
     public void DropSilver()

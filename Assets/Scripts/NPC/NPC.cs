@@ -28,6 +28,7 @@ public class NPC : Interactable
 
     public override void UpdateHook()
     {
+        Moving();
         if (!GetComponent<Renderer>().isVisible)
         {
             //NPC is not shown by camera
@@ -48,6 +49,53 @@ public class NPC : Interactable
         {
             //Hide the icon if nothing can be turned in, and no quests can be accepted
             canvas.SetQuestIconVisible(false);
+        }
+    }
+
+    private void Moving()
+    {
+        FollowPath path = GetComponent<FollowPath>();
+        if (path == null)
+        {
+            return;
+        }
+       
+        if(path.MoveHorizontal() == 0 && path.MoveVertical()  == 0)
+        {
+            ChangeAnimation("isIdle");
+        }
+
+        if (path.MoveHorizontal() > 0)
+        {
+            ChangeAnimation("isMovingRight");
+        } else
+        {
+            ChangeAnimation("isMovingLeft");
+        }
+        if (path.MoveVertical() > 0)
+        {
+            ChangeAnimation("isMovingUp");
+        }
+        else
+        {
+            ChangeAnimation("isMovingDown");
+        }
+    }
+
+    public void ChangeAnimation(string animationFlag, bool resetAll = true)
+    {
+        if (resetAll)
+        {
+            ResetAnimationParameters();
+        }
+        GetComponent<Animator>().SetBool(animationFlag, true);
+    }
+
+    private void ResetAnimationParameters()
+    {
+        foreach (AnimatorControllerParameter parameter in GetComponent<Animator>().parameters)
+        {
+            GetComponent<Animator>().SetBool(parameter.name, false);
         }
     }
 

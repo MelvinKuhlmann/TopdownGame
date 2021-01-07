@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: BlackSmith
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Left_Hand
+    m_Hash: 572921565
+    m_CategoryList:
+    - m_Name: Left_Hand
+      m_Hash: 572921565
+      m_Sprite: {fileID: 869005833392721899, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+  - m_Name: Right_Hand
+    m_Hash: 1077446588
+    m_CategoryList:
+    - m_Name: Left_Hand
+      m_Hash: 572921565
+      m_Sprite: {fileID: 8813835253993530868, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+  - m_Name: Main_Hand
+    m_Hash: -451781264
+    m_CategoryList:
+    - m_Name: Left_Hand
+      m_Hash: 572921565
+      m_Sprite: {fileID: 6713516599883147525, guid: 4296899d125c45a4d94463323ee60af6, type: 3}
+  - m_Name: Off_Hand
+    m_Hash: -1090260985
+    m_CategoryList:
+    - m_Name: Shield
+      m_Hash: 423614430
+      m_Sprite: {fileID: -2495535688520904093, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+  - m_Name: Head
+    m_Hash: 130111906
+    m_CategoryList:
+    - m_Name: Head_Down
+      m_Hash: -2111395472
+      m_Sprite: {fileID: 1744371893612565925, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+    - m_Name: Head_Up
+      m_Hash: 1385100672
+      m_Sprite: {fileID: 6183123424408918629, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+    - m_Name: Head
+      m_Hash: 130111906
+      m_Sprite: {fileID: -8145144822760051751, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+    - m_Name: Head_Left
+      m_Hash: -457253341
+      m_Sprite: {fileID: -8412152294413236217, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+  - m_Name: Body
+    m_Hash: 2073732236
+    m_CategoryList:
+    - m_Name: Body
+      m_Hash: 2073732236
+      m_Sprite: {fileID: -3211446657560388906, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+  - m_Name: Left_Foot
+    m_Hash: -859083327
+    m_CategoryList:
+    - m_Name: Left_Foot
+      m_Hash: -859083327
+      m_Sprite: {fileID: 1225634283517428593, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+  - m_Name: Right_Foot
+    m_Hash: -1361707872
+    m_CategoryList:
+    - m_Name: Right_Foot
+      m_Hash: -1361707872
+      m_Sprite: {fileID: 682740581033966072, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+  - m_Name: Left_Eye
+    m_Hash: 914081398
+    m_CategoryList:
+    - m_Name: Left_Eye
+      m_Hash: 914081398
+      m_Sprite: {fileID: -1508067419733855579, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}
+  - m_Name: Right_Eye
+    m_Hash: -168331222
+    m_CategoryList:
+    - m_Name: Right_Eye
+      m_Hash: -168331222
+      m_Sprite: {fileID: -5508191979937678074, guid: 48dbe796848b08b44923b2b30d15d933, type: 3}

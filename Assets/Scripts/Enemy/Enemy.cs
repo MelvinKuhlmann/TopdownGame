@@ -5,11 +5,13 @@ using UnityEngine.UI;
 public abstract class Enemy : MonoBehaviour
 {
     private bool hittable;
+
     public abstract int id { get; }
 
     public abstract int maxHealth { get; }
 
     public abstract int experience { get; }
+
     public abstract int level { get; }
 
     public abstract int moveSpeed { get; }
@@ -24,6 +26,8 @@ public abstract class Enemy : MonoBehaviour
     public TMP_Text damageNumber;
 
     public Animator animator;
+
+    public LootTable lootTable;
 
     public void Start()
     {
@@ -83,6 +87,7 @@ public abstract class Enemy : MonoBehaviour
     public void Dead()
     {
         CombatEvents.EnemyDied(this);
+        lootTable.DropItem();
         Destroy(gameObject);
     }
 

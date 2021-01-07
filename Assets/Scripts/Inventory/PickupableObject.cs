@@ -5,10 +5,17 @@ public class PickupableObject : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private Sprite sprite;
     public Item item;
+    private Animator itemAnimator;
 
     private void Start()
     {
         sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+
+        // Add animator at runtime
+        itemAnimator = gameObject.AddComponent<Animator>();
+        // IMPORTANT: Assets in the Resources folder are the ones exposed through Resources.Load
+        itemAnimator.runtimeAnimatorController = Resources.Load("Animations/Item/ItemController") as RuntimeAnimatorController;
+        itemAnimator.applyRootMotion = true;
 
         InitCollider2D();
     }
@@ -24,11 +31,9 @@ public class PickupableObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(Tag.Player.ToString()))
+        if (other.CompareTag(Tag.Player.ToString()) && Inventory.instance.Add(item))
         {
             Destroy(gameObject);
-            Debug.Log(string.Format("Player picked up {0}", gameObject.name));
-            Inventory.instance.Add(item);
         }
     }
 }

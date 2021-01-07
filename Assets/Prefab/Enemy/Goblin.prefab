@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5226787970364142179}
   - component: {fileID: 5226787970364142178}
   - component: {fileID: 502885298676750747}
+  - component: {fileID: 2801259922086325584}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -151,11 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5d5ab35b6f7214a93c5cf7a6c33985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthbar: {fileID: 4791695911847331625}
   levelInfo: {fileID: 5655113085588579663}
   nameInfo: {fileID: 8379806528007183730}
-  healthbar: {fileID: 4791695911847331625}
   damageNumber: {fileID: 1305814018829841310}
   animator: {fileID: 502885298676750747}
+  lootTable: {fileID: 2801259922086325584}
   timeBetweenMove: 2
   timeToMove: 3
 --- !u!95 &502885298676750747
@@ -177,6 +179,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2801259922086325584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226787970364142177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c22c50db03b24479a6d69fd8b473e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicLoot:
+  - {fileID: 11400000, guid: a3417df5ae83f744895747ff8614832b, type: 2}
+  - {fileID: 11400000, guid: f3ba14142bc13fd4bae3a0e8c36cbad5, type: 2}
+  rareLoot:
+  - {fileID: 11400000, guid: 35121f0848fcbee4fb8fdb99d8da2939, type: 2}
+  uniqueLoot:
+  - {fileID: 11400000, guid: c5594b60ebca586419c360c627f807ba, type: 2}
+  silver: 10
+  uniqueDropChance: 0.5
+  rareDropChance: 15
 --- !u!1001 &6426219588682185632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,6 +238,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5418299041762838590, guid: b63200a0878c4314bb2444a3d9e6a24d, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418299041762838590, guid: b63200a0878c4314bb2444a3d9e6a24d, type: 3}
+      propertyPath: m_fontColor.g
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8278091887238856760, guid: b63200a0878c4314bb2444a3d9e6a24d, type: 3}

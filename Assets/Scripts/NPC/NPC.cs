@@ -13,6 +13,9 @@ public class NPC : Interactable
     public bool assignedQuest { get; set; }
     public bool helped { get; set; }
 
+    private AnimationController animationController;
+    private FollowPath path;
+
     private NpcCanvas canvas;
     private void Awake()
     {
@@ -24,6 +27,9 @@ public class NPC : Interactable
         canvas.SetNpcName(npcName);
         canvas.SetQuestIconVisible(availableQuests.Count > 0);
         canvas.SetQuestIconToNewQuest();
+
+        animationController = GetComponent<AnimationController>();
+        path = GetComponent<FollowPath>();
     }
 
     public override void UpdateHook()
@@ -54,49 +60,13 @@ public class NPC : Interactable
 
     private void Moving()
     {
-        FollowPath path = GetComponent<FollowPath>();
-        if (path == null)
+        
+        if (path == null || animationController == null)
         {
             return;
         }
-       
-        if(path.MoveHorizontal() == 0 && path.MoveVertical()  == 0)
-        {
-            ChangeAnimation("isIdle");
-        }
 
-        if (path.MoveHorizontal() > 0)
-        {
-            ChangeAnimation("isMovingRight");
-        } else
-        {
-            ChangeAnimation("isMovingLeft");
-        }
-        if (path.MoveVertical() > 0)
-        {
-            ChangeAnimation("isMovingUp");
-        }
-        else
-        {
-            ChangeAnimation("isMovingDown");
-        }
-    }
-
-    public void ChangeAnimation(string animationFlag, bool resetAll = true)
-    {
-        if (resetAll)
-        {
-            ResetAnimationParameters();
-        }
-        GetComponent<Animator>().SetBool(animationFlag, true);
-    }
-
-    private void ResetAnimationParameters()
-    {
-        foreach (AnimatorControllerParameter parameter in GetComponent<Animator>().parameters)
-        {
-            GetComponent<Animator>().SetBool(parameter.name, false);
-        }
+        animationController.HandleMovementAnimations(path.MoveHorizontal(), path.MoveVertical());
     }
 
     private bool ShowQuestCompleteIcon()

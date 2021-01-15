@@ -599,6 +599,7 @@ MonoBehaviour:
   nameInfo: {fileID: 0}
   damageNumber: {fileID: 0}
   animator: {fileID: 0}
+  lootTable: {fileID: 0}
 --- !u!4 &1115931944
 Transform:
   m_ObjectHideFlags: 0
@@ -5569,6 +5570,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3011404005400268712, guid: 126f533f6fa6c694a8e5a3112c86fb0e, type: 3}
   m_PrefabInstance: {fileID: 1123374415}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1678358882 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2996887655444376216, guid: 126f533f6fa6c694a8e5a3112c86fb0e, type: 3}
+  m_PrefabInstance: {fileID: 1123374415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1678358885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5585,6 +5591,19 @@ MonoBehaviour:
   path: {fileID: 1615718683}
   speed: 1
   maxDistanceToGoal: 0.1
+--- !u!114 &1678358886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678358877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e187b2b88604144833503ab3c1b6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1678358882}
 --- !u!1 &1775299631
 GameObject:
   m_ObjectHideFlags: 0
